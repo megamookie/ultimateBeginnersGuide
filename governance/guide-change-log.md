@@ -7,32 +7,70 @@ This file records approved material changes to the guide's structure, editorial 
 
 ---
 
-## August 18, 2026 — Approve the site product and technical model
+## August 21, 2026 — Correct the governance manifest and restore the product approval record
 
-**Decision:** Promote `site-product-specification.md` to a governing Project Source and establish the guide as a content-first static destination with isolated interactive components rather than a traditional account-based application.
+**Decision:** Correct a governance regression introduced when the ChatGPT–Claude workflow was adopted. Restore the approved August 18 product-approval record, restore `site-product-specification.md` to the required Project Source set, add `project-workflow.md` to that set, and align the manifest with the current approved versions of every affected governing file.
 
-**Approved product model:**
+**Authority clarification:** The approved governing files are authoritative at their embedded versions. The regressed manifest did not supersede or roll back those files. The authoritative set is `ultimate-beginners-guide-master-roadmap.md` version 1.7, `guide-production-handbook.md` version 1.7, `multiboxing-content-framework.md` version 1.4, `page-template.md` version 1.3, `project-instructions.md` version 1.4, `site-product-specification.md` version 1.0, and `project-workflow.md` version 1.0, together with the unaffected approved Section 0 and glossary versions identified by the corrected manifest.
 
-- Use Astro with Starlight, durable Markdown or MDX, isolated Astro-style interactive components, and Pagefind as the initial static search baseline.
-- Use globally distributed static hosting, with Cloudflare Pages as the preferred starting option.
-- Keep the initial product free of reader accounts, saved progress, EVE SSO, ESI, reader-profile storage, and a permanent application backend.
-- Process advisor inputs locally and do not store advisor inputs or search queries by default.
-- Target WCAG 2.2 Level AA, preserve desktop-first responsive design, and require keyboard, focus, tap, and progressive-enhancement behavior.
-- Launch with English as the canonical edition while making the content schema, search, navigation, metadata, and visuals translation-ready.
-- Require machine-readable page metadata, stable URLs and identifiers, structured search vocabulary, preview builds, automated validation, rollback, public corrections, privacy boundaries, and site-level release checks.
-- Require a later approved `interactive-tools-specification.md` before implementing either of the two already approved advisors.
+**Corrections:**
 
-**Governance changes:**
-
-- Made `site-product-specification.md` the single authority for site behavior, technical architecture, global delivery, accessibility conformance, search implementation, interactive boundaries, deployment, and site-level quality assurance.
-- Replaced the roadmap's tentative MkDocs Material direction with the approved Astro/Starlight foundation and moved product-foundation work before additional approved page production.
-- Added schema-compatible machine-readable metadata to the canonical page template.
-- Added site-product review points to the production and multiboxing standards without duplicating the specification.
-- Left `before-you-launch.md` and `glossary.md` unchanged. Section 0 will be converted structurally when the product foundation is implemented; that conversion alone will not change its factual last-updated date.
+- Advanced `project-source-manifest.md` to version 1.5.
+- Corrected the manifest's expected versions for the roadmap, production handbook, multiboxing framework, page template, and Project Instructions.
+- Restored `site-product-specification.md` version 1.0 to the manifest's required Project Sources.
+- Added `project-workflow.md` version 1.0 to the manifest's required Project Sources.
+- Restored the missing August 18 product-approval entry to this change log in reverse-chronological order.
+- Confirmed that `before-you-launch.md` version 1.4 and `glossary.md` version 1.0 were unaffected.
 
 **Affected files:**
 
-- `site-product-specification.md` — version 1.0; promoted from proposed to governing
+- `project-source-manifest.md` — version 1.5
+- `guide-change-log.md` — this entry and the restored August 18 product-approval entry
+
+## August 21, 2026 — Establish the ChatGPT–Claude project workflow
+
+**Decision:** Adopt a tool-neutral operating workflow that separates editorial authority from technical implementation while keeping the user as the final decision-maker. Use the Git repository as the controlled bridge between approved ChatGPT content and Claude's site implementation.
+
+**Operating model:**
+
+- ChatGPT owns research, factual synthesis, guide prose, editorial governance, content audits, and preparation of approved content releases.
+- Claude owns repository architecture, Astro/Starlight implementation, components, search, calculators, technical validation, and implementation reporting.
+- The user approves governing decisions, content promotion, material product deviations, repository merges, and publication.
+- Approved content moves to the repository through a versioned release record. Claude may apply bounded mechanical transformations but must return factual, editorial, or meaning-changing issues to ChatGPT.
+- Repository copies of governing files are read-only inputs for Claude and do not silently supersede their editorial sources.
+- Version mismatches, missing governance, unapproved content, cross-domain conflicts, and material deviations are explicit stop conditions.
+- Standardized content-release and implementation-report templates provide traceable handoffs between the two AI tools.
+
+**Affected files:**
+
+- `project-workflow.md` — version 1.0; new governing project source
+- `project-source-manifest.md` — version 1.4
+- `guide-change-log.md` — this entry
+
+## August 18, 2026 — Approve the site product and technical model
+
+**Decision:** Approve `site-product-specification.md` version 1.0 as the governing product and technical specification for the published guide. Establish a static-first Astro/Starlight architecture, Pagefind search, a machine-readable page schema, WCAG 2.2 AA as the accessibility target, and an implementation boundary that does not require a permanent application backend, reader accounts, saved progress, EVE SSO or ESI authorization, or stored character profiles.
+
+**Product and architecture:**
+
+- Use Astro with Starlight as the static content and documentation foundation.
+- Use Markdown or MDX as the canonical publication format, with interactive behavior isolated in purpose-built components.
+- Use Pagefind for static search, including type-ahead results, a complete results page, major-heading indexing, direct heading anchors, beginner terminology, EVE terminology, abbreviations, alternate names, common misspellings, and glossary terms.
+- Keep one canonical source for every explanation or recommendation. Derive navigation, indexes, search data, and other generated outputs from canonical content or approved structured data.
+- Establish a machine-readable page schema for page identity, status, navigation, version, currency, access, patch sensitivity, review triggers, time, cost, risk, search terms, tags, language, and translation relationships.
+- Use static or client-side components for the two approved anonymous advisors and other bounded interactions unless a later approved requirement demonstrates the need for a backend.
+- Do not add reader login, saved progress, EVE SSO or ESI authorization, profile storage, or a permanent backend without a later approved product decision.
+
+**Reader experience and quality:**
+
+- Preserve the approved one-page-per-major-section model, homepage paths into canonical content, grouped navigation, desktop On This Page sidebar, previous/next behavior, glossary interactions, and prominent heading-level search.
+- Treat desktop and laptop use as primary while applying established responsive behavior on smaller screens.
+- Target WCAG 2.2 AA and require keyboard access, visible focus, sufficient contrast, semantic structure, non-color cues, responsive content, and accessible interactive components.
+- Use preview builds, schema validation, link and anchor checks, accessibility checks, responsive review, performance checks, and search validation as site-level quality controls.
+
+**Affected files:**
+
+- `site-product-specification.md` — version 1.0; new governing Project Source
 - `project-instructions.md` — version 1.4
 - `ultimate-beginners-guide-master-roadmap.md` — version 1.7
 - `guide-production-handbook.md` — version 1.7

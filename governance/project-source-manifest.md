@@ -1,7 +1,7 @@
 # Ultimate Beginner's Guide to EVE Online — Project Source Manifest
 
-> **Manifest version:** 1.4  
-> **Updated:** August 18, 2026  
+> **Manifest version:** 1.5  
+> **Updated:** August 21, 2026  
 > **Status:** Governing project source  
 > **Purpose:** Identify the exact files and embedded document versions that should be attached to the ChatGPT project.
 
@@ -26,14 +26,15 @@ Do not add a duplicate Library file merely because its content changed. The exis
 
 | Filename | Expected version or marker | Purpose | Required now? |
 |---|---|---|---|
-| `project-source-manifest.md` | Manifest version 1.4 | Defines the approved Project Source set and provides the source-audit procedure | Yes |
-| `ultimate-beginners-guide-master-roadmap.md` | Roadmap version 1.7 | Controls section sequence, scope, outcomes, prerequisites, and publication milestones | Yes |
-| `site-product-specification.md` | Specification version 1.0; status Governing project source | Controls product architecture, search, interactivity, metadata, accessibility, worldwide delivery, privacy, deployment, and site-level QA | Yes |
-| `guide-production-handbook.md` | Handbook version 1.7 | Controls research, writing, editorial style, sourcing, QA, and maintenance | Yes |
-| `multiboxing-content-framework.md` | Framework version 1.4 | Controls alt, MCT, multi-account, and legal multiboxing coverage | Yes |
-| `guide-change-log.md` | Newest heading: `August 18, 2026 — Approve the site product and technical model` | Records approved structural, editorial, terminology, product, and governance changes | Yes |
+| `project-source-manifest.md` | Manifest version 1.5 | Defines the approved Project Source set and provides the source-audit procedure | Yes |
+| `ultimate-beginners-guide-master-roadmap.md` | Roadmap version 1.7 | Controls section sequence, scope, outcomes, prerequisites, publication milestones, and site-foundation work | Yes |
+| `guide-production-handbook.md` | Handbook version 1.7 | Controls research, writing, editorial style, sourcing, QA, maintenance, and implementation-facing content standards | Yes |
+| `multiboxing-content-framework.md` | Framework version 1.4 | Controls alt, MCT, multi-account, legal multiboxing, and advisor coverage | Yes |
+| `site-product-specification.md` | Specification version 1.0 | Controls approved product behavior, technical architecture, page schema, search, accessibility, and system boundaries | Yes |
+| `project-workflow.md` | Workflow version 1.0 | Controls ChatGPT–Claude ownership, content handoffs, repository interaction, approval, and publication workflow | Yes |
+| `guide-change-log.md` | Newest heading: `August 21, 2026 — Correct the governance manifest and restore the product approval record` | Records approved structural, editorial, terminology, product, and governance changes | Yes |
 | `before-you-launch.md` | Guide version 1.4; last updated August 18, 2026 | Approved Section 0 and tone benchmark | Yes |
-| `page-template.md` | Template version 1.3 | Provides the canonical reusable page structure and machine-readable metadata model | Yes |
+| `page-template.md` | Template version 1.3 | Provides the single canonical reusable page structure and approved machine-readable page schema | Yes |
 | `glossary.md` | Glossary version 1.0 | Provides canonical beginner-readable terminology | Yes |
 
 ## Project Settings — Do Not Add as a Project Source
@@ -76,4 +77,4 @@ The manifest should be updated last so it describes the final approved state of 
 
 ---
 
-*This manifest identifies the approved Project Source set. It does not replace the authority, production, terminology, or content rules contained in the files it lists.*
+*This manifest identifies the approved Project Source set. It does not replace the authority, production, terminology, product, or content rules contained in the files it lists.*
