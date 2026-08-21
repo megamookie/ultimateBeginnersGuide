@@ -1,0 +1,590 @@
+{
+  "$comment": "GENERATED FILE — do not edit. Run `npm run generate` after content-source/glossary.md changes. Source of truth: content-source/glossary.md.",
+  "sourceFile": "content-source/glossary.md",
+  "glossaryVersion": "1.0",
+  "termCount": 90,
+  "categories": [
+    {
+      "label": "Accounts, Characters, and Training",
+      "anchor": "accounts-characters-and-training",
+      "terms": [
+        {
+          "term": "Account",
+          "definition": "The login and subscription container that holds character slots and has a clone state.",
+          "anchor": "account",
+          "autoLink": false
+        },
+        {
+          "term": "Account architecture",
+          "definition": "The planned placement of roles and characters across accounts based on training, simultaneous-login needs, security, cost, and operations.",
+          "anchor": "account-architecture",
+          "autoLink": false
+        },
+        {
+          "term": "Alpha account",
+          "definition": "An account without active Omega game time and therefore subject to current Alpha restrictions.",
+          "anchor": "alpha-account",
+          "autoLink": true
+        },
+        {
+          "term": "Alt",
+          "definition": "An additional character used for a supporting, specialized, independent, or identity-separated role.",
+          "anchor": "alt",
+          "autoLink": true
+        },
+        {
+          "term": "Character",
+          "definition": "One capsuleer identity occupying a character slot on an account.",
+          "anchor": "character",
+          "autoLink": false
+        },
+        {
+          "term": "Client",
+          "definition": "One running instance of the EVE application connected to one logged-in account.",
+          "anchor": "client",
+          "autoLink": false
+        },
+        {
+          "term": "Clone state",
+          "definition": "The account's current Alpha or Omega access state.",
+          "anchor": "clone-state",
+          "autoLink": true
+        },
+        {
+          "term": "Main",
+          "definition": "The character a player treats as their primary identity or progression focus; not necessarily the most skilled character for every role.",
+          "anchor": "main",
+          "autoLink": false
+        },
+        {
+          "term": "MCT",
+          "definition": "Multiple Character Training, which activates an additional simultaneous skill-training queue on the same account for a defined period; it does not allow same-account characters to log in together.",
+          "anchor": "mct",
+          "autoLink": true
+        },
+        {
+          "term": "Multiboxing",
+          "definition": "One player manually and independently operating multiple EVE clients at the same time.",
+          "anchor": "multiboxing",
+          "autoLink": true
+        },
+        {
+          "term": "Omega account",
+          "definition": "An account with active Omega game time and access to Omega capabilities supported by the character's trained skills.",
+          "anchor": "omega-account",
+          "autoLink": true
+        },
+        {
+          "term": "Skillbook",
+          "definition": "An item or direct purchase that makes a skill available for a character to train.",
+          "anchor": "skillbook",
+          "autoLink": true
+        },
+        {
+          "term": "Skill Point (SP)",
+          "definition": "A unit of character training progress assigned to skills.",
+          "anchor": "skill-point-sp",
+          "autoLink": true
+        },
+        {
+          "term": "Skill queue",
+          "definition": "The ordered list of skills a character will train over real time.",
+          "anchor": "skill-queue",
+          "autoLink": true
+        },
+        {
+          "term": "Support skills",
+          "definition": "Skills that improve fitting, capacitor, navigation, tank, targeting, weapons, or other capabilities across several ships.",
+          "anchor": "support-skills",
+          "autoLink": true
+        },
+        {
+          "term": "Unallocated SP",
+          "definition": "Skill Points the player can apply directly to eligible skills instead of waiting for normal training.",
+          "anchor": "unallocated-sp",
+          "autoLink": true
+        }
+      ]
+    },
+    {
+      "label": "Ships, Fitting, and Flight",
+      "anchor": "ships-fitting-and-flight",
+      "terms": [
+        {
+          "term": "Align time",
+          "definition": "The time a ship needs to reach the direction and speed required to enter warp.",
+          "anchor": "align-time",
+          "autoLink": false
+        },
+        {
+          "term": "Capacitor",
+          "definition": "A ship's rechargeable energy reserve used by many modules and weapons.",
+          "anchor": "capacitor",
+          "autoLink": true
+        },
+        {
+          "term": "Calibration",
+          "definition": "The fitting resource consumed by rigs.",
+          "anchor": "calibration",
+          "autoLink": false
+        },
+        {
+          "term": "CPU",
+          "definition": "One of the two main fitting resources consumed by installed modules.",
+          "anchor": "cpu",
+          "autoLink": false
+        },
+        {
+          "term": "Drone bandwidth",
+          "definition": "The limit controlling which combination of drones a ship can have active.",
+          "anchor": "drone-bandwidth",
+          "autoLink": false
+        },
+        {
+          "term": "Drone bay",
+          "definition": "Storage aboard a ship for assembled drones.",
+          "anchor": "drone-bay",
+          "autoLink": true
+        },
+        {
+          "term": "Falloff",
+          "definition": "The range beyond a turret's optimal range where hit chance and effective damage progressively decline.",
+          "anchor": "falloff",
+          "autoLink": true
+        },
+        {
+          "term": "Fit",
+          "definition": "The complete combination of modules, rigs, charges, drones, and other equipment prepared for a ship and purpose.",
+          "anchor": "fit",
+          "autoLink": false
+        },
+        {
+          "term": "Fitting simulation",
+          "definition": "A client mode used to test a fit without first buying or installing its parts.",
+          "anchor": "fitting-simulation",
+          "autoLink": false
+        },
+        {
+          "term": "Grid",
+          "definition": "The local area of space in which ships and objects can directly see and interact with one another.",
+          "anchor": "grid",
+          "autoLink": false
+        },
+        {
+          "term": "Hull",
+          "definition": "Either a ship type itself or, in combat context, the final structural health layer beneath shields and armor.",
+          "anchor": "hull",
+          "autoLink": true
+        },
+        {
+          "term": "Module",
+          "definition": "Equipment installed in a ship slot to provide weapons, defenses, propulsion, electronic effects, or utility.",
+          "anchor": "module",
+          "autoLink": true
+        },
+        {
+          "term": "Optimal range",
+          "definition": "The distance within which a turret avoids range-based accuracy loss, before other factors such as tracking are considered.",
+          "anchor": "optimal-range",
+          "autoLink": true
+        },
+        {
+          "term": "Powergrid",
+          "definition": "One of the two main fitting resources consumed by installed modules.",
+          "anchor": "powergrid",
+          "autoLink": true
+        },
+        {
+          "term": "Propulsion module",
+          "definition": "An afterburner or microwarpdrive used to increase a ship's speed.",
+          "anchor": "propulsion-module",
+          "autoLink": true
+        },
+        {
+          "term": "Rig",
+          "definition": "A fitted ship modification that uses calibration and is normally destroyed if removed.",
+          "anchor": "rig",
+          "autoLink": true
+        },
+        {
+          "term": "Signature radius",
+          "definition": "A measure of how large a target appears to weapons and sensors; larger signatures are generally easier to hit or damage effectively.",
+          "anchor": "signature-radius",
+          "autoLink": true
+        },
+        {
+          "term": "Tank",
+          "definition": "The defenses used to absorb, resist, avoid, or repair incoming damage.",
+          "anchor": "tank",
+          "autoLink": false
+        },
+        {
+          "term": "Transversal",
+          "definition": "Sideways angular movement between ships that affects how well turrets can track.",
+          "anchor": "transversal",
+          "autoLink": true
+        }
+      ]
+    },
+    {
+      "label": "Space, Travel, and Survival",
+      "anchor": "space-travel-and-survival",
+      "terms": [
+        {
+          "term": "Asset safety",
+          "definition": "A structure-related system that can move eligible personal assets when access to them is lost, subject to current rules, delays, and fees.",
+          "anchor": "asset-safety",
+          "autoLink": false
+        },
+        {
+          "term": "Bookmark",
+          "definition": "A saved location that a character can use for navigation or tactical positioning.",
+          "anchor": "bookmark",
+          "autoLink": true
+        },
+        {
+          "term": "Bubble",
+          "definition": "A warp-disruption field used in space where the mechanic is permitted.",
+          "anchor": "bubble",
+          "autoLink": false
+        },
+        {
+          "term": "CONCORD",
+          "definition": "The NPC enforcement organization that responds to criminal aggression in ordinary high-security space; it punishes qualifying attacks but does not guarantee prevention.",
+          "anchor": "concord",
+          "autoLink": true
+        },
+        {
+          "term": "Directional scanner (d-scan)",
+          "definition": "A shipboard scanner used to look for many nearby objects within a chosen range and angle without launching probes.",
+          "anchor": "directional-scanner-d-scan",
+          "autoLink": true
+        },
+        {
+          "term": "Exordium",
+          "definition": "The protected starter region where newly created characters begin the current new-player journey.",
+          "anchor": "exordium",
+          "autoLink": true
+        },
+        {
+          "term": "Highsec",
+          "definition": "High-security empire space governed by Crimewatch and CONCORD mechanics; it is safer than many regions but not generally free from player attack.",
+          "anchor": "highsec",
+          "autoLink": true
+        },
+        {
+          "term": "Lowsec",
+          "definition": "Low-security empire space with fewer restrictions on player combat and no CONCORD response.",
+          "anchor": "lowsec",
+          "autoLink": true
+        },
+        {
+          "term": "Nullsec",
+          "definition": "Space with a security status at or below zero and broad access to player combat mechanics, including warp disruption bubbles where permitted.",
+          "anchor": "nullsec",
+          "autoLink": true
+        },
+        {
+          "term": "Pochven",
+          "definition": "A group of Triglavian-controlled systems with distinctive travel, standings, combat, and access rules.",
+          "anchor": "pochven",
+          "autoLink": true
+        },
+        {
+          "term": "Safe bookmark",
+          "definition": "A bookmark away from common celestial objects and travel lines, used to reduce exposure while in space; it does not create guaranteed safety.",
+          "anchor": "safe-bookmark",
+          "autoLink": false
+        },
+        {
+          "term": "Session-change timer",
+          "definition": "A short restriction after certain actions that prevents another session-changing action until the timer ends.",
+          "anchor": "session-change-timer",
+          "autoLink": false
+        },
+        {
+          "term": "Stargate",
+          "definition": "A fixed structure that moves ships between connected solar systems.",
+          "anchor": "stargate",
+          "autoLink": true
+        },
+        {
+          "term": "Tether",
+          "definition": "Conditional protection and service access provided near eligible friendly structures under current mechanics.",
+          "anchor": "tether",
+          "autoLink": false
+        },
+        {
+          "term": "Wormhole",
+          "definition": "A temporary connection between systems whose destination, lifetime, and mass capacity must be evaluated.",
+          "anchor": "wormhole",
+          "autoLink": true
+        }
+      ]
+    },
+    {
+      "label": "Combat, Fleets, and Organizations",
+      "anchor": "combat-fleets-and-organizations",
+      "terms": [
+        {
+          "term": "Aggression timer",
+          "definition": "A visible timer created by certain actions that can restrict docking, tethering, jumping, logging off safely, or other behavior.",
+          "anchor": "aggression-timer",
+          "autoLink": false
+        },
+        {
+          "term": "Alliance",
+          "definition": "A formal organization made up of player corporations.",
+          "anchor": "alliance",
+          "autoLink": false
+        },
+        {
+          "term": "Coalition",
+          "definition": "An informal or tool-supported grouping of alliances and corporations; it is not a separate in-game organization type.",
+          "anchor": "coalition",
+          "autoLink": false
+        },
+        {
+          "term": "Corporation",
+          "definition": "An NPC- or player-run organization to which a character belongs.",
+          "anchor": "corporation",
+          "autoLink": true
+        },
+        {
+          "term": "Doctrine",
+          "definition": "A standardized set of ships, fits, skills, and operating expectations selected by a group for a purpose.",
+          "anchor": "doctrine",
+          "autoLink": true
+        },
+        {
+          "term": "EWAR",
+          "definition": "Electronic warfare: modules or effects that interfere with another ship's sensors, range, tracking, propulsion, capacitor, or combat effectiveness.",
+          "anchor": "ewar",
+          "autoLink": true
+        },
+        {
+          "term": "Fleet",
+          "definition": "The in-game organization used to group characters for leadership, broadcasts, bonuses, movement, and coordinated activity.",
+          "anchor": "fleet",
+          "autoLink": false
+        },
+        {
+          "term": "Fleet Commander (FC)",
+          "definition": "The person directing a fleet's actions.",
+          "anchor": "fleet-commander-fc",
+          "autoLink": true
+        },
+        {
+          "term": "Logistics",
+          "definition": "Depending on context, either moving supplies and ships or using remote-repair ships to keep fleet members alive. Clarify the intended meaning when first used.",
+          "anchor": "logistics",
+          "autoLink": false
+        },
+        {
+          "term": "Point",
+          "definition": "Common shorthand for a warp disruptor or for having a target prevented from warping.",
+          "anchor": "point",
+          "autoLink": false
+        },
+        {
+          "term": "Scram",
+          "definition": "Common shorthand for a warp scrambler, which prevents warp and disables some propulsion-related functions under current mechanics.",
+          "anchor": "scram",
+          "autoLink": false
+        },
+        {
+          "term": "Tackle",
+          "definition": "Ships, modules, or actions used to prevent a target from escaping.",
+          "anchor": "tackle",
+          "autoLink": false
+        }
+      ]
+    },
+    {
+      "label": "Economy, Industry, and Resources",
+      "anchor": "economy-industry-and-resources",
+      "terms": [
+        {
+          "term": "Blueprint Copy (BPC)",
+          "definition": "A limited-run copy of a blueprint used for manufacturing or invention and not researchable like an original.",
+          "anchor": "blueprint-copy-bpc",
+          "autoLink": false
+        },
+        {
+          "term": "Blueprint Original (BPO)",
+          "definition": "A reusable original blueprint that can normally be researched and copied.",
+          "anchor": "blueprint-original-bpo",
+          "autoLink": false
+        },
+        {
+          "term": "Broker fee",
+          "definition": "A fee associated with creating or modifying eligible market orders.",
+          "anchor": "broker-fee",
+          "autoLink": false
+        },
+        {
+          "term": "Buy order",
+          "definition": "A market offer to purchase an item under stated price, quantity, location, and range conditions.",
+          "anchor": "buy-order",
+          "autoLink": false
+        },
+        {
+          "term": "Contract",
+          "definition": "An in-game agreement used for item exchange, courier work, auctions, and other supported transactions.",
+          "anchor": "contract",
+          "autoLink": false
+        },
+        {
+          "term": "Industry job",
+          "definition": "A timed activity installed to manufacture, research, copy, invent, or react materials and blueprints.",
+          "anchor": "industry-job",
+          "autoLink": false
+        },
+        {
+          "term": "ISK",
+          "definition": "InterStellar Kredits, the principal in-game currency.",
+          "anchor": "isk",
+          "autoLink": true
+        },
+        {
+          "term": "ISK per attention hour",
+          "definition": "Economic output divided by the time during which the activity actually demands the player's attention.",
+          "anchor": "isk-per-attention-hour",
+          "autoLink": false
+        },
+        {
+          "term": "Liquidity",
+          "definition": "How readily an item can be sold near its expected price without excessive time or price reduction.",
+          "anchor": "liquidity",
+          "autoLink": false
+        },
+        {
+          "term": "Opportunity cost",
+          "definition": "The value of the best alternative use of time, capital, characters, or assets that a choice displaces.",
+          "anchor": "opportunity-cost",
+          "autoLink": false
+        },
+        {
+          "term": "Planetary Industry (PI)",
+          "definition": "The extraction, processing, and transport of planetary resources through colonies managed by characters.",
+          "anchor": "planetary-industry-pi",
+          "autoLink": true
+        },
+        {
+          "term": "PLEX",
+          "definition": "An in-game item with account-service and store uses that can also be traded for ISK through authorized systems.",
+          "anchor": "plex",
+          "autoLink": true
+        },
+        {
+          "term": "Reprocessing",
+          "definition": "Converting eligible items or resources into materials, subject to skills, facility, taxes, and other modifiers.",
+          "anchor": "reprocessing",
+          "autoLink": true
+        },
+        {
+          "term": "Sell order",
+          "definition": "A market offer listing an item for buyers at a stated price and location.",
+          "anchor": "sell-order",
+          "autoLink": false
+        },
+        {
+          "term": "Standing",
+          "definition": "A numerical relationship between a character and an NPC, corporation, faction, or other entity that can affect access and costs.",
+          "anchor": "standing",
+          "autoLink": false
+        }
+      ]
+    },
+    {
+      "label": "Exploration and Interfaces",
+      "anchor": "exploration-and-interfaces",
+      "terms": [
+        {
+          "term": "Cosmic anomaly",
+          "definition": "A site that generally appears in the probe scanner without first resolving it with scan probes.",
+          "anchor": "cosmic-anomaly",
+          "autoLink": true
+        },
+        {
+          "term": "Cosmic signature",
+          "definition": "A site or wormhole that normally must be located precisely with scan probes before warping to it.",
+          "anchor": "cosmic-signature",
+          "autoLink": true
+        },
+        {
+          "term": "ESI",
+          "definition": "EVE Swagger Interface, CCP's official API through which approved applications can request authorized game data.",
+          "anchor": "esi",
+          "autoLink": true
+        },
+        {
+          "term": "Overview",
+          "definition": "The configurable interface that lists selected nearby objects on the current grid.",
+          "anchor": "overview",
+          "autoLink": true
+        },
+        {
+          "term": "Probe scanner",
+          "definition": "The interface used to view anomalies and signatures and to control scan probes.",
+          "anchor": "probe-scanner",
+          "autoLink": true
+        },
+        {
+          "term": "Scan probes",
+          "definition": "Deployable probes used through the probe scanner to locate cosmic signatures or, with the appropriate type and equipment, ships and other objects.",
+          "anchor": "scan-probes",
+          "autoLink": true
+        },
+        {
+          "term": "SSO",
+          "definition": "Single Sign-On, CCP's official authorization system for signing into approved third-party applications without giving those applications the account password.",
+          "anchor": "sso",
+          "autoLink": true
+        }
+      ]
+    },
+    {
+      "label": "Rules and Security",
+      "anchor": "rules-and-security",
+      "terms": [
+        {
+          "term": "Account sharing",
+          "definition": "Allowing another person to access or play an account; prohibited under EVE's account rules.",
+          "anchor": "account-sharing",
+          "autoLink": true
+        },
+        {
+          "term": "Botting",
+          "definition": "Using software or automation to perform gameplay without the independent manual control required of a player.",
+          "anchor": "botting",
+          "autoLink": true
+        },
+        {
+          "term": "ESI scope",
+          "definition": "A specific category of account or character data that a third-party application requests permission to access.",
+          "anchor": "esi-scope",
+          "autoLink": false
+        },
+        {
+          "term": "Input broadcasting",
+          "definition": "Duplicating one input across multiple clients; prohibited and never recommended by this guide.",
+          "anchor": "input-broadcasting",
+          "autoLink": true
+        },
+        {
+          "term": "Real-money trading (RMT)",
+          "definition": "Buying or selling in-game currency, assets, characters, or services through unauthorized real-money channels.",
+          "anchor": "real-money-trading-rmt",
+          "autoLink": true
+        },
+        {
+          "term": "Two-factor authentication (2FA)",
+          "definition": "A security method requiring an additional authenticator or verification factor beyond the password.",
+          "anchor": "two-factor-authentication-2fa",
+          "autoLink": true
+        }
+      ]
+    }
+  ]
+}

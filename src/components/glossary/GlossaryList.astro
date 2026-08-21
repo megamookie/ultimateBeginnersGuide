@@ -1,0 +1,43 @@
+---
+/**
+ * The full glossary, rendered from src/data/glossary.generated.json.
+ *
+ * That file is derived mechanically from content-source/glossary.md, so this page and the
+ * inline definition control always show the same wording and there is no second glossary to
+ * maintain (site-product-specification.md v1.0, section 5; CLAUDE.md, "No Duplication").
+ *
+ * Only the term tables are published. The source's "Usage Rules" section is authoring
+ * guidance for contributors rather than reader content, so it is not rendered here.
+ */
+import glossary from '../../data/glossary.generated.json';
+---
+
+<nav aria-label="Glossary categories">
+  <ul class="glossary-index">
+    {
+      glossary.categories.map((category) => (
+        <li>
+          <a href={`#${category.anchor}`}>{category.label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+{
+  glossary.categories.map((category) => (
+    <section aria-labelledby={category.anchor}>
+      <h2 id={category.anchor}>{category.label}</h2>
+      <dl class="glossary-entries">
+        {category.terms.map((entry) => (
+          <div class="glossary-entry">
+            <dt class="glossary-entry__term" id={entry.anchor}>
+              {entry.term}
+            </dt>
+            <dd class="glossary-entry__definition">{entry.definition}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  ))
+}

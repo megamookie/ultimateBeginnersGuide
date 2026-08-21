@@ -1,0 +1,33 @@
+---
+/**
+ * The homepage entry-point model.
+ *
+ * Rendered from src/data/entry-points.json so the homepage links into canonical content
+ * rather than restating it. Nothing here summarises, previews, or paraphrases guide
+ * content: an entry shows its governing label and the canonical destination it points at.
+ */
+import entryPoints from '../../data/entry-points.json';
+---
+
+<ul class="entry-points">
+  {
+    entryPoints.secondary.map((entry) =>
+      entry.published && entry.href ? (
+        <li>
+          <a class="entry-point" href={entry.href}>
+            <span class="entry-point__label">{entry.label}</span>
+            <span class="entry-point__status">{entry.context}</span>
+          </a>
+        </li>
+      ) : (
+        <li>
+          <div class="entry-point entry-point--pending">
+            <span class="entry-point__label">{entry.label}</span>
+            <span class="entry-point__status">{entry.context}</span>
+            <span class="entry-point__status">Not yet published</span>
+          </div>
+        </li>
+      )
+    )
+  }
+</ul>

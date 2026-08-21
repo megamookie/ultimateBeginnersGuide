@@ -1,0 +1,37 @@
+---
+/**
+ * Inline glossary definition control for MDX authoring.
+ *
+ * Most terms are linked automatically by src/plugins/rehype-glossary.ts. This component
+ * exists for the cases the plugin deliberately skips — a term inside a heading-adjacent
+ * construct, a second occurrence worth linking, or a surface form that differs from the
+ * canonical term. It renders the identical markup through the shared builder so the two
+ * paths can never diverge.
+ *
+ * Styling and behaviour live in src/styles/custom.css alongside the plugin's output.
+ */
+import { findTerm, glossaryControlHtml } from '../../lib/glossary/markup';
+
+interface Props {
+  /** Canonical glossary term, exactly as written in content-source/glossary.md. */
+  term: string;
+  /** Visible text, when the prose uses a different surface form than the canonical term. */
+  label?: string;
+}
+
+const { term, label } = Astro.props;
+const entry = findTerm(term);
+
+if (!entry) {
+  throw new Error(
+    `<Term term="${term}"> does not match a canonical glossary entry. Terms come from ` +
+      `content-source/glossary.md — report a missing term as an editorial finding rather ` +
+      `than inventing a definition.`
+  );
+}
+
+const panelId = `glossary-def-${entry.anchor}-inline`;
+const html = glossaryControlHtml(entry, label ?? term, panelId);
+---
+
+<Fragment set:html={html} />

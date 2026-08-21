@@ -1,0 +1,176 @@
+---
+/**
+ * The complete search results page required by site-product-specification.md v1.0,
+ * section 6.
+ *
+ * Runs the same engine as the header type-ahead (src/lib/search/client.ts), so vocabulary
+ * promotion, heading-level results, and anchor links behave identically on both surfaces.
+ *
+ * Progressive enhancement: with JavaScript unavailable the page still renders a browsable
+ * index of everything published, so search failure never strands a reader.
+ */
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import SectionIndex from '@/components/navigation/SectionIndex.astro';
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Search',
+    template: 'doc',
+    tableOfContents: false,
+    pagefind: false,
+  }}
+>
+  <form class="search-page__form" role="search" action="/search/" method="get">
+    <label class="search-page__label" for="search-page-input">Search the guide</label>
+    <div class="search-page__row">
+      <input
+        id="search-page-input"
+        class="search-page__input"
+        type="search"
+        name="q"
+        autocomplete="off"
+        placeholder="Try a term, an abbreviation, or a plain-language question"
+      />
+      <button class="search-page__submit" type="submit">Search</button>
+    </div>
+  </form>
+
+  <p class="search-page__status" role="status" aria-live="polite" data-search-page-status></p>
+
+  <ul class="search-page__results" data-search-page-results></ul>
+
+  <section data-search-page-fallback>
+    <h2>Browse everything published</h2>
+    <SectionIndex />
+  </section>
+</StarlightPage>
+
+<style>
+  .search-page__form {
+    margin-block-end: 1.25rem;
+  }
+
+  .search-page__label {
+    display: block;
+    margin-block-end: 0.4rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+
+  .search-page__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .search-page__input {
+    flex: 1 1 18rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.35rem;
+    background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-base);
+  }
+
+  .search-page__submit {
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--sl-color-text-accent);
+    border-radius: 0.35rem;
+    background: var(--sl-color-text-accent);
+    color: var(--sl-color-black);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .search-page__status {
+    min-block-size: 1.4em;
+    color: var(--sl-color-gray-3);
+  }
+
+  .search-page__results {
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+  }
+</style>
+
+<script>
+  import { search, renderResults, preloadSearchIndex } from '@/lib/search/client';
+
+  const input = document.querySelector<HTMLInputElement>('#search-page-input');
+  const list = document.querySelector<HTMLUListElement>('[data-search-page-results]');
+  const status = document.querySelector<HTMLElement>('[data-search-page-status]');
+  const fallback = document.querySelector<HTMLElement>('[data-search-page-fallback]');
+  const form = document.querySelector<HTMLFormElement>('.search-page__form');
+
+  if (input && list && status && fallback && form) {
+    let token = 0;
+
+    const run = async (query: string) => {
+      const trimmed = query.trim();
+
+      // The browsable index is the no-JavaScript fallback; hide it only once a real query
+      // is producing results.
+      fallback.hidden = trimmed.length >= 2;
+
+      if (trimmed.length < 2) {
+        list.innerHTML = '';
+        status.textContent = '';
+        return;
+      }
+
+      const current = ++token;
+      status.textContent = 'Searching…';
+
+      const { results, indexUnavailable } = await search(trimmed, 25);
+      if (current !== token) return;
+
+      list.innerHTML = renderResults(results);
+
+      if (indexUnavailable) {
+        status.textContent =
+          'Full-text search needs a production build. Run npm run build, then npm run preview.';
+        fallback.hidden = false;
+      } else if (results.length === 0) {
+        status.textContent = `No results for “${trimmed}”.`;
+        fallback.hidden = false;
+      } else {
+        status.textContent = `${results.length} ${results.length === 1 ? 'result' : 'results'} for “${trimmed}”.`;
+      }
+    };
+
+    // Keep the URL shareable without a full page load.
+    const sync = (query: string) => {
+      const url = new URL(window.location.href);
+      if (query) url.searchParams.set('q', query);
+      else url.searchParams.delete('q');
+      window.history.replaceState({}, '', url);
+    };
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      sync(input.value.trim());
+      void run(input.value);
+    });
+
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        sync(input.value.trim());
+        void run(input.value);
+      }, 150);
+    });
+
+    preloadSearchIndex();
+
+    const initial = new URL(window.location.href).searchParams.get('q');
+    if (initial) {
+      input.value = initial;
+      void run(initial);
+    }
+    input.focus();
+  }
+</script>

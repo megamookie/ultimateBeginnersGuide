@@ -1,0 +1,29 @@
+---
+title: Ultimate Beginner's Guide to EVE Online
+template: splash
+tableOfContents: false
+hero:
+  tagline: A progressive launch-to-veteran guide, reference, and decision guide.
+  actions:
+    - text: Begin the Complete Guided Path
+      link: /foundation/before-you-launch/
+      icon: right-arrow
+      variant: primary
+    - text: Complete Table of Contents
+      link: /table-of-contents/
+      variant: minimal
+---
+
+import EntryPoints from '@/components/navigation/EntryPoints.astro';
+
+{/* Homepage. Carries no guide content of its own: the primary action and the secondary
+    entry points are curated links into canonical approved pages, generated from
+    src/data/entry-points.json (master roadmap v1.7, section 8).
+
+    The hero tagline is the site's own product description, not guide prose. Introductory
+    homepage copy is an editorial deliverable and is reported as finding EF-04 rather than
+    drafted here. */}
+
+## Start where you are
+
+<EntryPoints />

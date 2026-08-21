@@ -1,0 +1,260 @@
+---
+/**
+ * Starlight `Search` override — the prominent header search required on every page
+ * (site-product-specification.md v1.0, sections 4 and 6).
+ *
+ * Provides type-ahead results in a dialog and a route to the complete results page. Both
+ * surfaces run the same engine in src/lib/search/client.ts, so vocabulary handling,
+ * heading-level results, and anchor links behave identically.
+ *
+ * Without JavaScript the control degrades to a plain link to /search/, which itself falls
+ * back to a browsable index of published content.
+ */
+---
+
+<div class="site-search">
+  <a class="site-search__trigger" href="/search/" data-search-trigger aria-keyshortcuts="Control+K">
+    <svg
+      class="site-search__icon"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+    >
+      <circle cx="11" cy="11" r="7"></circle>
+      <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+    </svg>
+    <span class="site-search__label">Search</span>
+    <kbd class="site-search__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></kbd>
+  </a>
+
+  <dialog class="site-search__dialog" aria-label="Search the guide" data-search-dialog>
+    <div class="site-search__frame">
+      <form class="site-search__form" role="search" action="/search/" method="get">
+        <label class="sr-only" for="site-search-input">Search the guide</label>
+        <input
+          id="site-search-input"
+          class="site-search__input"
+          type="search"
+          name="q"
+          autocomplete="off"
+          placeholder="Search the guide"
+          data-search-input
+        />
+        <button type="button" class="site-search__close" data-search-close>Close</button>
+      </form>
+
+      <div class="site-search__status" role="status" aria-live="polite" data-search-status></div>
+
+      <ul class="site-search__results" data-search-results></ul>
+
+      <a class="site-search__all" href="/search/" data-search-all>See all results</a>
+    </div>
+  </dialog>
+</div>
+
+<style>
+  .site-search {
+    display: contents;
+  }
+
+  .site-search__trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    inline-size: 100%;
+    max-inline-size: 22rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.4rem;
+    background: var(--sl-color-black);
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+    text-decoration: none;
+  }
+
+  .site-search__trigger:hover {
+    border-color: var(--sl-color-gray-4);
+    color: var(--sl-color-white);
+  }
+
+  .site-search__icon {
+    inline-size: 1rem;
+    block-size: 1rem;
+    flex: none;
+  }
+
+  .site-search__label {
+    flex: 1;
+    text-align: start;
+  }
+
+  .site-search__kbd {
+    display: none;
+    gap: 0.2rem;
+    font-size: var(--sl-text-xs);
+  }
+
+  .site-search__kbd kbd {
+    padding: 0.05rem 0.3rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.2rem;
+    background: var(--sl-color-gray-6);
+  }
+
+  @media (min-width: 50rem) {
+    .site-search__kbd {
+      display: flex;
+    }
+  }
+
+  .site-search__dialog {
+    inline-size: min(42rem, calc(100vw - 2rem));
+    max-block-size: min(38rem, calc(100vh - 4rem));
+    padding: 0;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    background: var(--sl-color-black);
+    color: var(--sl-color-white);
+  }
+
+  .site-search__dialog::backdrop {
+    background: rgb(0 0 0 / 0.65);
+  }
+
+  .site-search__frame {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .site-search__form {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .site-search__input {
+    flex: 1;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.35rem;
+    background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-base);
+  }
+
+  .site-search__close {
+    padding: 0.5rem 0.85rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.35rem;
+    background: transparent;
+    color: var(--sl-color-gray-2);
+    cursor: pointer;
+  }
+
+  .site-search__close:hover {
+    color: var(--sl-color-white);
+  }
+
+  .site-search__status {
+    min-block-size: 1.2em;
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+  }
+
+  .site-search__results {
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-search__all {
+    align-self: flex-start;
+    font-size: var(--sl-text-sm);
+  }
+</style>
+
+<script>
+  import { search, renderResults, preloadSearchIndex } from '../../lib/search/client';
+
+  const root = document.currentScript?.parentElement ?? document;
+
+  const trigger = document.querySelector<HTMLAnchorElement>('[data-search-trigger]');
+  const dialog = document.querySelector<HTMLDialogElement>('[data-search-dialog]');
+  const input = document.querySelector<HTMLInputElement>('[data-search-input]');
+  const list = document.querySelector<HTMLUListElement>('[data-search-results]');
+  const status = document.querySelector<HTMLElement>('[data-search-status]');
+  const closeButton = document.querySelector<HTMLButtonElement>('[data-search-close]');
+  const seeAll = document.querySelector<HTMLAnchorElement>('[data-search-all]');
+
+  if (trigger && dialog && input && list && status && closeButton && seeAll) {
+    const open = (event?: Event) => {
+      event?.preventDefault();
+      preloadSearchIndex();
+      dialog.showModal();
+      input.focus();
+    };
+
+    trigger.addEventListener('click', open);
+    trigger.addEventListener('pointerenter', preloadSearchIndex, { once: true });
+    closeButton.addEventListener('click', () => dialog.close());
+
+    // Clicking the backdrop closes the dialog.
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        if (dialog.open) dialog.close();
+        else open();
+      }
+    });
+
+    let token = 0;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    const run = async () => {
+      const query = input.value.trim();
+      seeAll.href = `/search/?q=${encodeURIComponent(query)}`;
+
+      if (query.length < 2) {
+        list.innerHTML = '';
+        status.textContent = '';
+        return;
+      }
+
+      const current = ++token;
+      status.textContent = 'Searching…';
+
+      const { results, indexUnavailable } = await search(query, 8);
+      if (current !== token) return; // a newer keystroke already won
+
+      list.innerHTML = renderResults(results);
+
+      if (indexUnavailable) {
+        status.textContent =
+          results.length > 0
+            ? `${results.length} suggested ${results.length === 1 ? 'destination' : 'destinations'}. Full-text search needs a production build.`
+            : 'Full-text search needs a production build. Run npm run build, then npm run preview.';
+      } else {
+        status.textContent =
+          results.length === 0
+            ? `No results for “${query}”.`
+            : `${results.length} ${results.length === 1 ? 'result' : 'results'} for “${query}”.`;
+      }
+    };
+
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(run, 120);
+    });
+  }
+
+  void root;
+</script>

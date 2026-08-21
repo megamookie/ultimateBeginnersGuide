@@ -1,0 +1,99 @@
+---
+/**
+ * Starlight `Pagination` override implementing the approved previous/next model from
+ * ultimate-beginners-guide-master-roadmap.md v1.7, section 8.
+ *
+ * Starlight's built-in pagination walks sidebar adjacency, which cannot express "Section 8
+ * leads to career selection" or "Career Academies return to selection and lead to Section
+ * 14". Ordering is therefore taken from the section registry instead.
+ *
+ * A destination whose content is not yet approved renders as an inert, clearly-labelled
+ * item rather than a link. That keeps the navigation capability in place without shipping a
+ * placeholder page or a link that 404s.
+ */
+import { paginationFor, type NavigationTarget } from '../../lib/navigation/sections';
+
+const { entry } = Astro.locals.starlightRoute;
+const guide = (entry.data as { guide?: { section: number | string } }).guide;
+
+const sectionNumber = typeof guide?.section === 'number' ? guide.section : null;
+const { prev, next } = sectionNumber === null ? { prev: null, next: null } : paginationFor(sectionNumber);
+
+const items: Array<{ rel: 'prev' | 'next'; heading: string; target: NavigationTarget }> = [];
+if (prev) items.push({ rel: 'prev', heading: 'Previous', target: prev });
+if (next) items.push({ rel: 'next', heading: 'Next', target: next });
+---
+
+{
+  items.length > 0 && (
+    <nav class="section-pagination print:hidden" aria-label="Guide sequence">
+      {items.map(({ rel, heading, target }) =>
+        target.href ? (
+          <a class="section-pagination__item" href={target.href} rel={rel} data-direction={rel}>
+            <span class="section-pagination__heading">{heading}</span>
+            <span class="section-pagination__title">{target.label}</span>
+          </a>
+        ) : (
+          <div class="section-pagination__item section-pagination__item--pending" data-direction={rel}>
+            <span class="section-pagination__heading">{heading}</span>
+            <span class="section-pagination__title">{target.label}</span>
+            <span class="section-pagination__status">Not yet published</span>
+          </div>
+        )
+      )}
+    </nav>
+  )
+}
+
+<style>
+  .section-pagination {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+    gap: 1rem;
+    margin-block-start: 1.5rem;
+  }
+
+  .section-pagination__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.4rem;
+    text-decoration: none;
+    color: var(--sl-color-gray-2);
+  }
+
+  a.section-pagination__item:hover {
+    border-color: var(--sl-color-text-accent);
+    background: var(--sl-color-gray-6);
+  }
+
+  .section-pagination__item[data-direction='next'] {
+    text-align: end;
+    grid-column: -2;
+  }
+
+  .section-pagination__heading {
+    font-size: var(--sl-text-sm);
+  }
+
+  .section-pagination__title {
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+
+  .section-pagination__item--pending {
+    border-style: dashed;
+  }
+
+  .section-pagination__item--pending .section-pagination__title {
+    color: var(--sl-color-gray-3);
+  }
+
+  /* Text, not colour, carries the "not published" meaning (spec section 8). */
+  .section-pagination__status {
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+  }
+</style>

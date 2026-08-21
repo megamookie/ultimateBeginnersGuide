@@ -1,0 +1,44 @@
+{
+  "name": "ultimate-beginners-guide-to-eve-online",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Site implementation for the Ultimate Beginner's Guide to EVE Online.",
+  "scripts": {
+    "generate": "node scripts/generate-glossary.mjs && node scripts/import-content.mjs",
+    "dev": "npm run generate && astro dev",
+    "start": "npm run dev",
+    "build": "npm run generate && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "typecheck": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:generated": "node scripts/check-generated.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:governance": "node scripts/check-governance-leak.mjs",
+    "check:search": "node scripts/check-search-index.mjs",
+    "check:a11y": "node scripts/check-a11y.mjs",
+    "verify": "npm run check:generated && npm run typecheck && npm run test && npm run build && npm run check:links && npm run check:governance && npm run check:search && npm run check:a11y",
+    "import": "node scripts/import-content.mjs",
+    "preview:inspect": "node scripts/capture-preview.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.41.7",
+    "astro": "^7.2.4",
+    "github-slugger": "^2.0.0",
+    "hast-util-to-html": "^9.0.5",
+    "hastscript": "^9.0.1",
+    "sharp": "^0.35.3",
+    "unist-util-visit": "^5.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.50.0",
+    "linkedom": "^0.18.0",
+    "typescript": "^6.0.3",
+    "vitest": "^3.0.0",
+    "yaml": "^2.9.0"
+  }
+}

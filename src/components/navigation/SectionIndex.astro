@@ -1,0 +1,59 @@
+---
+/**
+ * The complete table of contents, generated from the section registry.
+ *
+ * Each section shows its number, roadmap title, and publication status. Unpublished
+ * sections are listed but not linked — the reader can see the whole path without the site
+ * shipping a placeholder page for content that has not been editorially approved.
+ *
+ * The `#section-N` ids are the targets the sidebar uses for unpublished entries.
+ */
+import { groups, sections, sectionUrl, referencePages } from '../../lib/navigation/sections';
+---
+
+{
+  groups.map((group) => (
+    <section class="toc-group" aria-labelledby={`group-${group.id}`}>
+      <h2 id={`group-${group.id}`}>{group.label}</h2>
+      <ul class="toc-list">
+        {group.sections.map((number) => {
+          const section = sections.find((s) => s.number === number)!;
+          return (
+            <li class="toc-item" id={`section-${section.number}`}>
+              <span class="toc-item__number">{section.number}.</span>
+              {section.published ? (
+                <a href={sectionUrl(section)}>{section.title}</a>
+              ) : (
+                <>
+                  <span>{section.title}</span>
+                  <span class="toc-item__status">Not yet published</span>
+                </>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  ))
+}
+
+<section class="toc-group" aria-labelledby="group-reference">
+  <h2 id="group-reference">Reference</h2>
+  <ul class="toc-list">
+    {
+      referencePages.map((page) => (
+        <li class="toc-item">
+          <span class="toc-item__number" />
+          {page.published ? (
+            <a href={page.url}>{page.title}</a>
+          ) : (
+            <>
+              <span>{page.title}</span>
+              <span class="toc-item__status">Not yet published</span>
+            </>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</section>

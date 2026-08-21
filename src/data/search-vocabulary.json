@@ -1,0 +1,162 @@
+{
+  "$comment": "The single maintained search vocabulary required by site-product-specification.md v1.0, section 6. Do not scatter synonym lists across components. Every `destination` must point at approved, published content: an entry may not be added for a page that has not been promoted to src/content/docs/. Glossary terms are folded in automatically from glossary.generated.json and are not repeated here. Field meanings follow the spec: canonical term, beginner-language equivalent, abbreviation, alternate or older name, common misspelling, preferred destination page and heading, and promotion guidance.",
+  "version": 1,
+  "entries": [
+    {
+      "canonical": "Alpha and Omega",
+      "beginner": ["is eve free", "free to play", "do i have to pay", "subscription", "paying for eve"],
+      "abbreviations": [],
+      "alternates": ["clone state", "account state", "premium account", "free account"],
+      "misspellings": ["omeaga", "alfa clone", "ohmega"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#3-free-to-play-alpha-vs-omega",
+        "page": "Before You Launch",
+        "heading": "3. Free to Play: Alpha vs. Omega"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "PLEX",
+      "beginner": ["buy game time with isk", "pay with in-game money", "free subscription"],
+      "abbreviations": ["plex"],
+      "alternates": ["pilot licence extension", "game time token"],
+      "misspellings": ["plexx", "plec", "pelx"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#plex-paying-for-omega-with-in-game-currency",
+        "page": "Before You Launch",
+        "heading": "PLEX: Paying for Omega with In-Game Currency"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "Exordium",
+      "beginner": ["where do i start", "starter area", "newbie zone", "safe starting area", "tutorial area"],
+      "abbreviations": [],
+      "alternates": ["starter region", "rookie systems", "new player experience region"],
+      "misspellings": ["exordeum", "exordium region", "exordum", "exordim"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#5-where-every-new-character-begins-exordium",
+        "page": "Before You Launch",
+        "heading": "5. Where Every New Character Begins: Exordium"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "Empire choice",
+      "beginner": ["which race should i pick", "what faction should i choose", "best starting race", "does race matter"],
+      "abbreviations": [],
+      "alternates": ["race", "faction", "origin", "bloodline", "amarr", "caldari", "gallente", "minmatar"],
+      "misspellings": ["gallante", "minmitar", "caldarii", "amar"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#4-the-four-empires-choosing-your-origin",
+        "page": "Before You Launch",
+        "heading": "4. The Four Empires: Choosing Your Origin"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "Account security",
+      "beginner": ["protect my account", "stop getting hacked", "two factor", "authenticator setup"],
+      "abbreviations": ["2fa", "mfa"],
+      "alternates": ["two-step verification", "steam guard", "account theft"],
+      "misspellings": ["authenticater", "two factor authentification"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#7-secure-your-account",
+        "page": "Before You Launch",
+        "heading": "7. Secure Your Account"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "Free skill points",
+      "beginner": ["free sp", "1 million skill points", "recruitment link", "referral bonus"],
+      "abbreviations": ["raf", "sp"],
+      "alternates": ["recruit a friend", "buddy invite", "unallocated skill points"],
+      "misspellings": ["recruit a freind", "skillpoints"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#9-getting-the-free-1000000-skill-points",
+        "page": "Before You Launch",
+        "heading": "9. Getting the Free 1,000,000 Skill Points"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "Scams and ship loss",
+      "beginner": ["can i get scammed", "will i lose my ship", "is eve dangerous", "can people attack me", "griefing"],
+      "abbreviations": ["pvp", "rmt"],
+      "alternates": ["ganking", "suicide gank", "theft", "betrayal", "wardec"],
+      "misspellings": ["scaming", "greifing", "gankign"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#2-a-word-of-warning-before-you-begin",
+        "page": "Before You Launch",
+        "heading": "2. A Word of Warning Before You Begin"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "Multiboxing and alts",
+      "beginner": ["multiple accounts", "second character", "running two clients", "extra characters"],
+      "abbreviations": ["mct"],
+      "alternates": ["multiple character training", "alt account", "dual boxing", "input broadcasting"],
+      "misspellings": ["multiboxxing", "muiltiboxing", "dualboxing"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#looking-ahead-alts-and-multiboxing",
+        "page": "Before You Launch",
+        "heading": "Looking Ahead: Alts and Multiboxing"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "System requirements and UI scaling",
+      "beginner": ["will my pc run eve", "text too small", "make ui bigger", "bad performance", "low fps"],
+      "abbreviations": ["ui", "fps"],
+      "alternates": ["graphics settings", "hardware", "interface scaling", "resolution"],
+      "misspellings": ["requirments", "grapics", "scalling"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#8-hardware-graphics-and-ui-settings",
+        "page": "Before You Launch",
+        "heading": "8. Hardware, Graphics, and UI Settings"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "Character creation and naming",
+      "beginner": ["can i change my name", "pick a name", "change my appearance", "resculpt"],
+      "abbreviations": [],
+      "alternates": ["portrait", "bloodline", "character customisation", "character customization"],
+      "misspellings": ["charecter", "charactor", "resculpt character"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#6-character-creation",
+        "page": "Before You Launch",
+        "heading": "6. Character Creation"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "What is EVE Online",
+      "beginner": ["what is this game", "what kind of game is eve", "is eve an mmo", "sandbox"],
+      "abbreviations": ["mmo"],
+      "alternates": ["new eden", "tranquility", "capsuleer"],
+      "misspellings": ["tranquillity", "capsuller", "capsuleer online"],
+      "destination": {
+        "url": "/foundation/before-you-launch/#1-what-is-eve-online",
+        "page": "Before You Launch",
+        "heading": "1. What Is EVE Online?"
+      },
+      "promote": true
+    },
+    {
+      "canonical": "Glossary",
+      "beginner": ["what does this word mean", "eve terms", "jargon", "abbreviations", "definitions"],
+      "abbreviations": [],
+      "alternates": ["dictionary", "terminology", "acronyms"],
+      "misspellings": ["glosary", "glossery"],
+      "destination": {
+        "url": "/reference/glossary/",
+        "page": "Glossary",
+        "heading": null
+      },
+      "promote": true
+    }
+  ]
+}

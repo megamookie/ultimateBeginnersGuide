@@ -1,0 +1,122 @@
+---
+/**
+ * The approved callout vocabulary from page-template.md v1.3, "Approved Callouts".
+ *
+ * Only these eight types exist. A source blockquote whose label is not one of them stays a
+ * plain blockquote with its label text untouched, and is reported as an editorial finding
+ * rather than being forced into an approved type.
+ *
+ * The visible label text matches the approved notation exactly, so converting
+ * `> **Critical:** …` into `<Callout type="critical">…` changes rendering only.
+ */
+
+const CALLOUTS = {
+  critical: { label: 'Critical', icon: '⚠', tone: 'critical' },
+  warning: { label: 'Warning', icon: '⚠', tone: 'warning' },
+  'alpha-note': { label: 'Alpha note', icon: 'Ⓐ', tone: 'info' },
+  'cost-note': { label: 'Cost note', icon: '¤', tone: 'info' },
+  'fleet-note': { label: 'Fleet note', icon: '⚑', tone: 'info' },
+  'multibox-note': { label: 'Multibox note', icon: '⧉', tone: 'info' },
+  'rules-note': { label: 'Rules note', icon: '§', tone: 'info' },
+  'patch-sensitive': { label: 'Patch-sensitive', icon: '↻', tone: 'caution' },
+} as const;
+
+interface Props {
+  type: keyof typeof CALLOUTS;
+}
+
+const { type } = Astro.props;
+const callout = CALLOUTS[type];
+
+if (!callout) {
+  throw new Error(
+    `Unknown callout "${type}". The approved vocabulary is defined in page-template.md v1.3 ` +
+      `and may not be extended without editorial approval.`
+  );
+}
+---
+
+<aside class={`callout callout--${callout.tone}`} aria-label={callout.label}>
+  <p class="callout__label">
+    {/* Decorative: the label text beside it already carries the meaning, so the callout
+        never relies on the icon or on colour alone (WCAG 2.2 AA, spec section 8). */}
+    <span class="callout__icon" aria-hidden="true">{callout.icon}</span>
+    <strong>{callout.label}:</strong>
+  </p>
+  <div class="callout__body"><slot /></div>
+</aside>
+
+<style>
+  .callout {
+    --callout-accent: var(--sl-color-gray-4);
+    --callout-bg: var(--sl-color-gray-6);
+    margin-block: 1.25rem;
+    padding: 0.85rem 1rem;
+    border-inline-start: 4px solid var(--callout-accent);
+    border-radius: 0.25rem;
+    background: var(--callout-bg);
+  }
+
+  .callout--critical {
+    --callout-accent: var(--sl-color-red);
+    --callout-bg: var(--sl-color-red-low);
+  }
+
+  .callout--warning {
+    --callout-accent: var(--sl-color-orange);
+    --callout-bg: var(--sl-color-orange-low);
+  }
+
+  .callout--caution {
+    --callout-accent: var(--sl-color-purple);
+    --callout-bg: var(--sl-color-purple-low);
+  }
+
+  .callout--info {
+    --callout-accent: var(--sl-color-blue);
+    --callout-bg: var(--sl-color-blue-low);
+  }
+
+  .callout__label {
+    margin: 0 0 0.35rem;
+    font-size: var(--sl-text-sm);
+    line-height: 1.4;
+  }
+
+  .callout__icon {
+    margin-inline-end: 0.35rem;
+  }
+
+  .callout__body :global(> :first-child) {
+    margin-block-start: 0;
+  }
+
+  .callout__body :global(> :last-child) {
+    margin-block-end: 0;
+  }
+
+  /*
+   * Starlight's accent link colour is tuned for the page background and drops to 4.12:1
+   * against a tinted callout, below the 4.5:1 that WCAG 2.2 AA requires (found by axe on
+   * the patch-sensitive callout in Section 0). Inheriting the body colour restores full
+   * contrast on every tint and in both themes; the underline keeps the link distinguishable
+   * without relying on colour, which spec section 8 requires anyway.
+   */
+  .callout__body :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .callout__body :global(a:hover),
+  .callout__body :global(a:focus-visible) {
+    text-decoration-thickness: 2px;
+  }
+
+  @media (forced-colors: active) {
+    .callout {
+      border: 1px solid CanvasText;
+      border-inline-start-width: 4px;
+    }
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+title: Glossary
+guide:
+  page_id: glossary
+  status: Approved
+  section: Reference
+  navigation_group: Reference
+  order: 0
+  permanent_slug: /reference/glossary/
+  guide_version: "1.0"
+  last_updated: "2026-08-18"
+  applies_to: Both
+  patch_sensitivity: Stable concept
+  review_trigger: Annual review
+  estimated_reading_time: Reference — read by term
+  estimated_in_game_time: Not applicable
+  approximate_cost: None
+  risk:
+    level: Not applicable
+    reason: Terminology reference only.
+  search_terms: []
+  tags:
+    - reference
+    - terminology
+  language: en
+  translation_of: null
+  orientation_note: null
+tableOfContents: false
+---
+
+import GlossaryList from '@/components/glossary/GlossaryList.astro';
+
+{/* Publication copy. Source: content-source/glossary.md (Glossary version 1.0), state Approved.
+    Term text is rendered from src/data/glossary.generated.json, which scripts/generate-glossary.mjs
+    derives from that source. Definitions are never authored here. */}
+
+<GlossaryList />

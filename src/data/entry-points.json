@@ -1,0 +1,38 @@
+{
+  "$comment": "The homepage entry-point model from ultimate-beginners-guide-master-roadmap.md v1.7 section 8 and site-product-specification.md v1.0 section 4. These are curated links into the same canonical content — never duplicate versions of the guide, and never a new page. Labels are taken from the governing wording. An entry whose destination has not been approved for publication carries `published: false` and renders as an inert item stating its status; it is not linked and no placeholder page is created for it.",
+  "primary": {
+    "label": "Begin the Complete Guided Path",
+    "href": "/foundation/before-you-launch/",
+    "published": true
+  },
+  "secondary": [
+    {
+      "id": "alpha",
+      "label": "Alpha readers",
+      "href": "/foundation/before-you-launch/#3-free-to-play-alpha-vs-omega",
+      "context": "Before You Launch › 3. Free to Play: Alpha vs. Omega",
+      "published": true
+    },
+    {
+      "id": "multiboxing",
+      "label": "Alts and multiboxing",
+      "href": "/foundation/before-you-launch/#looking-ahead-alts-and-multiboxing",
+      "context": "Before You Launch › Looking Ahead: Alts and Multiboxing",
+      "published": true
+    },
+    {
+      "id": "career-selection",
+      "label": "Career selection",
+      "href": null,
+      "context": "Section 8: Corporations, Fleets, and Choosing a Career",
+      "published": false
+    },
+    {
+      "id": "returning",
+      "label": "Returning players",
+      "href": null,
+      "context": "Returning-player path",
+      "published": false
+    }
+  ]
+}

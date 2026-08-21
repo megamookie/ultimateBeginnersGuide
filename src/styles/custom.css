@@ -1,0 +1,319 @@
+/*
+ * Site-wide styles.
+ *
+ * Scope is deliberately small: Starlight's defaults already meet the desktop-first,
+ * responsive, and contrast expectations in site-product-specification.md v1.0 section 8, so
+ * this file only adds what the approved product model needs on top — the glossary control,
+ * search results, and the homepage entry-point model.
+ */
+
+/* ---------------------------------------------------------------------------
+ * Glossary definition control
+ *
+ * Produced by src/plugins/rehype-glossary.ts and src/components/glossary/Term.astro.
+ * Styles live here rather than in a component so both paths render identically.
+ *
+ * Accessibility contract (spec section 8, "Glossary definitions must not depend on hover
+ * alone"):
+ *   - hover reveals the definition
+ *   - keyboard focus reveals it too, through :focus-within — no script involved
+ *   - the control is a real anchor, so activation or a tap reaches the full glossary entry
+ *   - the panel is decoration over an always-available destination, never the only route
+ * ------------------------------------------------------------------------ */
+
+.glossary-term {
+  position: relative;
+  display: inline;
+}
+
+.glossary-term__control {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  cursor: help;
+}
+
+.glossary-term__control:hover,
+.glossary-term__control:focus-visible {
+  text-decoration-style: solid;
+  color: var(--sl-color-text-accent);
+}
+
+.glossary-term__panel {
+  position: absolute;
+  z-index: 50;
+  inset-inline-start: 0;
+  top: calc(100% + 0.35rem);
+  display: none;
+  inline-size: max-content;
+  max-inline-size: min(22rem, calc(100vw - 2rem));
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.4rem;
+  background: var(--sl-color-black);
+  box-shadow: var(--sl-shadow-md);
+  font-size: var(--sl-text-sm);
+  line-height: 1.5;
+  text-align: start;
+  white-space: normal;
+}
+
+.glossary-term:hover .glossary-term__panel,
+.glossary-term:focus-within .glossary-term__panel {
+  display: block;
+}
+
+.glossary-term__name {
+  display: block;
+  font-weight: 600;
+  color: var(--sl-color-white);
+}
+
+.glossary-term__definition {
+  display: block;
+  margin-block-start: 0.15rem;
+  color: var(--sl-color-gray-2);
+}
+
+.glossary-term__more {
+  display: block;
+  margin-block-start: 0.35rem;
+  color: var(--sl-color-text-accent);
+  font-size: var(--sl-text-xs);
+}
+
+@media (forced-colors: active) {
+  .glossary-term__panel {
+    border-color: CanvasText;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Glossary page
+ * ------------------------------------------------------------------------ */
+
+.glossary-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block: 1rem 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.glossary-index a {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 999px;
+  font-size: var(--sl-text-sm);
+  text-decoration: none;
+}
+
+.glossary-index a:hover {
+  border-color: var(--sl-color-text-accent);
+}
+
+.glossary-entries {
+  margin: 0;
+}
+
+.glossary-entry {
+  padding-block: 0.85rem;
+  border-block-start: 1px solid var(--sl-color-gray-6);
+}
+
+.glossary-entry:first-of-type {
+  border-block-start: none;
+}
+
+.glossary-entry__term {
+  margin: 0;
+  font-weight: 600;
+  color: var(--sl-color-white);
+  /* Offset so a deep link from search or a definition control is not hidden behind the
+     sticky header. */
+  scroll-margin-block-start: 6rem;
+}
+
+.glossary-entry__definition {
+  margin: 0.2rem 0 0;
+  color: var(--sl-color-gray-2);
+}
+
+/* ---------------------------------------------------------------------------
+ * Search results, shared by the header dialog and /search/
+ * ------------------------------------------------------------------------ */
+
+.search-result {
+  border-block-start: 1px solid var(--sl-color-gray-6);
+}
+
+.search-result:first-child {
+  border-block-start: none;
+}
+
+.search-result__link {
+  display: block;
+  padding: 0.6rem 0.4rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-result__link:hover,
+.search-result__link:focus-visible {
+  background: var(--sl-color-gray-6);
+}
+
+.search-result__context {
+  display: block;
+  font-weight: 600;
+  color: var(--sl-color-white);
+}
+
+/* Text carries the "promoted" meaning; the border is secondary (spec section 8). */
+.search-result__badge {
+  display: inline-block;
+  margin-block-start: 0.2rem;
+  padding: 0.05rem 0.45rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 999px;
+  color: var(--sl-color-gray-3);
+  font-size: var(--sl-text-xs);
+}
+
+.search-result__excerpt {
+  margin: 0.25rem 0 0;
+  color: var(--sl-color-gray-3);
+  font-size: var(--sl-text-sm);
+}
+
+.search-result__excerpt mark {
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-white);
+}
+
+/* ---------------------------------------------------------------------------
+ * Homepage entry points
+ * ------------------------------------------------------------------------ */
+
+.entry-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: 1rem;
+  margin-block: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.entry-point {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  block-size: 100%;
+  padding: 1rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.45rem;
+  text-decoration: none;
+  color: var(--sl-color-gray-2);
+}
+
+a.entry-point:hover {
+  border-color: var(--sl-color-text-accent);
+  background: var(--sl-color-gray-6);
+}
+
+.entry-point__label {
+  font-weight: 600;
+  color: var(--sl-color-white);
+}
+
+.entry-point--pending {
+  border-style: dashed;
+}
+
+.entry-point--pending .entry-point__label {
+  color: var(--sl-color-gray-3);
+}
+
+.entry-point__status {
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+}
+
+/* ---------------------------------------------------------------------------
+ * Table of contents index
+ * ------------------------------------------------------------------------ */
+
+.toc-group {
+  margin-block: 2rem;
+}
+
+.toc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.toc-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding-block: 0.5rem;
+  border-block-start: 1px solid var(--sl-color-gray-6);
+  scroll-margin-block-start: 6rem;
+}
+
+.toc-item__number {
+  min-inline-size: 2rem;
+  color: var(--sl-color-gray-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.toc-item__status {
+  color: var(--sl-color-gray-3);
+  font-size: var(--sl-text-sm);
+}
+
+/* ---------------------------------------------------------------------------
+ * Wide tables
+ *
+ * Starlight renders tables as their own scroll container. rehype-accessibility.ts makes
+ * them focusable so a table that overflows on a phone can be scrolled with the keyboard;
+ * this gives that focus a visible indicator.
+ * ------------------------------------------------------------------------ */
+
+.sl-markdown-content table:focus-visible {
+  outline: 2px solid var(--sl-color-text-accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Shared utilities
+ * ------------------------------------------------------------------------ */
+
+.sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
