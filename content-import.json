@@ -6,12 +6,7 @@
       "target": "src/content/docs/before-you-launch.mdx",
       "sourceVersion": "Guide version 1.5; last updated August 21, 2026",
       "state": "Approved",
-
-      "awaitingCorrectedRelease": "The delivered artifact fails transport integrity under workflow v1.1: 19 blank lines interrupt the three Markdown tables, one link target carries displaced emphasis markers, and the whole file shows systematic alternating blank-line insertion. It also predates the checksum requirement, so no approved SHA-256 exists for it. The publication copy below is frozen at the state built under workflow v1.0 and is not re-imported. Awaiting a corrected, checksummed Section 0 release.",
-      "sha256": null,
-      "receivedSha256": "6adf745d895212b23c3d9ddf8ae4df318e53b1c63039f85b0e1243f860ee4b91",
-      "publicationSha256": "3dccc4c77dc7aee46088c9b43bb7a88dc3dca20474a60e4b8e2560bbe4f77aa6",
-
+      "sha256": "7c8677d45c5a13ae0f3901e3b7380c1ad4bdbe26d6c17bbe03732f12422d05ad",
       "expect": {
         "page_id": "section-00-before-you-launch",
         "title": "Before You Launch",
@@ -21,17 +16,16 @@
         "slug": "/before-you-launch/",
         "navigation_group": "Foundation"
       },
-
       "linkRewrites": {
         "../section-1/your-first-session": "/foundation/your-first-session/",
         "../section-2/graduate-from-starter-space": "/foundation/graduate-from-starter-space/",
         "../index": "/"
       },
-
       "$notes": {
         "route": "The approved slug moves this page from /foundation/before-you-launch/ to /before-you-launch/. navigation_group stays Foundation, so it still appears as Section 0 in the Foundation group; only the URL is top-level.",
         "deferredLinks": "Sections 1 and 2 are not approved for publication. Their canonical routes are preserved here and registered as unpublished in src/data/section-registry.json, so scripts/check-links.mjs reports them as deferred rather than broken. No placeholder page is created.",
-        "frontmatter": "Carried over from the approved source. The only field change is `slug` to `permanent_slug`, forced by Astro reserving `slug` for routing; the value is unchanged."
+        "frontmatter": "Carried over from the approved source. The only field change is `slug` to `permanent_slug`, forced by Astro reserving `slug` for routing; the value is unchanged.",
+        "transportRepair": "Guide version 1.5 was re-delivered on August 22, 2026 as an approved transport-only repair: transport-inserted blank lines removed, Markdown table structure restored, and the malformed final internal link corrected. No approved wording, factual claim, recommendation, heading, metadata value, guide version, or last-updated date changed. The earlier artifact was quarantined; that hold is removed now the gate passes."
       }
     }
   ]
