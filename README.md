@@ -39,6 +39,7 @@ Individual checks:
 
 | Command | Checks |
 | --- | --- |
+| `npm run validate:source` | Release-file checksums, encoding, and Markdown integrity |
 | `npm run check:generated` | Generated data and publication copies still match their approved sources |
 | `npm run typecheck` | `astro check` |
 | `npm test` | Wording preservation, metadata, anchors, navigation, glossary, search vocabulary |
@@ -59,22 +60,50 @@ Approved content arrives in `content-source/` and is promoted to `src/content/do
 `scripts/import-content.mjs`, driven by `content-import.json`.
 
 ```sh
-npm run import     # regenerate publication copies from approved sources
-npm run generate   # glossary data + publication copies (runs automatically before build)
+npm run validate:source  # transport integrity only
+npm run import           # regenerate publication copies from approved sources
+npm run generate         # validate + glossary data + publication copies (runs before build)
 ```
 
-**Do not hand-edit anything in `src/content/docs/` or `src/data/glossary.generated.json`.**
-Both are generated, and `npm run check:generated` fails if they drift. Edit the approved
+**Do not hand-edit anything in `src/content/docs/` or `src/data/*.generated.json`.**
+All are generated, and `npm run check:generated` fails if they drift. Edit the approved
 source, or return an editorial finding.
+
+### Transport integrity
+
+`project-workflow.md` v1.1 requires every release file to be a byte-preserving artifact,
+never text copied out of a rendered chat response. Before any transformation runs, the
+import verifies the file's SHA-256 against the approved release record and checks the bytes
+for corruption:
+
+| Check | Rejects |
+| --- | --- |
+| Encoding | Non-UTF-8, byte-order mark, CRLF, missing trailing newline |
+| Mojibake | `â€"`, `â€"`, `â€œ`, `â†'` and similar double-encoded punctuation |
+| Replacement characters | U+FFFD, where characters were lost outright |
+| Markdown tables | A blank line between table rows, which stops the table parsing |
+| Markdown links | Empty, unclosed, or emphasis-corrupted destinations |
+| Blank-line insertion | A blank line after every source line |
+
+**A missing checksum, a mismatch, or any integrity failure is a stop condition.** The import
+aborts and reports the defect. It does not repair approved content — the corrected artifact
+comes from ChatGPT. Rules live in `src/lib/content/integrity.ts` and are covered by
+`tests/content/integrity.test.ts` and `tests/content/import-gate.test.ts`.
+
+An entry may carry `awaitingCorrectedRelease` to hold a release whose artifact failed
+validation. Its publication copy is frozen, pinned by `publicationSha256`, and not
+re-imported until a corrected release arrives.
 
 ## Adding an approved section
 
-1. Place the approved file in `content-source/`.
-2. Add an entry to `content-import.json` with its frontmatter and any link rewrites.
-3. Flip `published` to `true` for that section in `src/data/section-registry.json`.
-4. Add vocabulary entries in `src/data/search-vocabulary.json` and acceptance queries in
+1. Place the approved file in `content-source/` by direct file transfer, not copy-paste.
+2. Add an entry to `content-import.json` including the **`sha256` from the release record**
+   and any link rewrites.
+3. Run `npm run validate:source` and resolve any defect with ChatGPT before going further.
+4. Flip `published` to `true` for that section in `src/data/section-registry.json`.
+5. Add vocabulary entries in `src/data/search-vocabulary.json` and acceptance queries in
    `tests/fixtures/search-acceptance.json`.
-5. Run `npm run verify`.
+6. Run `npm run verify`.
 
 Navigation, previous/next links, the table of contents, and the sidebar all derive from the
 section registry, so no navigation file needs editing.
@@ -87,7 +116,7 @@ governance/              Read-only governing files. Never published or indexed.
 src/content/docs/        Publication copies (generated) and site pages.
 src/components/          Callouts, glossary, navigation, search, page chrome.
 src/data/                Section registry, search vocabulary, entry points, generated glossary.
-src/lib/                 Navigation, glossary, and search logic — unit-testable, no DOM.
+src/lib/                 Navigation, glossary, search, and content-integrity logic.
 src/plugins/             Build-time rehype transformations.
 scripts/                 Import, generation, and verification scripts.
 tests/                   Vitest suites and the search acceptance fixture.

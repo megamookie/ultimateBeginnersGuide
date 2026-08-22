@@ -1,11 +1,16 @@
 {
-  "$comment": "Declarative record of every approved content release promoted into the publication directory, per project-workflow.md v1.0 steps 3 and 4. scripts/import-content.mjs applies only the mechanical transformations listed in section 8.1 of that workflow and in the release record; it cannot reword, reorder, or remove prose. The approved source now carries its own complete frontmatter matching page-template.md v1.4, so metadata is passed through rather than injected here — `expect` only asserts that the promoted file is the release that was approved. `npm run check:generated` re-runs the import and fails if a publication copy has been edited by hand.",
+  "$comment": "Declarative record of every approved content release promoted into the publication directory, per project-workflow.md v1.1 steps 3 and 4. Every entry MUST carry `sha256` — the checksum from the approved content release record. scripts/import-content.mjs verifies it, and runs the encoding and Markdown integrity checks in src/lib/content/integrity.ts, BEFORE any transformation. A missing checksum, a mismatch, or any integrity failure aborts the import; the defect returns to ChatGPT for a corrected release artifact and is never repaired here. Only after integrity passes does the script apply the transformations permitted by workflow section 8.",
   "imports": [
     {
       "source": "content-source/before-you-launch.md",
       "target": "src/content/docs/before-you-launch.mdx",
       "sourceVersion": "Guide version 1.5; last updated August 21, 2026",
       "state": "Approved",
+
+      "awaitingCorrectedRelease": "The delivered artifact fails transport integrity under workflow v1.1: 19 blank lines interrupt the three Markdown tables, one link target carries displaced emphasis markers, and the whole file shows systematic alternating blank-line insertion. It also predates the checksum requirement, so no approved SHA-256 exists for it. The publication copy below is frozen at the state built under workflow v1.0 and is not re-imported. Awaiting a corrected, checksummed Section 0 release.",
+      "sha256": null,
+      "receivedSha256": "6adf745d895212b23c3d9ddf8ae4df318e53b1c63039f85b0e1243f860ee4b91",
+      "publicationSha256": "3dccc4c77dc7aee46088c9b43bb7a88dc3dca20474a60e4b8e2560bbe4f77aa6",
 
       "expect": {
         "page_id": "section-00-before-you-launch",
@@ -26,7 +31,7 @@
       "$notes": {
         "route": "The approved slug moves this page from /foundation/before-you-launch/ to /before-you-launch/. navigation_group stays Foundation, so it still appears as Section 0 in the Foundation group; only the URL is top-level.",
         "deferredLinks": "Sections 1 and 2 are not approved for publication. Their canonical routes are preserved here and registered as unpublished in src/data/section-registry.json, so scripts/check-links.mjs reports them as deferred rather than broken. No placeholder page is created.",
-        "frontmatter": "Passed through verbatim from the approved source. Only blank lines inserted in transport are removed; no field name or value is altered."
+        "frontmatter": "Carried over from the approved source. The only field change is `slug` to `permanent_slug`, forced by Astro reserving `slug` for routing; the value is unchanged."
       }
     }
   ]

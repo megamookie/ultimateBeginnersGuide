@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Site implementation for the Ultimate Beginner's Guide to EVE Online.",
   "scripts": {
-    "generate": "node scripts/generate-glossary.mjs && node scripts/import-content.mjs && node scripts/generate-search-terms.mjs",
+    "generate": "node scripts/validate-source.mjs && node scripts/generate-glossary.mjs && node scripts/import-content.mjs && node scripts/generate-search-terms.mjs",
     "dev": "npm run generate && astro dev",
     "start": "npm run dev",
     "build": "npm run generate && astro build",
@@ -19,9 +19,10 @@
     "check:governance": "node scripts/check-governance-leak.mjs",
     "check:search": "node scripts/check-search-index.mjs",
     "check:a11y": "node scripts/check-a11y.mjs",
-    "verify": "npm run check:generated && npm run typecheck && npm run test && npm run build && npm run check:links && npm run check:governance && npm run check:search && npm run check:a11y",
+    "verify": "npm run validate:source && npm run check:generated && npm run typecheck && npm run test && npm run build && npm run check:links && npm run check:governance && npm run check:search && npm run check:a11y",
     "import": "node scripts/import-content.mjs",
-    "preview:inspect": "node scripts/capture-preview.mjs"
+    "preview:inspect": "node scripts/capture-preview.mjs",
+    "validate:source": "node scripts/validate-source.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.41.7",

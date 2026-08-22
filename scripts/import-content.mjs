@@ -2,28 +2,28 @@
 /**
  * Promote approved content from content-source/ into the publication directory.
  *
- * Implements project-workflow.md v1.0 step 4 ("Promote the Release to the Repository") and
- * is limited to the mechanical transformations permitted by section 8.1 and by the release
- * record:
+ * Two phases, in this order and never the other way round:
  *
- *   1. Pass the approved frontmatter through unchanged (the source now carries complete
- *      metadata matching page-template.md v1.4).
- *   2. Restore block contiguity destroyed in transport — see `restoreBlockContiguity`.
- *   3. Repair broken Markdown link syntax, without changing link text.
- *   4. Correct internal paths to the repository's routes.
- *   5. Convert approved callout notation into the supported callout component.
+ *   1. TRANSPORT INTEGRITY (project-workflow.md v1.1). The received file's SHA-256 is
+ *      compared with the approved release record, and the bytes are checked for encoding and
+ *      Markdown corruption. A missing checksum, a mismatch, or any integrity failure is a
+ *      stop condition: the import aborts and the defect goes back to ChatGPT for a corrected
+ *      artifact.
  *
- * What it deliberately cannot do: reword, shorten, expand, reorder, retitle, or delete
- * prose. Every prose word reaches the output unchanged, which
- * tests/content/wording.test.ts proves against the approved source.
+ *   2. IMPLEMENTATION TRANSFORMATION (project-workflow.md v1.1 section 8). Only reached once
+ *      integrity passes.
  *
- * A blockquote whose label is not in the approved callout vocabulary is left exactly as
- * written and reported, never coerced into an approved type.
+ * This script does not repair approved content. Earlier versions silently fixed transport
+ * damage — blank lines inside tables, emphasis markers displaced into a link target, blank
+ * lines throughout the YAML. Workflow v1.1 makes that damage a reportable defect instead, so
+ * those repairs have been removed and reimplemented as detectors in
+ * src/lib/content/integrity.ts. Nothing in phase 2 alters prose, punctuation, or structure.
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { validateReleaseFile, formatFailures, sha256 } from '../src/lib/content/integrity.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CONFIG = join(root, 'content-import.json');
@@ -42,109 +42,37 @@ const APPROVED_CALLOUTS = new Map([
 
 /** Split a file into its YAML frontmatter and Markdown body. */
 export function splitFrontmatter(raw, source) {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!match) {
     throw new Error(`${source}: no YAML frontmatter found. The approved release must carry it.`);
   }
   return { frontmatter: match[1], body: match[2] };
 }
 
-const isTableRow = (line) => /^\s*\|/.test(line);
-const isListItem = (line) => /^\s*(?:[-*+]|\d+\.)\s/.test(line);
-
 /**
- * Remove blank lines that transport inserted *inside* a block construct.
+ * Rename `slug` to `permanent_slug`.
  *
- * The approved file arrived with a blank line after every single line — 184 content lines
- * and 183 blank lines, never two in a row. Between paragraphs that is correct Markdown and
- * is left alone. Inside a table it is fatal: a table whose rows are separated by blank lines
- * does not parse at all, and all three tables in Section 0 would render as literal rows of
- * pipe characters. Inside a list it silently turns a tight list into a loose one, changing
- * the spacing the author intended.
- *
- * So a blank line is removed only when the non-blank lines on both sides belong to the same
- * construct. Paragraph separation is never touched, and no word is altered.
+ * A schema-integration transformation permitted by workflow section 8.1, not a corruption
+ * repair. `slug` is reserved by Astro's content layer: Starlight resolves a route by it, so
+ * `slug: "/before-you-launch/"` hijacked routing and made both Section 0 and the glossary
+ * render as the not-found page. page-template v1.4 mandates the field name `slug`, so the
+ * approved source keeps it and only the publication copy is renamed. The value is preserved
+ * character-for-character, and tests/content/metadata.test.ts asserts that the route it
+ * declares is the route the page is published at.
  */
-export function restoreBlockContiguity(body, findings) {
-  const lines = body.split('\n');
-  const output = [];
-  let tablesRepaired = 0;
-  let listsRepaired = 0;
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    if (line.trim() === '') {
-      // Look back to the last emitted non-blank line and forward to the next one.
-      let previous = null;
-      for (let j = output.length - 1; j >= 0; j--) {
-        if (output[j].trim() !== '') {
-          previous = output[j];
-          break;
-        }
-      }
-      let next = null;
-      for (let j = i + 1; j < lines.length; j++) {
-        if (lines[j].trim() !== '') {
-          next = lines[j];
-          break;
-        }
-        // Two blank lines in a row means a genuine block break; stop looking.
-        if (j > i + 1) break;
-      }
-
-      if (previous && next) {
-        if (isTableRow(previous) && isTableRow(next)) {
-          tablesRepaired++;
-          continue; // drop the blank line
-        }
-        if (isListItem(previous) && isListItem(next)) {
-          listsRepaired++;
-          continue;
-        }
-      }
-    }
-
-    output.push(line);
-  }
-
-  if (tablesRepaired > 0) {
-    findings.push(
-      `Removed ${tablesRepaired} blank line(s) separating table rows. Without this the ` +
-        `tables do not parse as tables and render as literal pipe-delimited text.`
-    );
-  }
-  if (listsRepaired > 0) {
-    findings.push(
-      `Removed ${listsRepaired} blank line(s) separating list items, restoring the intended ` +
-        `tight-list rendering.`
-    );
-  }
-
-  return output.join('\n');
-}
-
-/**
- * Repair emphasis markers that leaked into a link destination.
- *
- * The approved file's closing line arrived as `[…](*../index*)`. Asterisks are not valid in
- * a link target; Markdown renders the destination literally and the link breaks. Stripping
- * them restores the author's target and leaves the visible link text untouched.
- */
-export function repairLinkTargets(body, findings) {
-  let repaired = 0;
-  const output = body.replace(/\]\(\s*\*+([^)*]+)\*+\s*\)/g, (_match, target) => {
-    repaired++;
-    return `](${target})`;
-  });
-
-  if (repaired > 0) {
-    findings.push(
-      `Repaired ${repaired} link target(s) with emphasis markers inside the destination ` +
-        `(for example \`](*../index*)\` → \`](../index)\`). Link text unchanged.`
-    );
-  }
-  return output;
+function renameReservedSlug(frontmatter, findings) {
+  return frontmatter
+    .split('\n')
+    .map((line) => {
+      const match = line.match(/^slug:(\s*.*)$/);
+      if (!match) return line;
+      findings.push(
+        'Renamed frontmatter field `slug` to `permanent_slug` in the publication copy. ' +
+          "`slug` is reserved by Astro's routing; the value is unchanged."
+      );
+      return `permanent_slug:${match[1]}`;
+    })
+    .join('\n');
 }
 
 /** Convert approved callout blockquotes; leave every other blockquote untouched. */
@@ -182,13 +110,20 @@ export function convertCallouts(body, findings) {
 
     findings.push(`Converted "${label}" blockquote to <Callout type="${type}">.`);
     used = true;
-    output.push(`<Callout type="${type}">`, '', ...block.filter((l) => l.trim() !== ''), '', '</Callout>');
+    output.push(
+      `<Callout type="${type}">`,
+      '',
+      ...block.filter((line) => line.trim() !== ''),
+      '',
+      '</Callout>'
+    );
     i = j - 1;
   }
 
   return { body: output.join('\n'), usedCallout: used };
 }
 
+/** Correct internal paths after a file move. Visible link text is never touched. */
 export function rewriteLinks(body, rewrites, findings) {
   let output = body;
   // Longest first so a prefix rule cannot pre-empt a more specific one.
@@ -205,54 +140,35 @@ export function rewriteLinks(body, rewrites, findings) {
   return output;
 }
 
-/**
- * Prepare the approved frontmatter for the publication copy.
- *
- * Two mechanical changes, both required for the file to load at all:
- *
- *  1. Collapse the blank lines transport inserted between YAML entries. YAML never needs
- *     them and no field name or value is touched.
- *
- *  2. Rename `slug` to `permanent_slug`. `slug` is reserved by Astro's content layer:
- *     Starlight resolves a route by it, so `slug: "/before-you-launch/"` hijacked routing
- *     and made both Section 0 and the glossary render as the not-found page. page-template
- *     v1.4 mandates the field name `slug`, so the approved source keeps it and only the
- *     publication copy is renamed. The value is preserved character-for-character, and the
- *     route it declares is the route the page is actually published at — asserted by
- *     tests/content/metadata.test.ts.
- */
-function normalizeFrontmatter(frontmatter, findings) {
-  const lines = frontmatter.split('\n');
-  const kept = lines.filter((line) => line.trim() !== '');
-  if (kept.length !== lines.length) {
-    findings.push(
-      `Removed ${lines.length - kept.length} blank line(s) from the YAML frontmatter. ` +
-        `Field names and values are unchanged.`
+export class TransportIntegrityError extends Error {
+  constructor(source, result) {
+    super(
+      `${source}: transport integrity failed.\n` +
+        formatFailures(source, result.failures) +
+        '\n\nproject-workflow.md v1.1 makes this a stop condition. Request a corrected release ' +
+        'artifact from ChatGPT; do not repair the approved source.'
     );
+    this.name = 'TransportIntegrityError';
+    this.result = result;
   }
-
-  const renamed = kept.map((line) => {
-    const match = line.match(/^slug:(\s*.*)$/);
-    if (!match) return line;
-    findings.push(
-      `Renamed frontmatter field \`slug\` to \`permanent_slug\` in the publication copy. ` +
-        `\`slug\` is reserved by Astro's routing; the value is unchanged.`
-    );
-    return `permanent_slug:${match[1]}`;
-  });
-
-  return renamed.join('\n');
 }
 
 export function importOne(entry, { root: rootDir = root } = {}) {
   const findings = [];
   const sourcePath = join(rootDir, entry.source);
-  const raw = readFileSync(sourcePath, 'utf8');
+  const bytes = readFileSync(sourcePath);
 
+  // ---- Phase 1: transport integrity, before anything touches the content ----
+  const integrity = validateReleaseFile(bytes, { expectedSha256: entry.sha256 ?? null });
+  if (!integrity.ok) throw new TransportIntegrityError(entry.source, integrity);
+
+  findings.push(`Transport integrity verified. SHA-256 ${integrity.sha256}.`);
+
+  // ---- Phase 2: implementation transformations ----
+  const raw = new TextDecoder('utf-8').decode(bytes);
   const { frontmatter, body: rawBody } = splitFrontmatter(raw, entry.source);
 
-  // Confirm the release matches what was approved, against the source's own field names,
-  // before any normalisation renames them.
+  // Confirm the release matches what was approved, against the source's own field names.
   for (const [field, expected] of Object.entries(entry.expect ?? {})) {
     const found = frontmatter.match(new RegExp(`^${field}:\\s*"?([^"\\n]*)"?\\s*$`, 'm'));
     if (!found || found[1].trim() !== expected) {
@@ -263,13 +179,9 @@ export function importOne(entry, { root: rootDir = root } = {}) {
     }
   }
 
-  const normalizedFrontmatter = normalizeFrontmatter(frontmatter, findings);
+  const publishedFrontmatter = renameReservedSlug(frontmatter, findings);
 
-  let body = rawBody;
-  body = restoreBlockContiguity(body, findings);
-  body = repairLinkTargets(body, findings);
-  body = rewriteLinks(body, entry.linkRewrites ?? {}, findings);
-
+  let body = rewriteLinks(rawBody, entry.linkRewrites ?? {}, findings);
   const { body: withCallouts, usedCallout } = convertCallouts(body, findings);
   body = withCallouts.replace(/^\n+/, '').replace(/\n+$/, '\n');
 
@@ -277,15 +189,56 @@ export function importOne(entry, { root: rootDir = root } = {}) {
 
   const banner =
     `{/* Publication copy. Source: ${entry.source} (${entry.sourceVersion}), state ${entry.state}.\n` +
+    `    Source SHA-256: ${integrity.sha256}\n` +
     `    Generated by scripts/import-content.mjs — edit the approved source, not this file. */}\n`;
 
-  const output = `---\n${normalizedFrontmatter}\n---\n` + imports + '\n' + banner + '\n' + body;
+  const output = `---\n${publishedFrontmatter}\n---\n` + imports + '\n' + banner + '\n' + body;
 
-  return { output, findings, targetPath: join(rootDir, entry.target) };
+  return { output, findings, targetPath: join(rootDir, entry.target), sha256: integrity.sha256 };
 }
 
 export function loadConfig(configPath = CONFIG) {
   return JSON.parse(readFileSync(configPath, 'utf8'));
+}
+
+/**
+ * A held entry's publication copy is frozen: the source failed transport integrity, so it
+ * cannot be regenerated, and workflow v1.1 forbids repairing it here. Instead the frozen
+ * file is checksummed so a hand-edit is still caught.
+ */
+function verifyHeldEntry(entry, check) {
+  const targetPath = join(root, entry.target);
+  if (!existsSync(targetPath)) {
+    process.stderr.write(`FAIL ${entry.target} is held but missing from the repository.\n`);
+    return false;
+  }
+
+  const digest = sha256(readFileSync(targetPath));
+  const expected = entry.publicationSha256;
+
+  if (!expected) {
+    process.stderr.write(
+      `FAIL ${entry.target} is held but content-import.json records no publicationSha256.\n`
+    );
+    return false;
+  }
+
+  if (digest !== expected) {
+    process.stderr.write(
+      `FAIL ${entry.target} has been modified while held.\n` +
+        `     expected ${expected}\n     received ${digest}\n`
+    );
+    return false;
+  }
+
+  process.stdout.write(
+    `HELD ${entry.target} frozen and unmodified (sha256 ${digest})\n` +
+      `     ${entry.awaitingCorrectedRelease}\n`
+  );
+  if (!check) {
+    process.stdout.write(`     Not re-imported: awaiting a corrected release artifact.\n`);
+  }
+  return true;
 }
 
 function main() {
@@ -294,11 +247,25 @@ function main() {
   let failed = false;
 
   for (const entry of config.imports) {
-    const { output, findings, targetPath } = importOne(entry);
+    if (entry.awaitingCorrectedRelease) {
+      if (!verifyHeldEntry(entry, check)) failed = true;
+      continue;
+    }
+
+    let result;
+    try {
+      result = importOne(entry);
+    } catch (error) {
+      failed = true;
+      process.stderr.write(`FAIL ${error.message}\n`);
+      continue;
+    }
 
     if (check) {
-      const existing = existsSync(targetPath) ? readFileSync(targetPath, 'utf8') : null;
-      if (existing !== output) {
+      const existing = existsSync(result.targetPath)
+        ? readFileSync(result.targetPath, 'utf8')
+        : null;
+      if (existing !== result.output) {
         failed = true;
         process.stderr.write(
           `FAIL ${entry.target} has drifted from ${entry.source}.\n` +
@@ -310,10 +277,10 @@ function main() {
       continue;
     }
 
-    mkdirSync(dirname(targetPath), { recursive: true });
-    writeFileSync(targetPath, output);
+    mkdirSync(dirname(result.targetPath), { recursive: true });
+    writeFileSync(result.targetPath, result.output);
     process.stdout.write(`Imported ${entry.source} → ${entry.target}\n`);
-    for (const finding of findings) process.stdout.write(`  · ${finding}\n`);
+    for (const finding of result.findings) process.stdout.write(`  · ${finding}\n`);
   }
 
   if (failed) process.exit(1);
