@@ -1,6 +1,6 @@
 # Ultimate Beginner's Guide to EVE Online — Project Source Manifest
 
-> **Manifest version:** 1.5  
+> **Manifest version:** 1.6  
 > **Updated:** August 21, 2026  
 > **Status:** Governing project source  
 > **Purpose:** Identify the exact files and embedded document versions that should be attached to the ChatGPT project.
@@ -26,22 +26,22 @@ Do not add a duplicate Library file merely because its content changed. The exis
 
 | Filename | Expected version or marker | Purpose | Required now? |
 |---|---|---|---|
-| `project-source-manifest.md` | Manifest version 1.5 | Defines the approved Project Source set and provides the source-audit procedure | Yes |
-| `ultimate-beginners-guide-master-roadmap.md` | Roadmap version 1.7 | Controls section sequence, scope, outcomes, prerequisites, publication milestones, and site-foundation work | Yes |
-| `guide-production-handbook.md` | Handbook version 1.7 | Controls research, writing, editorial style, sourcing, QA, maintenance, and implementation-facing content standards | Yes |
+| `project-source-manifest.md` | Manifest version 1.6 | Defines the approved Project Source set and provides the source-audit procedure | Yes |
+| `ultimate-beginners-guide-master-roadmap.md` | Roadmap version 1.8 | Controls section sequence, scope, outcomes, prerequisites, publication milestones, and site-foundation work | Yes |
+| `guide-production-handbook.md` | Handbook version 1.8 | Controls research, writing, editorial style, sourcing, QA, maintenance, and implementation-facing content standards | Yes |
 | `multiboxing-content-framework.md` | Framework version 1.4 | Controls alt, MCT, multi-account, legal multiboxing, and advisor coverage | Yes |
-| `site-product-specification.md` | Specification version 1.0 | Controls approved product behavior, technical architecture, page schema, search, accessibility, and system boundaries | Yes |
+| `site-product-specification.md` | Specification version 1.1 | Controls approved product behavior, technical architecture, page schema, search, accessibility, and system boundaries | Yes |
 | `project-workflow.md` | Workflow version 1.0 | Controls ChatGPT–Claude ownership, content handoffs, repository interaction, approval, and publication workflow | Yes |
-| `guide-change-log.md` | Newest heading: `August 21, 2026 — Correct the governance manifest and restore the product approval record` | Records approved structural, editorial, terminology, product, and governance changes | Yes |
-| `before-you-launch.md` | Guide version 1.4; last updated August 18, 2026 | Approved Section 0 and tone benchmark | Yes |
-| `page-template.md` | Template version 1.3 | Provides the single canonical reusable page structure and approved machine-readable page schema | Yes |
+| `guide-change-log.md` | Newest heading: `August 21, 2026 — Reframe Section 0 for already-started readers and remove reader checklists` | Records approved structural, editorial, terminology, product, and governance changes | Yes |
+| `before-you-launch.md` | Guide version 1.5; last updated August 21, 2026 | Approved Section 0 and tone benchmark | Yes |
+| `page-template.md` | Template version 1.4 | Provides the single canonical reusable page structure and approved machine-readable page schema | Yes |
 | `glossary.md` | Glossary version 1.0 | Provides canonical beginner-readable terminology | Yes |
 
 ## Project Settings — Do Not Add as a Project Source
 
 | Filename | Expected version | Required action |
 |---|---|---|
-| `project-instructions.md` | Version 1.4; updated August 18, 2026; fewer than 8,000 characters | Paste its complete contents into the Project Instructions box, replacing prior instructions and addenda. Do not also attach it as a Project Source. |
+| `project-instructions.md` | Version 1.5; updated August 21, 2026; fewer than 8,000 characters | Paste its complete contents into the Project Instructions box, replacing prior instructions and addenda. Do not also attach it as a Project Source. |
 
 Keeping the Project Instructions only in the settings box avoids maintaining the same governing instructions in two active locations.
 

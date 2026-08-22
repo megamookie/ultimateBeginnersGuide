@@ -1,8 +1,8 @@
 # Ultimate Beginner's Guide to EVE Online — Project Instructions
 
-> **Version:** 1.4 | **Updated:** August 18, 2026
+> **Version:** 1.5 | **Updated:** August 21, 2026
 
-Build a corporation-neutral launch-to-veteran guide, reference, advisor, and content-first destination using accurate mental models, executable procedures, prevention, purposeful visuals, and maintainable sources. It is not a course, troubleshooting knowledge base, or account-based application.
+Build a corporation-neutral launch-to-veteran guide, reference, and advisor using accurate mental models, executable procedures, prevention, purposeful visuals, and maintainable sources. It is not a course, troubleshooting knowledge base, or account-based application.
 
 ## Governing Sources
 
@@ -23,7 +23,7 @@ Preserve approved content unless revision is requested or evidence proves it ina
 
 Preserve the universal foundation (Sections 0–8), career academies (9–13), and veteran path (14–17). Measure capability, judgment, resilience, social connection, sustainability, and independence—not ships, SP, wealth, or account age.
 
-Do not impose homework, tests, pass/fail criteria, required exercises, certification, or mastery gates. Optional guided activities and self-checks may be practical, non-graded, and skippable.
+No reader-facing checklists, self-checks, readiness confirmations, homework, tests, required exercises, certification, pass/fail framing, or mastery gates. This is an information source, not training. Use explanations, procedures, examples, comparisons, warnings, and navigation without requiring proof of completion.
 
 Follow `site-product-specification.md`: Astro/Starlight static content, isolated components, Pagefind, machine-readable metadata, WCAG 2.2 AA, global delivery, privacy, progressive enhancement, previews, and site QA. Do not add reader login, saved progress, EVE SSO/ESI, profile storage, a permanent backend, more guide-native tools, or another platform without approval.
 
@@ -58,7 +58,7 @@ Separate sourced fact, general advice, situational advice, preference, current m
 
 Write as a patient veteran. Lead with the answer or action, then the mental model. Use plain English, short paragraphs, descriptive headings, numbered procedures, inexpensive examples, and comparison tables. Define terms at first use and follow the glossary.
 
-Follow `page-template.md` without empty headings. Establish outcome, prerequisites, purpose, actions, consequential mistakes and prevention, success signs, and next step. Keep essentials self-contained; link specialist depth instead of duplicating it.
+Follow `page-template.md` without empty headings. Establish outcome, prerequisites, purpose, actions, consequential mistakes and prevention, and the next useful destination. Keep essentials self-contained; link specialist depth instead of duplicating it.
 
 Publish one page per major section. Homepage entry paths link into the same canonical content. Use grouped navigation, stable anchors, generated desktop **On This Page**, heading-level search, and glossary definitions by hover, focus, tap, or activation. Allow free navigation without tracking. Use desktop-first responsive design and one canonical source per explanation.
 
@@ -82,10 +82,8 @@ Every recommendation must identify the bottleneck, roles, account placement, sim
 
 ## Visuals
 
-Every blueprint must identify concepts needing visuals, the best format, source or creation method, accessibility, provenance, currency, and update trigger.
-
-Use current annotated screenshots for interfaces; diagrams for relationships and sequences; trees and tables for choices; maps for geography; dated charts for quantitative relationships; and cards for recurring references. Use visuals only when they improve understanding. Require readable labels, alt text, caption, ownership/source, relevant date or version, and update trigger. Do not rely on color alone or use generated imagery for exact interfaces, icons, maps, mechanics, or data. Treat outdated visuals as factual defects.
+Every blueprint identifies needed visuals, format, source or creation method, accessibility, provenance, currency, and update trigger. Use current annotated screenshots for interfaces; diagrams for relationships; trees and tables for choices; maps for geography; dated charts for quantities; and cards for recurring references. Require readable labels, alt text, caption, ownership/source, date or version, and update trigger. Do not rely on color alone or use generated imagery for exact interfaces, icons, maps, mechanics, or data. Treat outdated visuals as factual defects.
 
 ## Completion Standard
 
-A page is complete only when accurate, sourced, beginner-readable, actionable, consistent with prerequisites, explicit about Alpha/Omega and character/account assumptions, clear about risks and prevention, connected to the wider path, appropriately illustrated, schema-valid, searchable, accessible, versioned, dated, audited, and approved. The published implementation must also satisfy applicable site product requirements. Testing and outside review remain optional quality aids.
+A page is complete only when accurate, sourced, beginner-readable, actionable, consistent with prerequisites, explicit about access and account assumptions, clear about risks, connected to the wider path, appropriately illustrated, schema-valid, searchable, accessible, versioned, dated, audited, and approved. The implementation must satisfy applicable site requirements. Testing and outside review remain optional aids.

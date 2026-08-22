@@ -1,6 +1,6 @@
 # Ultimate Beginner's Guide to EVE Online — Canonical Page Template
 
-> **Template version:** 1.3  
+> **Template version:** 1.4  
 > **Created:** August 18, 2026  
 > **Status:** Governing project source  
 > **Purpose:** Provide one reusable structure for guide pages without forcing irrelevant or empty sections.
@@ -12,7 +12,7 @@
 - Preserve the normal teaching sequence: orientation → prerequisites → terminology → mental model → procedure or application → preventive warnings and advisory context → recap → navigation.
 - Required elements may be combined under clearer headings, but they may not be silently omitted.
 - Optional elements should appear only when they materially help the reader.
-- Guided activities and self-checks are optional, non-graded, and skippable. They are not homework, tests, certification, or mastery gates.
+- Do not include reader-facing checklists, self-checks, readiness confirmations, homework, tests, required exercises, certification, or mastery gates. Use worked examples, comparison tables, procedures, warnings, and navigation to inform readers without testing them.
 - A substantial structural departure must be justified in the approved section blueprint.
 - Do not create another governing page template. Propose changes to this file instead.
 - This is the standard instructional template. Fit references, skill plans, and approved decision advisors use their purpose-designed structures from the production handbook while preserving compatible metadata, sourcing, accessibility, and navigation rules.
@@ -95,10 +95,6 @@ translation_of: null
 **Why it matters:** [Consequence.]  
 **How to prevent it:** [Prevention.]  
 **If it happens:** [Optional concise gameplay recovery only when materially useful; omit technical troubleshooting.]
-
-## Optional Guided Activity or Self-Check
-
-[Optional and non-graded. Give the reader a safe way to apply the material and recognize whether the result is correct. Never make completion a gate to further reading.]
 
 ## Visual Aid
 

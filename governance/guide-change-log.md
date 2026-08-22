@@ -7,6 +7,40 @@ This file records approved material changes to the guide's structure, editorial 
 
 ---
 
+## August 21, 2026 — Reframe Section 0 for already-started readers and remove reader checklists
+
+**Decision:** Revise `before-you-launch.md` so it functions as a concise orientation and catch-up reference for readers who may discover the site after creating an account or character. Remove reader-facing checklists, self-checks, readiness confirmations, and completion or mastery gates throughout the governing reader-experience rules. Preserve author-side editorial, accuracy, accessibility, build, and release audits as production controls.
+
+**Section 0 changes:**
+
+- Rewrote the opening around both pre-launch and already-started reader states.
+- Added prominent guidance that most early decisions do not require restarting a character.
+- Elevated the existing-account Recruit a Friend option and clarified that inefficient early Skill Point spending does not ruin a character.
+- Reduced duplication and condensed Alpha/Omega, empire, hardware, PLEX, and multiboxing material to the depth appropriate for Section 0.
+- Reframed the risk section around EVE's different rules, pairing each material risk with preventive guidance and balancing conflict with cooperation.
+- Removed the manual table of contents and added approved machine-readable page metadata for generated orientation and **On This Page** behavior.
+- Removed the pre-launch checklist and all gate-like language.
+- Added direct next destinations for first-session, Exordium, and reference-oriented readers.
+- Added the current official Exordium support page and refreshed the official-source set.
+
+**Governing clarification:**
+
+- The published guide is an information source, reference, and advisor—not a training document.
+- Reader-facing checklists, self-checks, readiness confirmations, required exercises, tests, certification, pass/fail framing, completion controls, and mastery gates are prohibited.
+- Worked examples, executable procedures, comparison tables, warnings, recaps, and navigation remain appropriate because they inform readers without testing or gating them.
+- Internal author and implementation audits remain required production controls and are not reader-facing training devices.
+
+**Affected files:**
+
+- `before-you-launch.md` — guide version 1.5; last updated August 21, 2026
+- `project-instructions.md` — version 1.5
+- `ultimate-beginners-guide-master-roadmap.md` — version 1.8
+- `guide-production-handbook.md` — version 1.8
+- `site-product-specification.md` — version 1.1
+- `page-template.md` — version 1.4
+- `project-source-manifest.md` — version 1.6
+- `guide-change-log.md` — this entry
+
 ## August 21, 2026 — Correct the governance manifest and restore the product approval record
 
 **Decision:** Correct a governance regression introduced when the ChatGPT–Claude workflow was adopted. Restore the approved August 18 product-approval record, restore `site-product-specification.md` to the required Project Source set, add `project-workflow.md` to that set, and align the manifest with the current approved versions of every affected governing file.

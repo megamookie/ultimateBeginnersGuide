@@ -1,6 +1,6 @@
 # Ultimate Beginner's Guide to EVE Online — Site Product Specification
 
-> **Specification version:** 1.0  
+> **Specification version:** 1.1  
 > **Created:** August 18, 2026  
 > **Approved:** August 18, 2026  
 > **Status:** Governing project source  
@@ -89,6 +89,7 @@ Preserve the approved reader experience:
 - Offer Alpha, returning-player, career-selection, and alt or multiboxing entry points into the same canonical content.
 - Publish one page per major section.
 - Allow free navigation without gates, shaming, or progress tracking.
+- Do not present reader-facing checklists, self-checks, readiness confirmations, completion controls, or mastery states. The site is an information source, not a training product.
 - Group global navigation as **Foundation**, **Career Academies**, and **Veteran Path**.
 - Expand only the current navigation group.
 - Provide a sticky desktop **On This Page** list generated from major headings.

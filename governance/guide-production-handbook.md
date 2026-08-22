@@ -1,6 +1,6 @@
 # Ultimate Beginner's Guide to EVE Online — Production Handbook
 
-> **Handbook version:** 1.7  
+> **Handbook version:** 1.8  
 > **Created:** August 18, 2026  
 > **Status:** Governing project source  
 > **Applies to:** Every section, reference page, fit, skill plan, example, visual asset, and revision
@@ -13,7 +13,7 @@ This handbook defines how the *Ultimate Beginner's Guide to EVE Online* is resea
 
 The guide's mission is to turn an overwhelmed new capsuleer into an **independent, socially connected, economically sustainable, and strategically aware player**. It must work as a progressive beginner-to-veteran guide, reference wiki, and decision guide without pretending that every EVE career shares one endgame.
 
-The guide is not a course, certification program, consumer training curriculum, troubleshooting knowledge base, or substitute for specialist EVE tools. Do not assign tests, required exercises, mastery gates, homework, or pass/fail criteria. Teach through clear explanations, step-by-step procedures, practical examples, preventive warnings, advisory context, concise recaps, purposeful visuals, and links to related topics. Readers may follow the complete sequence or consult individual pages as needed.
+The guide is not a course, certification program, consumer training curriculum, troubleshooting knowledge base, or substitute for specialist EVE tools. Do not include reader-facing checklists, self-checks, readiness confirmations, tests, required exercises, mastery gates, homework, or pass/fail criteria. Teach through clear explanations, step-by-step procedures, practical examples, preventive warnings, advisory context, concise recaps, purposeful visuals, and links to related topics. Readers may follow the complete sequence or consult individual pages as needed.
 
 Author-side walkthroughs and outside review are encouraged when practical because they can reveal unclear labels, hidden prerequisites, confusing transitions, and preventable mistakes. They are quality-improvement methods, not publication gates, and no page or fit requires formal validation status.
 
@@ -318,7 +318,7 @@ The template distinguishes required elements from optional elements. Use the nor
 
 Each substantial guide page begins with a compact orientation block showing the intended outcome, prerequisites, Alpha/Omega applicability, estimated reading time, estimated in-game time when relevant, approximate cost when relevant, and risk level. Specialized fit, skill-plan, and advisor references use purpose-designed layouts governed below rather than forcing irrelevant instructional headings.
 
-Guided activities and self-checks may be offered when they help a reader apply the material. They must be optional, practical, and non-graded. Do not describe them as homework, tests, certification, pass/fail gates, or mandatory mastery requirements.
+Reader-facing checklists, self-checks, readiness confirmations, and completion gates are prohibited. When application would improve understanding, use a worked example or clearly optional procedure without asking the reader to prove, score, certify, or confirm completion.
 
 The required page questions, approved callout vocabulary, metadata block, optional elements, and completion check are maintained only in `page-template.md`.
 
@@ -481,7 +481,7 @@ Build only two guide-native decision tools unless the user later approves anothe
 
 The Character and Account Value Advisor returns one primary recommendation and one alternative. Explain why the recommendation fits, what it **unlocks**, **improves**, or merely **adds convenience**, its costs and commitments, attention and enjoyment impact, main drawback, qualitative **Fun Value**, what could change the recommendation, and the next guide step. Present economic, operational, and personal value separately; never collapse them into a fabricated score. Use descriptive input help, no login or ESI, and no claim to know the reader's actual skills.
 
-Do not create a generic calculator section or compete with Pyfa, Fuzzwork, Janice, EVE Tycoon, or other specialist tools. Use checklists, worksheets, worked examples, decision trees, or direct specialist links for deeper calculations.
+Do not create a generic calculator section or compete with Pyfa, Fuzzwork, Janice, EVE Tycoon, or other specialist tools. Use worked examples, comparison tables, decision trees, or direct specialist links for deeper calculations.
 
 Before implementing either guide-native advisor, create and approve `interactive-tools-specification.md` as required by `site-product-specification.md`. It must define exact inputs, help text, validation, rules, calculations, result precedence, edge cases, disclosures, accessibility behavior, privacy behavior, and expected test scenarios without expanding the approved tool count.
 
