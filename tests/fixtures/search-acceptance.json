@@ -1,5 +1,5 @@
 {
-  "$comment": "Representative search queries with an expected first result, required by site-product-specification.md v1.1 section 6. Categories mirror the spec's list: beginner questions, exact EVE terminology, abbreviations, alternate names, misspellings, and headings deep inside long section pages. Ship, fit, and skill-plan queries are absent because no such content is approved yet; add them with those sections. Run by tests/search/vocabulary.test.ts and again against the real Pagefind index by scripts/check-search-index.mjs. Updated for Section 0 guide version 1.5, which changed the route and every heading anchor.",
+  "$comment": "Representative search queries with an expected first result, required by site-product-specification.md v1.1 section 6. Categories mirror the spec's list: beginner questions, exact EVE terminology, abbreviations, alternate names, misspellings, and headings deep inside long section pages. Ship, fit, and skill-plan queries are absent because no such content is approved yet; add them with those sections. Run by tests/search/vocabulary.test.ts and again against the real Pagefind index by scripts/check-search-index.mjs. Updated for Section 0 guide version 1.6, which renamed the skill-point and multiboxing headings and removed the client-preparation section.",
   "queries": [
     {
       "kind": "beginner question",
@@ -20,11 +20,6 @@
       "kind": "beginner question",
       "query": "where do i start",
       "expectedUrl": "/before-you-launch/#where-new-characters-begin-exordium"
-    },
-    {
-      "kind": "beginner question",
-      "query": "will my pc run eve",
-      "expectedUrl": "/before-you-launch/#preparing-the-client"
     },
     {
       "kind": "beginner question (already started)",
@@ -59,17 +54,17 @@
     {
       "kind": "abbreviation",
       "query": "raf",
-      "expectedUrl": "/before-you-launch/#the-free-1000000-skill-points"
+      "expectedUrl": "/before-you-launch/#claim-the-free-1000000-skill-points"
     },
     {
       "kind": "abbreviation",
       "query": "mct",
-      "expectedUrl": "/before-you-launch/#looking-ahead-alts-and-multiboxing"
+      "expectedUrl": "/before-you-launch/#why-alts-and-multiboxing-change-the-game"
     },
     {
       "kind": "alternate name",
       "query": "recruit a friend",
-      "expectedUrl": "/before-you-launch/#the-free-1000000-skill-points"
+      "expectedUrl": "/before-you-launch/#claim-the-free-1000000-skill-points"
     },
     {
       "kind": "alternate name",
@@ -94,7 +89,7 @@
     {
       "kind": "misspelling",
       "query": "multiboxxing",
-      "expectedUrl": "/before-you-launch/#looking-ahead-alts-and-multiboxing"
+      "expectedUrl": "/before-you-launch/#why-alts-and-multiboxing-change-the-game"
     },
     {
       "kind": "misspelling",
@@ -104,7 +99,7 @@
     {
       "kind": "account and multiboxing terminology",
       "query": "multiple character training",
-      "expectedUrl": "/before-you-launch/#looking-ahead-alts-and-multiboxing"
+      "expectedUrl": "/before-you-launch/#why-alts-and-multiboxing-change-the-game"
     },
     {
       "kind": "deep heading in a long page",

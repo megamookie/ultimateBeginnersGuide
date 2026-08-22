@@ -1,25 +1,26 @@
-import { createHash } from 'node:crypto';
-
 /**
  * Transport-integrity validation for approved content release files.
  *
- * Required by `project-workflow.md` v1.1, "Byte-preserving content transport". Three
- * distinct classes of corruption reached this repository inside a single release — double
- * encoded UTF-8, a blank line inserted after every source line, and emphasis markers
+ * Three distinct classes of corruption reached this repository inside a single release —
+ * double encoded UTF-8, a blank line inserted after every source line, and emphasis markers
  * displaced into a link destination — and the third would have shipped three unreadable
- * tables had the import not noticed.
+ * tables had the import not noticed. Every one of them was found by inspecting the received
+ * bytes, which is what this module does.
  *
- * v1.1 changes what happens next. Corruption is now a stop condition: the release is
- * rejected and returned to ChatGPT for a corrected artifact. Claude must not repair an
- * approved source. Everything here therefore *detects and reports*; nothing rewrites.
+ * Corruption is a stop condition: the release is rejected and returned to ChatGPT for a
+ * corrected artifact. Claude must not repair an approved source. Everything here therefore
+ * *detects and reports*; nothing rewrites.
+ *
+ * Release-record checksums were removed on August 22, 2026 by user decision. They verified
+ * only when ChatGPT happened to supply one, and a missing checksum then halted files that
+ * were provably clean. The detectors below need no cooperation from the sender and caught
+ * every defect the checksum would have.
  *
  * Every function is pure over a Buffer or string so the whole rule set is unit-testable
  * without a build, a network, or a filesystem.
  */
 
 export type IntegrityCode =
-  | 'checksum-missing'
-  | 'checksum-mismatch'
   | 'encoding-not-utf8'
   | 'encoding-bom'
   | 'encoding-crlf'
@@ -41,13 +42,7 @@ export interface IntegrityFailure {
 
 export interface IntegrityResult {
   ok: boolean;
-  sha256: string;
   failures: IntegrityFailure[];
-}
-
-/** SHA-256 of the exact bytes received, as required by the release record. */
-export function sha256(bytes: Buffer | Uint8Array): string {
-  return createHash('sha256').update(bytes).digest('hex');
 }
 
 const UTF8_BOM = [0xef, 0xbb, 0xbf];
@@ -303,39 +298,14 @@ export function checkSystematicBlankLines(text: string): IntegrityFailure[] {
   return [];
 }
 
-export interface ValidateOptions {
-  /** SHA-256 from the approved content release record. Required by workflow v1.1. */
-  expectedSha256?: string | null;
-}
-
 /**
  * Full transport-integrity gate for one release file.
  *
  * Runs before any normalisation, transformation, or import. Returns every defect found
  * rather than stopping at the first, so one round-trip to ChatGPT can fix all of them.
  */
-export function validateReleaseFile(
-  bytes: Buffer | Uint8Array,
-  { expectedSha256 }: ValidateOptions = {}
-): IntegrityResult {
-  const digest = sha256(bytes);
+export function validateReleaseFile(bytes: Buffer | Uint8Array): IntegrityResult {
   const failures: IntegrityFailure[] = [];
-
-  if (!expectedSha256) {
-    failures.push({
-      code: 'checksum-missing',
-      message:
-        'The content release record has no SHA-256 value. Workflow v1.1 requires one in ' +
-        'every approved release before import.',
-    });
-  } else if (expectedSha256.toLowerCase() !== digest) {
-    failures.push({
-      code: 'checksum-mismatch',
-      message:
-        `Checksum mismatch. Expected ${expectedSha256.toLowerCase()}, received ${digest}. ` +
-        `The file on disk is not the artifact that was approved.`,
-    });
-  }
 
   const encodingFailures = checkEncoding(bytes);
   failures.push(...encodingFailures);
@@ -350,7 +320,7 @@ export function validateReleaseFile(
     failures.push(...checkSystematicBlankLines(text));
   }
 
-  return { ok: failures.length === 0, sha256: digest, failures };
+  return { ok: failures.length === 0, failures };
 }
 
 /** Human-readable report for the CLI and for stop-condition messages. */

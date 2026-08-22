@@ -39,7 +39,7 @@ Individual checks:
 
 | Command | Checks |
 | --- | --- |
-| `npm run validate:source` | Release-file checksums, encoding, and Markdown integrity |
+| `npm run validate:source` | Release-file encoding and Markdown integrity |
 | `npm run check:generated` | Generated data and publication copies still match their approved sources |
 | `npm run typecheck` | `astro check` |
 | `npm test` | Wording preservation, metadata, anchors, navigation, glossary, search vocabulary |
@@ -71,9 +71,8 @@ source, or return an editorial finding.
 
 ### Transport integrity
 
-`project-workflow.md` v1.1 requires every release file to be a byte-preserving artifact,
-never text copied out of a rendered chat response. Before any transformation runs, the
-import verifies the file's SHA-256 against the approved release record and checks the bytes
+Approved content must arrive as a byte-preserving artifact, never text copied out of a
+rendered chat response. Before any transformation runs, the import checks the received bytes
 for corruption:
 
 | Check | Rejects |
@@ -85,20 +84,26 @@ for corruption:
 | Markdown links | Empty, unclosed, or emphasis-corrupted destinations |
 | Blank-line insertion | A blank line after every source line |
 
-**A missing checksum, a mismatch, or any integrity failure is a stop condition.** The import
-aborts and reports the defect. It does not repair approved content — the corrected artifact
-comes from ChatGPT. Rules live in `src/lib/content/integrity.ts` and are covered by
-`tests/content/integrity.test.ts` and `tests/content/import-gate.test.ts`.
+**Any integrity failure is a stop condition.** The import aborts and reports the defect. It
+does not repair approved content — the corrected artifact comes from ChatGPT. Rules live in
+`src/lib/content/integrity.ts` and are covered by `tests/content/integrity.test.ts` and
+`tests/content/import-gate.test.ts`.
+
+Release-record SHA-256 checksums were removed on August 22, 2026 by user decision. They
+verified only when a release record happened to carry one, and a missing checksum then
+halted files that were provably clean. Every defect that has actually reached this
+repository was caught by the byte checks above, which need no cooperation from the sender.
 
 An entry may carry `awaitingCorrectedRelease` to hold a release whose artifact failed
 validation. Its publication copy is frozen, pinned by `publicationSha256`, and not
-re-imported until a corrected release arrives.
+re-imported until a corrected release arrives. That digest is internal drift detection over
+a file this repository already owns, not a release-record checksum.
 
 ## Adding an approved section
 
 1. Place the approved file in `content-source/` by direct file transfer, not copy-paste.
-2. Add an entry to `content-import.json` including the **`sha256` from the release record**
-   and any link rewrites.
+2. Add an entry to `content-import.json` including its version marker and any link
+   rewrites.
 3. Run `npm run validate:source` and resolve any defect with ChatGPT before going further.
 4. Flip `published` to `true` for that section in `src/data/section-registry.json`.
 5. Add vocabulary entries in `src/data/search-vocabulary.json` and acceptance queries in

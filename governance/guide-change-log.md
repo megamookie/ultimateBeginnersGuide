@@ -7,6 +7,27 @@ This file records approved material changes to the guide's structure, editorial 
 
 ---
 
+## August 22, 2026 — Expand Recruit a Friend procedures and establish the value of multiboxing in Section 0
+
+**Decision:** Revise Section 0 so readers can process a Recruit a Friend link correctly before or after account creation and understand why alts and legal multiboxing materially change what a player can accomplish. Remove client-preparation coverage from Section 0.
+
+**Section 0 changes:**
+
+- Advanced `before-you-launch.md` to guide version 1.6 with a last-updated date of August 22, 2026.
+- Replaced the brief Recruit a Friend explanation with separate step-by-step procedures for new and existing accounts.
+- Added official-domain checks, the existing-account option, relogging, Redeemable Items access, character selection for the reward, Steam limitations, one-time linking, and cross-recruiting prevention.
+- Removed the complete **Preparing the Client** section and its system-requirements source.
+- Replaced the brief multiboxing preview with a stronger explanation of complementary roles, bottleneck removal, economic value, operational independence, corporation value, attention limits, and diminishing returns.
+- Added concrete examples for mining, industry, Planetary Industry, dangerous travel, PvE, PvP, and corporation support.
+- Clarified the difference among same-account characters, MCT, and separate accounts required for simultaneous roles.
+- Added the official Redeeming Items and Multiple Character Training sources.
+
+**Affected files:**
+
+- `before-you-launch.md` — guide version 1.6
+- `project-source-manifest.md` — version 1.8
+- `guide-change-log.md` — this entry
+
 ## August 22, 2026 — Establish byte-preserving content transport and integrity validation
 
 **Decision:** Strengthen the ChatGPT-to-repository handoff so approved Markdown and MDX are transferred as validated file artifacts rather than copied from rendered chat text. Require byte-level identity and structural validation before Claude imports or transforms approved content.

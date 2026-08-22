@@ -1,7 +1,7 @@
 {
   "$comment": "GENERATED FILE — do not edit. Run `npm run generate`. Derived from the approved `search_terms` in each published page's frontmatter. Hand-maintained aliases belong in src/data/search-vocabulary.json and must not repeat anything listed here.",
   "pageCount": 1,
-  "termCount": 10,
+  "termCount": 13,
   "pages": [
     {
       "page": "Before You Launch",
@@ -17,7 +17,10 @@
         "character creation",
         "Exordium",
         "free 1 million skill points",
-        "Recruit a Friend"
+        "Recruit a Friend",
+        "alts",
+        "multiple accounts",
+        "multiboxing"
       ]
     }
   ]

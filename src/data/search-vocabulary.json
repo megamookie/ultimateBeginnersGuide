@@ -1,5 +1,5 @@
 {
-  "$comment": "The single maintained search vocabulary required by site-product-specification.md v1.1, section 6. Do not scatter synonym lists across components. Every `destination` must point at approved, published content: an entry may not be added for a page that has not been promoted to src/content/docs/. Glossary terms are folded in automatically from glossary.generated.json and are not repeated here. Field meanings follow the spec: canonical term, beginner-language equivalent, abbreviation, alternate or older name, common misspelling, preferred destination page and heading, and promotion guidance. Destinations were re-pointed for Section 0 guide version 1.5, which changed both the route and every heading anchor.",
+  "$comment": "The single maintained search vocabulary required by site-product-specification.md v1.1, section 6. Do not scatter synonym lists across components. Every `destination` must point at approved, published content: an entry may not be added for a page that has not been promoted to src/content/docs/. Glossary terms are folded in automatically from glossary.generated.json and are not repeated here. Field meanings follow the spec: canonical term, beginner-language equivalent, abbreviation, alternate or older name, common misspelling, preferred destination page and heading, and promotion guidance. Destinations were re-pointed for Section 0 guide version 1.6, which renamed the skill-point and multiboxing headings and removed the client-preparation section.",
   "version": 2,
   "entries": [
     {
@@ -113,9 +113,9 @@
       "alternates": ["recruit a friend", "buddy invite", "unallocated skill points"],
       "misspellings": ["recruit a freind", "skillpoints"],
       "destination": {
-        "url": "/before-you-launch/#the-free-1000000-skill-points",
+        "url": "/before-you-launch/#claim-the-free-1000000-skill-points",
         "page": "Before You Launch",
-        "heading": "The Free 1,000,000 Skill Points"
+        "heading": "Claim the Free 1,000,000 Skill Points"
       },
       "promote": true
     },
@@ -139,22 +139,9 @@
       "alternates": ["multiple character training", "alt account", "dual boxing", "input broadcasting", "account architecture"],
       "misspellings": ["multiboxxing", "muiltiboxing", "dualboxing"],
       "destination": {
-        "url": "/before-you-launch/#looking-ahead-alts-and-multiboxing",
+        "url": "/before-you-launch/#why-alts-and-multiboxing-change-the-game",
         "page": "Before You Launch",
-        "heading": "Looking Ahead: Alts and Multiboxing"
-      },
-      "promote": true
-    },
-    {
-      "canonical": "System requirements and client settings",
-      "beginner": ["will my pc run eve", "text too small", "make ui bigger", "bad performance", "low fps"],
-      "abbreviations": ["ui", "fps"],
-      "alternates": ["graphics settings", "hardware", "interface scaling", "overview", "client setup"],
-      "misspellings": ["requirments", "grapics", "scalling"],
-      "destination": {
-        "url": "/before-you-launch/#preparing-the-client",
-        "page": "Before You Launch",
-        "heading": "Preparing the Client"
+        "heading": "Why Alts and Multiboxing Change the Game"
       },
       "promote": true
     },

@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
-  sha256,
   checkEncoding,
   checkMojibake,
   checkReplacementCharacter,
@@ -46,14 +45,14 @@ A [valid link](/somewhere/) and a list:
 
 describe('valid UTF-8 Markdown', () => {
   it('accepts a clean release file', () => {
-    const result = validateReleaseFile(bytes(CLEAN), { expectedSha256: sha256(bytes(CLEAN)) });
+    const result = validateReleaseFile(bytes(CLEAN));
     expect(result.failures).toEqual([]);
     expect(result.ok).toBe(true);
   });
 
   it('accepts the real approved glossary source', () => {
     const file = readFileSync(join(root, 'content-source/glossary.md'));
-    const result = validateReleaseFile(file, { expectedSha256: sha256(file) });
+    const result = validateReleaseFile(file);
     expect(codes(result.failures)).toEqual([]);
   });
 
@@ -169,46 +168,12 @@ describe('systematic alternating blank-line insertion', () => {
   });
 });
 
-describe('checksum verification', () => {
-  it('fails when the release record has no checksum', () => {
-    const result = validateReleaseFile(bytes(CLEAN), { expectedSha256: null });
-    expect(codes(result.failures)).toContain('checksum-missing');
-    expect(result.ok).toBe(false);
-  });
-
-  it('fails when the checksum does not match the received bytes', () => {
-    const result = validateReleaseFile(bytes(CLEAN), { expectedSha256: 'a'.repeat(64) });
-    expect(codes(result.failures)).toContain('checksum-mismatch');
-    expect(result.failures[0].message).toContain(sha256(bytes(CLEAN)));
-  });
-
-  it('passes when the checksum matches', () => {
-    const digest = sha256(bytes(CLEAN));
-    const result = validateReleaseFile(bytes(CLEAN), { expectedSha256: digest });
-    expect(result.ok).toBe(true);
-    expect(result.sha256).toBe(digest);
-  });
-
-  it('compares case-insensitively', () => {
-    const digest = sha256(bytes(CLEAN)).toUpperCase();
-    expect(validateReleaseFile(bytes(CLEAN), { expectedSha256: digest }).ok).toBe(true);
-  });
-
-  it('produces a stable, correct SHA-256', () => {
-    // Known-answer test so a change of hash algorithm cannot pass silently.
-    expect(sha256(Buffer.from('abc', 'utf8'))).toBe(
-      'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad'
-    );
-  });
-});
-
 describe('reporting every defect at once', () => {
   it('collects all failures so one round-trip can fix them', () => {
     const nasty = `---\r\ntitle: "x"\r\n---\r\n\r\nAn em dash â€” here.\r\n\r\n| A | B |\r\n\r\n|---|---|\r\n\r\nA [link](*bad*).\r\n`;
-    const result = validateReleaseFile(bytes(nasty), { expectedSha256: null });
+    const result = validateReleaseFile(bytes(nasty));
     const found = new Set(codes(result.failures));
 
-    expect(found.has('checksum-missing')).toBe(true);
     expect(found.has('encoding-crlf')).toBe(true);
     expect(found.has('mojibake')).toBe(true);
     expect(found.has('markdown-table-interrupted')).toBe(true);

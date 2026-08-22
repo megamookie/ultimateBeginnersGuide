@@ -7,12 +7,12 @@ section: "0"
 navigation_group: "Foundation"
 order: 0
 slug: "/before-you-launch/"
-guide_version: "1.5"
-last_updated: "2026-08-21"
+guide_version: "1.6"
+last_updated: "2026-08-22"
 applies_to: "Both"
-patch_sensitivity: "Recheck after changes to the new-player journey, Exordium, clone states, account services, recruitment, security, or character creation"
-review_trigger: "Every expansion affecting onboarding or any relevant CCP policy or account-service change"
-estimated_reading_time: "10–12 minutes"
+patch_sensitivity: "Recheck after changes to the new-player journey, Exordium, clone states, account services, recruitment, security, character creation, MCT, concurrent clients, or multiboxing policy"
+review_trigger: "Every expansion affecting onboarding or any relevant CCP policy, recruitment, account-service, clone-state, MCT, concurrent-client, or multiboxing change"
+estimated_reading_time: "12–14 minutes"
 estimated_in_game_time: "Not applicable"
 approximate_cost: "None"
 risk: "Low — some identity choices are permanent and account-security decisions have lasting consequences"
@@ -27,6 +27,9 @@ search_terms:
   - "Exordium"
   - "free 1 million skill points"
   - "Recruit a Friend"
+  - "alts"
+  - "multiple accounts"
+  - "multiboxing"
 tags:
   - "new-player"
   - "account"
@@ -34,6 +37,8 @@ tags:
   - "alpha"
   - "omega"
   - "exordium"
+  - "alts"
+  - "multiboxing"
 language: "en"
 translation_of: null
 ---
@@ -49,7 +54,7 @@ You probably do not need to start over.
 - Your empire and bloodline do not lock your career or prevent you from training another empire's ships.
 - Your portrait, clothing, hair, and many cosmetic details can be changed later.
 - Your character name, empire, and bloodline cannot normally be changed after creation.
-- An existing account can still receive the Recruit a Friend skill-point reward if it has never been linked to a recruiter.
+- An existing account can still receive the Recruit a Friend skill-point reward if it has never been linked to a recruiter. The exact process appears under [Claim the Free 1,000,000 Skill Points](#claim-the-free-1000000-skill-points).
 - Spending early Skill Points inefficiently does not ruin a character. Future training can correct the detour.
 
 Secure the account, review the Alpha and Omega distinction, and continue from your current position:
@@ -207,39 +212,70 @@ Use trusted bookmarks or official EVE domains when signing in. Before authorizin
 
 Steam-created accounts use Steam authentication and Steam Guard unless separate EVE credentials are later configured. Players intending to manage several accounts should be aware that each Steam account can be linked to only one EVE account; additional EVE accounts normally use direct credentials in the EVE Launcher.
 
-## The Free 1,000,000 Skill Points
+## Claim the Free 1,000,000 Skill Points
 
-EVE's **Recruit a Friend** program grants 1,000,000 unallocated Skill Points to an eligible recruited account. That reward can substantially shorten early training.
+EVE's **Recruit a Friend** program sends 1,000,000 unallocated Skill Points to the redeeming queue of an eligible recruited account. The account qualifies when it is created or authenticated through a custom recruitment link. The person or account that supplied the link becomes the recruiter and may receive separate rewards if the recruited account later reaches qualifying purchase milestones.
 
-### If you have not created the account
+Choose the recruitment relationship deliberately. A link may come from a friend, corporation, trusted community, creator, or one of your own existing EVE accounts when you are opening an additional account. Do not pay for a supposed recruitment service, share credentials with the recruiter, or sign in anywhere except an official EVE domain.
 
-Use a recruitment link from a friend, trusted community, corporation, or creator, then create the intended account through the official recruitment page. The recruiter may receive rewards if the recruited account later completes qualifying purchases.
+### Before creating the account
 
-### If the account already exists
+1. Obtain the full custom recruitment link from the recruiter you chose.
+2. Open that link in a browser and confirm that the invitation page is on the official `eveonline.com` domain.
+3. Create the new EVE account from that invitation page. Complete the registration there so the new account is linked during creation; do not leave the page and use the ordinary account-registration route instead.
+4. Complete any required email verification, then add the account to the EVE Launcher and sign in.
+5. At the character-selection screen, open **Redeemable Items** at the bottom of the screen. Choose the character that should receive the reward and redeem the skill-point token. The same screen can be opened in game from the Gift Box icon at the bottom of the Neocom or with **Alt-Y**.
 
-You may still link an existing account through a recruitment link if that account has never been connected to a recruiter. Each account can be linked as a recruit only once. After linking and logging in again, the skill-point token appears in the redeeming system.
+An account created through Steam cannot be created through a recruitment invitation. If receiving the recruitment reward matters, create the new account through the invitation page instead of beginning with Steam.
 
-Use a recruitment relationship you understand. Do not pay for a supposed recruitment service, share credentials with the recruiter, or follow a link that does not lead to an official EVE domain.
+### After the account already exists
+
+An existing account can still be recruited if it has never been linked to a recruiter. Each account can become a recruit only once.
+
+1. Obtain the full custom recruitment link from the recruiter you chose.
+2. Open the link and confirm that it leads to the official EVE recruitment page.
+3. Scroll near the bottom of the invitation page to the option for an existing account.
+4. Use that option to sign in with the exact existing account you want to link. Authenticating the account through the recruitment page links it to the owner of that recruitment link.
+5. Log into the game again with the recruited account.
+6. Open **Redeemable Items** from the character-selection screen, the in-game Gift Box icon, or **Alt-Y**. Choose the intended character and redeem the skill-point token.
+
+If the existing-account option is unavailable or the account is already linked to a recruiter, do not create a second account merely to work around it. Use the account normally or contact EVE Customer Support if the recorded recruitment status appears wrong. Recruit accounts also cannot be cross-linked back to recruit their own recruiter.
 
 Once the points are available to the character, leaving them unallocated preserves flexibility until you have a purposeful skill plan. If you already spent some or all of them, continue playing; inefficient early spending is a detour, not a ruined character.
 
-## Preparing the Client
-
-Compare the computer with the current [EVE Online system requirements](https://support.eveonline.com/hc/en-us/articles/5885219196828-System-Requirements). Requirements and supported operating systems change, so the official page is more reliable than fixed specifications repeated here.
-
-EVE displays a large amount of information through text, icons, windows, and alerts. After entering the client, increase UI scaling if labels or module states are difficult to read. If performance is poor, lower the overall graphics preset before adjusting individual options. Large fleet battles can require reduced settings even on powerful systems.
-
-Do not attempt to perfect the interface before learning what each window does. Begin with the default Overview and layout. Section 1 explains the essential interface and introduces adjustments in the context where they matter.
-
-## Looking Ahead: Alts and Multiboxing
+## Why Alts and Multiboxing Change the Game
 
 This guide begins with one character because every interface, ship, activity, and risk should make sense on its own before several clients are managed together.
 
-Later sections distinguish among additional characters on one account, Multiple Character Training, and additional Omega accounts. Section 3 introduces account architecture and first-alt timing; later career and veteran sections apply those decisions to mining, industry, Planetary Industry, hauling, scouting, logistics, combat support, and corporation roles.
+But one character can occupy only one ship and perform one active role at a time. Many EVE activities eventually stop being limited by the strength of that character and start being limited by a missing complementary role.
 
-MCT adds another training queue on the same account; it does not allow characters on that account to log in together. Simultaneous roles require separate eligible accounts. Current rules permit a player to operate multiple Omega clients manually and independently, but prohibit input broadcasting, duplicated inputs, gameplay automation, botting, and account sharing.
+> **The real value of multiboxing is not simply doing the same action twice. It is combining roles so that one character removes another character's bottleneck.**
 
-There is no useful target number of accounts for every player. Additional characters and accounts should solve a defined role or bottleneck without creating unreasonable cost, attention demands, risk, or burnout.
+| Operation | One-character limitation | What another role can change |
+|---|---|---|
+| Mining | The miner must stop to haul and cannot provide its own fleet boosts or compression | A booster, compressor, hauler, or scout can increase mining uptime, expand fleet capacity, and provide a valuable corporation service |
+| Industry and Planetary Industry | One character has limited colonies, job slots, market capacity, and travel time | Same-account specialists can expand the production chain, separate buying from selling, and add colonies or jobs without requiring every role to be online together |
+| Dangerous travel | The valuable ship often enters the next system without independent eyes | A scout can check the route, watch an entrance, maintain situational awareness, or help the main character avoid unnecessary exposure; it reduces uncertainty rather than guaranteeing safety |
+| PvE and PvP | One ship can provide only its own damage, tackle, logistics, electronic warfare, or command role | Complementary ships can create a more capable small fleet, but every added active role also increases attention demand and loss exposure |
+| Corporation support | A single character may depend on others for hauling, scouting, boosts, logistics, market access, or doctrine coverage | Specialized characters can turn the player into a provider of useful services and make the corporation more resilient |
+
+That creates three different kinds of value:
+
+- **Economic value:** More colonies, industry jobs, market capacity, harvesting output, or supported uptime can increase earning capacity—but only after account cost, capital, hauling, taxes, losses, sales limits, and attention are considered.
+- **Operational value:** A scout, hauler, booster, logistics pilot, or market character can reduce waiting and let one player organize an operation that a single active character cannot perform alone.
+- **Personal and corporation value:** Multiple roles can add variety, make a player more useful to a group, and open planning and fleet-management gameplay that does not exist when controlling only one ship.
+
+The first additional role often has the greatest impact because it removes an obvious bottleneck. Later additions can produce diminishing returns when attention, hauling, market demand, hardware, or risk becomes the new limit. More accounts are not automatically better.
+
+An **alt** is another character, but not every alt requires another account or simultaneous play:
+
+- A same-account character is useful for work performed at different times, such as market trading, research, manufacturing, or additional Planetary Industry colonies.
+- **Multiple Character Training (MCT)** adds another training queue to the same account. It does not allow two characters from that account to log in together.
+- Roles that must operate at the same time—such as miner and booster, main and scout, or combat ship and logistics support—require separate eligible accounts.
+
+Current rules allow a player to run multiple Omega accounts at the same time when no Alpha account is actively in use. Every active client must be controlled manually and independently. Input broadcasting, duplicated inputs, gameplay automation, botting, and account sharing are prohibited.
+
+Section 3 explains how to decide between a same-account character, temporary MCT, and another Omega account before spending money or training time. Later career sections turn that decision into practical mining fleets, industrial supply chains, PI networks, hauling and scouting support, combat combinations, and corporation roles.
 
 ## Where to Go Next
 
@@ -260,11 +296,12 @@ The next destination depends on what you have already done:
 - [Scams — CCP Support](https://support.eveonline.com/hc/en-us/articles/203218892-Scams) — Permitted in-game scams and important exceptions
 - [PLEX Vault — CCP Support](https://support.eveonline.com/hc/en-us/articles/115003168285-PLEX-Vault) — Account-wide PLEX storage and use
 - [Recruit a Friend — CCP Support](https://support.eveonline.com/hc/en-us/articles/360001291585-Recruit-a-Friend) — Existing-account linking, skill points, and reward rules
+- [Redeeming Items — CCP Support](https://support.eveonline.com/hc/en-us/articles/203383751-Redeeming-Items) — Redeemable Items access from character selection and in game
+- [Multiple Character Training — CCP Support](https://support.eveonline.com/hc/en-us/articles/203411052-Multiple-Character-Training) — Additional training queues on one account
 - [Character Resculpting and Clothing — CCP Support](https://support.eveonline.com/hc/en-us/articles/203267841-Character-Resculpting-and-Clothing) — Permanent and changeable character attributes
 - [Authenticator — CCP Support](https://support.eveonline.com/hc/en-us/articles/203465601-Authenticator) — Account two-factor authentication
 - [Account Sharing — CCP Support](https://support.eveonline.com/hc/en-us/articles/203269561-Account-Sharing) — Account-sharing prohibition
 - [Managing Multiple EVE Accounts with Steam — CCP Support](https://support.eveonline.com/hc/en-us/articles/22945960913692-Managing-Multiple-EVE-Accounts-with-Steam) — Steam-linked and additional account management
-- [System Requirements — CCP Support](https://support.eveonline.com/hc/en-us/articles/5885219196828-System-Requirements) — Current Windows and macOS requirements
 - [Community Beat: When Multiboxers Collide — EVE Online](https://www.eveonline.com/news/view/community-beat-for-21-july) — Manual multiboxing and prohibited input broadcasting
 
 ---

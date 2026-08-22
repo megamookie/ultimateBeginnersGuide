@@ -2,23 +2,25 @@
 /**
  * Transport-integrity gate for approved content release files.
  *
- * Enforces `project-workflow.md` v1.1: every release file is verified against the SHA-256 in
- * its release record and checked for encoding and Markdown corruption *before* any
+ * Every release file is checked for encoding and Markdown corruption *before* any
  * normalisation, transformation, or import runs.
  *
- * A missing checksum, a checksum mismatch, an encoding failure, or a Markdown-integrity
- * failure is a stop condition. This script never repairs anything — the defect goes back to
- * ChatGPT for a corrected release artifact.
+ * An encoding failure or a Markdown-integrity failure is a stop condition. This script never
+ * repairs anything — the defect goes back to ChatGPT for a corrected release artifact.
+ *
+ * Release-record checksums were removed on August 22, 2026 by user decision; validation now
+ * rests entirely on inspecting the received bytes, which is what caught every defect that
+ * has actually reached this repository.
  *
  * Usage:
  *   node scripts/validate-source.mjs            validate every entry in content-import.json
- *   node scripts/validate-source.mjs <file...>  validate specific files (checksum optional)
+ *   node scripts/validate-source.mjs <file...>  validate specific files
  */
 
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, relative } from 'node:path';
-import { validateReleaseFile, formatFailures, sha256 } from '../src/lib/content/integrity.ts';
+import { validateReleaseFile, formatFailures } from '../src/lib/content/integrity.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CONFIG = join(root, 'content-import.json');
@@ -31,7 +33,7 @@ let held = 0;
 function report(label, result, { quarantined = false, reason = '' } = {}) {
   if (result.ok) {
     verified++;
-    process.stdout.write(`OK   ${label}\n     sha256 ${result.sha256}\n`);
+    process.stdout.write(`OK   ${label}\n`);
     return;
   }
 
@@ -40,7 +42,6 @@ function report(label, result, { quarantined = false, reason = '' } = {}) {
     process.stdout.write(
       `HELD ${label} — awaiting a corrected release artifact\n` +
         `     ${reason}\n` +
-        `     sha256 ${result.sha256}\n` +
         formatFailures(label, result.failures) +
         '\n'
     );
@@ -49,7 +50,7 @@ function report(label, result, { quarantined = false, reason = '' } = {}) {
 
   failed = true;
   process.stderr.write(
-    `FAIL ${label}\n     sha256 ${result.sha256}\n` + formatFailures(label, result.failures) + '\n'
+    `FAIL ${label}\n` + formatFailures(label, result.failures) + '\n'
   );
 }
 
@@ -63,8 +64,7 @@ if (args.length > 0) {
       process.stderr.write(`FAIL ${arg} does not exist\n`);
       continue;
     }
-    const bytes = readFileSync(path);
-    const result = validateReleaseFile(bytes, { expectedSha256: sha256(bytes) });
+    const result = validateReleaseFile(readFileSync(path));
     report(arg, result);
   }
 } else {
@@ -78,8 +78,7 @@ if (args.length > 0) {
       continue;
     }
 
-    const bytes = readFileSync(path);
-    const result = validateReleaseFile(bytes, { expectedSha256: entry.sha256 ?? null });
+    const result = validateReleaseFile(readFileSync(path));
 
     report(relative(root, path), result, {
       quarantined: Boolean(entry.awaitingCorrectedRelease),

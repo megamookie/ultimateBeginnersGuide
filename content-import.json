@@ -1,18 +1,17 @@
 {
-  "$comment": "Declarative record of every approved content release promoted into the publication directory, per project-workflow.md v1.1 steps 3 and 4. Every entry MUST carry `sha256` — the checksum from the approved content release record. scripts/import-content.mjs verifies it, and runs the encoding and Markdown integrity checks in src/lib/content/integrity.ts, BEFORE any transformation. A missing checksum, a mismatch, or any integrity failure aborts the import; the defect returns to ChatGPT for a corrected release artifact and is never repaired here. Only after integrity passes does the script apply the transformations permitted by workflow section 8.",
+  "$comment": "Declarative record of every approved content release promoted into the publication directory, per project-workflow.md v1.1 steps 3 and 4. scripts/import-content.mjs runs the encoding and Markdown integrity checks in src/lib/content/integrity.ts BEFORE any transformation. Any integrity failure aborts the import; the defect returns to ChatGPT for a corrected release artifact and is never repaired here. Only after integrity passes does the script apply the transformations permitted by workflow section 8. Release-record checksums were removed on August 22, 2026 by user decision — validation rests on inspecting the received bytes, which caught every defect that has actually arrived.",
   "imports": [
     {
       "source": "content-source/before-you-launch.md",
       "target": "src/content/docs/before-you-launch.mdx",
-      "sourceVersion": "Guide version 1.5; last updated August 21, 2026",
+      "sourceVersion": "Guide version 1.6; last updated August 22, 2026",
       "state": "Approved",
-      "sha256": "7c8677d45c5a13ae0f3901e3b7380c1ad4bdbe26d6c17bbe03732f12422d05ad",
       "expect": {
         "page_id": "section-00-before-you-launch",
         "title": "Before You Launch",
         "status": "Approved",
-        "guide_version": "1.5",
-        "last_updated": "2026-08-21",
+        "guide_version": "1.6",
+        "last_updated": "2026-08-22",
         "slug": "/before-you-launch/",
         "navigation_group": "Foundation"
       },
@@ -25,7 +24,7 @@
         "route": "The approved slug moves this page from /foundation/before-you-launch/ to /before-you-launch/. navigation_group stays Foundation, so it still appears as Section 0 in the Foundation group; only the URL is top-level.",
         "deferredLinks": "Sections 1 and 2 are not approved for publication. Their canonical routes are preserved here and registered as unpublished in src/data/section-registry.json, so scripts/check-links.mjs reports them as deferred rather than broken. No placeholder page is created.",
         "frontmatter": "Carried over from the approved source. The only field change is `slug` to `permanent_slug`, forced by Astro reserving `slug` for routing; the value is unchanged.",
-        "transportRepair": "Guide version 1.5 was re-delivered on August 22, 2026 as an approved transport-only repair: transport-inserted blank lines removed, Markdown table structure restored, and the malformed final internal link corrected. No approved wording, factual claim, recommendation, heading, metadata value, guide version, or last-updated date changed. The earlier artifact was quarantined; that hold is removed now the gate passes."
+        "v16": "Guide version 1.6 adds exact Recruit a Friend procedures for new and existing accounts, removes the Preparing the Client section, and expands the alts and multiboxing teaser with a role-bottleneck table and economic, operational, and corporation value. Renamed headings changed three anchors, and the removed section retired the client-settings entry from the search vocabulary."
       }
     }
   ]

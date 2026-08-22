@@ -3,7 +3,6 @@ import { mkdtempSync, writeFileSync, mkdirSync, readFileSync, existsSync } from 
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { importOne, TransportIntegrityError } from '../../scripts/import-content.mjs';
-import { sha256 } from '@/lib/content/integrity';
 
 /**
  * The behavioural change required by `project-workflow.md` v1.1 section 10.
@@ -20,7 +19,7 @@ function workspace(sourceText: string) {
   mkdirSync(join(dir, 'src/content/docs'), { recursive: true });
   const sourcePath = join(dir, 'content-source/example.md');
   writeFileSync(sourcePath, sourceText);
-  return { dir, sourcePath, digest: sha256(readFileSync(sourcePath)) };
+  return { dir, sourcePath };
 }
 
 const FRONTMATTER = `---
@@ -42,23 +41,21 @@ A [valid link](/somewhere/).
 `;
 
 function entryFor(sourceText: string, overrides: Record<string, unknown> = {}) {
-  const { dir, digest } = workspace(sourceText);
+  const { dir } = workspace(sourceText);
   return {
     dir,
-    digest,
     entry: {
       source: 'content-source/example.md',
       target: 'src/content/docs/example.mdx',
       sourceVersion: 'test',
       state: 'Approved',
-      sha256: digest,
       ...overrides,
     },
   };
 }
 
 describe('import transport gate', () => {
-  it('imports a clean, correctly checksummed release', () => {
+  it('imports a clean release', () => {
     const { dir, entry } = entryFor(FRONTMATTER + CLEAN_BODY);
     const result = importOne(entry, { root: dir });
 
@@ -66,15 +63,9 @@ describe('import transport gate', () => {
     expect(result.findings.some((f) => f.startsWith('Transport integrity verified'))).toBe(true);
   });
 
-  it('refuses a release with no checksum in the record', () => {
-    const { dir, entry } = entryFor(FRONTMATTER + CLEAN_BODY, { sha256: null });
+  it('raises TransportIntegrityError, not a bare Error, on corrupt input', () => {
+    const { dir, entry } = entryFor(FRONTMATTER + `\nAn em dash â€” here.\n`);
     expect(() => importOne(entry, { root: dir })).toThrow(TransportIntegrityError);
-    expect(() => importOne(entry, { root: dir })).toThrow(/checksum-missing/);
-  });
-
-  it('refuses a release whose checksum does not match', () => {
-    const { dir, entry } = entryFor(FRONTMATTER + CLEAN_BODY, { sha256: 'b'.repeat(64) });
-    expect(() => importOne(entry, { root: dir })).toThrow(/checksum-mismatch/);
   });
 
   it('refuses an interrupted table instead of stitching it back together', () => {
@@ -111,7 +102,7 @@ describe('import transport gate', () => {
   });
 
   it('names the stop condition and points at the corrected-artifact route', () => {
-    const { dir, entry } = entryFor(FRONTMATTER + CLEAN_BODY, { sha256: null });
+    const { dir, entry } = entryFor(FRONTMATTER + `\nAn em dash â€” here.\n`);
     try {
       importOne(entry, { root: dir });
       throw new Error('expected the import to refuse this release');
@@ -133,9 +124,9 @@ describe('import transport gate', () => {
     expect(result.output).not.toMatch(/^slug:/m);
   });
 
-  it('records the verified source checksum in the publication copy', () => {
-    const { dir, entry, digest } = entryFor(FRONTMATTER + CLEAN_BODY);
-    expect(importOne(entry, { root: dir }).output).toContain(`Source SHA-256: ${digest}`);
+  it('traces the publication copy back to its approved source', () => {
+    const { dir, entry } = entryFor(FRONTMATTER + CLEAN_BODY);
+    expect(importOne(entry, { root: dir }).output).toContain('content-source/example.md');
   });
 });
 
