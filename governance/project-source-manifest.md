@@ -1,7 +1,7 @@
 # Ultimate Beginner's Guide to EVE Online — Project Source Manifest
 
-> **Manifest version:** 1.6  
-> **Updated:** August 21, 2026  
+> **Manifest version:** 1.7  
+> **Updated:** August 22, 2026  
 > **Status:** Governing project source  
 > **Purpose:** Identify the exact files and embedded document versions that should be attached to the ChatGPT project.
 
@@ -26,13 +26,13 @@ Do not add a duplicate Library file merely because its content changed. The exis
 
 | Filename | Expected version or marker | Purpose | Required now? |
 |---|---|---|---|
-| `project-source-manifest.md` | Manifest version 1.6 | Defines the approved Project Source set and provides the source-audit procedure | Yes |
+| `project-source-manifest.md` | Manifest version 1.7 | Defines the approved Project Source set and provides the source-audit procedure | Yes |
 | `ultimate-beginners-guide-master-roadmap.md` | Roadmap version 1.8 | Controls section sequence, scope, outcomes, prerequisites, publication milestones, and site-foundation work | Yes |
 | `guide-production-handbook.md` | Handbook version 1.8 | Controls research, writing, editorial style, sourcing, QA, maintenance, and implementation-facing content standards | Yes |
 | `multiboxing-content-framework.md` | Framework version 1.4 | Controls alt, MCT, multi-account, legal multiboxing, and advisor coverage | Yes |
 | `site-product-specification.md` | Specification version 1.1 | Controls approved product behavior, technical architecture, page schema, search, accessibility, and system boundaries | Yes |
-| `project-workflow.md` | Workflow version 1.0 | Controls ChatGPT–Claude ownership, content handoffs, repository interaction, approval, and publication workflow | Yes |
-| `guide-change-log.md` | Newest heading: `August 21, 2026 — Reframe Section 0 for already-started readers and remove reader checklists` | Records approved structural, editorial, terminology, product, and governance changes | Yes |
+| `project-workflow.md` | Workflow version 1.1 | Controls ChatGPT–Claude ownership, content handoffs, repository interaction, approval, and publication workflow | Yes |
+| `guide-change-log.md` | Newest heading: `August 22, 2026 — Establish byte-preserving content transport and integrity validation` | Records approved structural, editorial, terminology, product, and governance changes | Yes |
 | `before-you-launch.md` | Guide version 1.5; last updated August 21, 2026 | Approved Section 0 and tone benchmark | Yes |
 | `page-template.md` | Template version 1.4 | Provides the single canonical reusable page structure and approved machine-readable page schema | Yes |
 | `glossary.md` | Glossary version 1.0 | Provides canonical beginner-readable terminology | Yes |

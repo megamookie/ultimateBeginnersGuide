@@ -1,7 +1,8 @@
 # Ultimate Beginner's Guide to EVE Online — Project Workflow
 
-> **Workflow version:** 1.0  
+> **Workflow version:** 1.1  
 > **Created:** August 21, 2026  
+> **Updated:** August 22, 2026  
 > **Status:** Governing project source  
 > **Purpose:** Define how the user, ChatGPT, Claude, and the code repository exchange, approve, implement, and maintain project work without creating conflicting sources of truth.
 
@@ -226,10 +227,29 @@ ChatGPT prepares the exact approved Markdown or MDX file and a concise release r
 - Required links, visuals, data, components, or interactive elements.
 - Permitted mechanical transformations, if any.
 - Explicit statement of anything Claude must not infer or alter.
+- File encoding and line-ending standard.
+- SHA-256 checksum of the validated release file.
+- File-integrity and Markdown-validation results.
+- Approved transfer method.
+
+The release file must be an actual file artifact produced from the approved source. Rendered chat text, writing-block text, rich-text copies, and reconstructed prose are not release artifacts and must not be used to populate the repository.
 
 ### Step 4: Promote the Release to the Repository
 
 The approved file is placed in the repository using its canonical publication path. Its version and metadata must match the approved editorial release.
+
+Unless a later approved technical requirement establishes a different standard, text release files must use UTF-8 without a byte-order mark and LF line endings. Before delivery, ChatGPT must validate the actual file bytes and confirm:
+
+- The file decodes strictly as UTF-8.
+- Common mojibake sequences and the Unicode replacement character are absent.
+- Markdown tables contain consecutive rows without intervening blank lines.
+- Markdown links and images are structurally valid.
+- Heading structure, fenced blocks, lists, and other consequential Markdown constructs parse as intended.
+- No transport artifact has inserted systematic blank lines, altered punctuation, or changed visible approved wording.
+
+After validation, ChatGPT must calculate the file's SHA-256 checksum and include it in the content release record. The user should transfer the file itself by direct download or another byte-preserving file operation. Copying content from a rendered chat response into an editor is not an approved promotion method.
+
+Before import or transformation, Claude must calculate the repository file's SHA-256 checksum and compare it with the approved release record. A missing or mismatched checksum, invalid encoding, broken Markdown structure, or detected transport corruption is a stop condition. Claude must report the defect and request a corrected release artifact rather than silently repair the approved source. Implementation transformations permitted by Section 8 begin only after transport integrity passes.
 
 The transfer must not create a second independently maintained copy inside the repository. Build-time indexes, generated data, and rendered outputs must be derived from the canonical publication file or approved structured data.
 
@@ -242,8 +262,10 @@ Before changing code or integrating content, Claude must:
 3. Read `site-product-specification.md`.
 4. Validate the governing files against `project-source-manifest.md`.
 5. Confirm the content release is marked Approved and its version matches the handoff.
-6. Identify missing, conflicting, or stale requirements.
-7. Stop and report failures before implementation.
+6. Verify the received file's SHA-256 checksum against the content release record.
+7. Run the required encoding and Markdown-integrity checks on the received file.
+8. Identify missing, conflicting, stale, or corrupted requirements or artifacts.
+9. Stop and report failures before implementation.
 
 ### Step 6: Implement and Test
 
@@ -261,6 +283,7 @@ Claude returns a report containing:
 - Files created, changed, moved, or removed.
 - Components, schema, or generated data affected.
 - Tests and checks run, with results.
+- Source checksum verified, with the expected and received SHA-256 values.
 - Preview location or screenshots when available.
 - Confirmation that approved wording was unchanged, or an exact list of mechanical transformations.
 - Editorial findings requiring ChatGPT review.
@@ -469,6 +492,7 @@ ChatGPT or Claude must stop the affected work and request direction when:
 
 - A required governing source is missing or stale.
 - The manifest audit fails.
+- A release file is missing its required checksum, does not match its approved checksum, or fails encoding or Markdown-integrity validation.
 - The site product specification is unavailable for a material technical decision.
 - Content is not explicitly approved for publication.
 - Two apparently current canonical versions exist.
@@ -500,6 +524,10 @@ Stopping one blocked part does not prevent safe, independent work from continuin
 - Governing-source versions:
 - Material changes:
 - Patch-sensitive items:
+- Encoding and line endings: UTF-8 without BOM; LF
+- SHA-256:
+- File-integrity and Markdown-validation results:
+- Approved transfer method: Direct file transfer; no rendered-text copy/paste
 - Required components or structured data:
 - Permitted mechanical transformations:
 - Unresolved items:
@@ -519,6 +547,9 @@ Stopping one blocked part does not prevent safe, independent work from continuin
 - Files changed:
 - Components or schema affected:
 - Tests and checks run:
+- Expected source SHA-256:
+- Received source SHA-256:
+- Source integrity verified: Yes / No
 - Preview evidence:
 - Mechanical content transformations:
 - Reader-facing wording changed: No / Yes, with exact details

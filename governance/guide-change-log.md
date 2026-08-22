@@ -7,6 +7,27 @@ This file records approved material changes to the guide's structure, editorial 
 
 ---
 
+## August 22, 2026 — Establish byte-preserving content transport and integrity validation
+
+**Decision:** Strengthen the ChatGPT-to-repository handoff so approved Markdown and MDX are transferred as validated file artifacts rather than copied from rendered chat text. Require byte-level identity and structural validation before Claude imports or transforms approved content.
+
+**Workflow changes:**
+
+- Advanced `project-workflow.md` to version 1.1.
+- Required actual UTF-8 file artifacts with LF line endings for text releases unless a later approved technical standard changes that requirement.
+- Prohibited rendered-chat, writing-block, rich-text, or reconstructed-text copy/paste as an approved repository promotion method.
+- Added pre-delivery checks for strict UTF-8 decoding, common mojibake, Markdown tables, links, headings, fenced blocks, lists, systematic blank-line insertion, altered punctuation, and changed approved wording.
+- Added SHA-256 and validation fields to the standard ChatGPT Content Release record.
+- Required Claude to verify the received checksum and file integrity before import or implementation transformation.
+- Made checksum mismatch, missing checksum, invalid encoding, broken Markdown structure, and detected transport corruption explicit stop conditions.
+- Required transport defects to return to ChatGPT for a corrected release artifact rather than be silently repaired in the repository.
+
+**Affected files:**
+
+- `project-workflow.md` — version 1.1
+- `project-source-manifest.md` — version 1.7
+- `guide-change-log.md` — this entry
+
 ## August 21, 2026 — Reframe Section 0 for already-started readers and remove reader checklists
 
 **Decision:** Revise `before-you-launch.md` so it functions as a concise orientation and catch-up reference for readers who may discover the site after creating an account or character. Remove reader-facing checklists, self-checks, readiness confirmations, and completion or mastery gates throughout the governing reader-experience rules. Preserve author-side editorial, accuracy, accessibility, build, and release audits as production controls.
