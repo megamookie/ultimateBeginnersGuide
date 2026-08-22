@@ -1,0 +1,24 @@
+{
+  "$comment": "GENERATED FILE — do not edit. Run `npm run generate`. Derived from the approved `search_terms` in each published page's frontmatter. Hand-maintained aliases belong in src/data/search-vocabulary.json and must not repeat anything listed here.",
+  "pageCount": 1,
+  "termCount": 10,
+  "pages": [
+    {
+      "page": "Before You Launch",
+      "url": "/before-you-launch/",
+      "source": "src/content/docs/before-you-launch.mdx",
+      "terms": [
+        "EVE Online beginner",
+        "new player",
+        "already created my character",
+        "Alpha vs Omega",
+        "best empire",
+        "best race",
+        "character creation",
+        "Exordium",
+        "free 1 million skill points",
+        "Recruit a Friend"
+      ]
+    }
+  ]
+}

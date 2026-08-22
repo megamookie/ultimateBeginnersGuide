@@ -31,9 +31,10 @@ describe('section registry', () => {
 
   it('gives every section a permanent URL, published or not', () => {
     for (const section of sections) {
-      expect(sectionUrl(section)).toMatch(/^\/[a-z-]+\/[a-z0-9-]+\/$/);
+      // Group-derived by default; an approved release may specify a top-level route.
+      expect(sectionUrl(section)).toMatch(/^\/(?:[a-z0-9-]+\/)+$/);
     }
-    expect(sectionUrl(sectionByNumber(0)!)).toBe('/foundation/before-you-launch/');
+    expect(sectionUrl(sectionByNumber(0)!)).toBe('/before-you-launch/');
     expect(sectionUrl(sectionByNumber(9)!)).toBe('/career-academies/pve-combat-academy/');
   });
 
@@ -79,6 +80,6 @@ describe('previous/next model', () => {
   it('links a published destination normally', () => {
     const prev = paginationFor(1).prev!;
     expect(prev.pending).toBe(false);
-    expect(prev.href).toBe('/foundation/before-you-launch/');
+    expect(prev.href).toBe('/before-you-launch/');
   });
 });

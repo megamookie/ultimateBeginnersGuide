@@ -29,7 +29,7 @@ if (!existsSync(DIST)) {
 /** Representative pages: the homepage, a long instructional page, a reference page, search. */
 const PAGES = [
   { url: '/', label: 'homepage' },
-  { url: '/foundation/before-you-launch/', label: 'Section 0 (long instructional page)' },
+  { url: '/before-you-launch/', label: 'Section 0 (long instructional page)' },
   { url: '/reference/glossary/', label: 'glossary' },
   { url: '/table-of-contents/', label: 'table of contents' },
   { url: '/search/', label: 'search results' },

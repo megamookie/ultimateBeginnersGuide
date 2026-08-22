@@ -1,502 +1,367 @@
-# Section 0: Before You Launch
+---
 
-> **Last updated:** August 18, 2026 | **Guide version:** 1.4  
-> **Applies to:** Alpha and Omega accounts
->
-> *A public correction link will be added when the guide's repository is published.*
+page_id: "section-00-before-you-launch"
+
+title: "Before You Launch"
+
+description: "Essential EVE Online account, character, Alpha and Omega, Exordium, safety, and security information for new and recently started players."
+
+status: "Approved"
+
+section: "0"
+
+navigation_group: "Foundation"
+
+order: 0
+
+slug: "/before-you-launch/"
+
+guide_version: "1.5"
+
+last_updated: "2026-08-21"
+
+applies_to: "Both"
+
+patch_sensitivity: "Recheck after changes to the new-player journey, Exordium, clone states, account services, recruitment, security, or character creation"
+
+review_trigger: "Every expansion affecting onboarding or any relevant CCP policy or account-service change"
+
+estimated_reading_time: "10–12 minutes"
+
+estimated_in_game_time: "Not applicable"
+
+approximate_cost: "None"
+
+risk: "Low — some identity choices are permanent and account-security decisions have lasting consequences"
+
+search_terms:
+
+  - "EVE Online beginner"
+
+  - "new player"
+
+  - "already created my character"
+
+  - "Alpha vs Omega"
+
+  - "best empire"
+
+  - "best race"
+
+  - "character creation"
+
+  - "Exordium"
+
+  - "free 1 million skill points"
+
+  - "Recruit a Friend"
+
+tags:
+
+  - "new-player"
+
+  - "account"
+
+  - "character-creation"
+
+  - "alpha"
+
+  - "omega"
+
+  - "exordium"
+
+language: "en"
+
+translation_of: null
 
 ---
 
-## Table of Contents
+EVE Online gives you unusual freedom, but it also expects you to live with meaningful choices and losses. This page explains the few things worth knowing before—or shortly after—creating your first character.
 
-1. [What Is EVE Online?](#1-what-is-eve-online)
-2. [A Word of Warning Before You Begin](#2-a-word-of-warning-before-you-begin)
-3. [Free to Play: Alpha vs. Omega](#3-free-to-play-alpha-vs-omega)
-   - [What Alpha Can Do](#what-alpha-can-do)
-   - [Important Alpha Restrictions](#important-alpha-restrictions)
-   - [Upgrading to Omega](#upgrading-to-omega)
-   - [PLEX: Paying for Omega with In-Game Currency](#plex-paying-for-omega-with-in-game-currency)
-   - [The Bottom Line on Alpha vs. Omega](#the-bottom-line-on-alpha-vs-omega)
-   - [Looking Ahead: Alts and Multiboxing](#looking-ahead-alts-and-multiboxing)
-4. [The Four Empires: Choosing Your Origin](#4-the-four-empires-choosing-your-origin)
-   - [Amarr Empire](#amarr-empire)
-   - [Caldari State](#caldari-state)
-   - [Gallente Federation](#gallente-federation)
-   - [Minmatar Republic](#minmatar-republic)
-   - [The Empire Decision in Plain Terms](#the-empire-decision-in-plain-terms)
-5. [Where Every New Character Begins: Exordium](#5-where-every-new-character-begins-exordium)
-6. [Character Creation](#6-character-creation)
-7. [Secure Your Account](#7-secure-your-account)
-8. [Hardware, Graphics, and UI Settings](#8-hardware-graphics-and-ui-settings)
-9. [Getting the Free 1,000,000 Skill Points](#9-getting-the-free-1000000-skill-points)
-10. [Pre-Launch Checklist](#10-pre-launch-checklist)
-11. [Where to Go Next](#11-where-to-go-next)
-12. [External Resources Referenced](#12-external-resources-referenced)
+You do not need to study everything before opening the game. Use the headings to find the decision in front of you, then continue to the part of the guide that matches where you are now.
 
----
+## Already Created Your Account or Character?
 
-## 1. What Is EVE Online?
+You probably do not need to start over.
 
-EVE Online is a massively multiplayer online game set in a science-fiction universe called **New Eden**. You play as a **capsuleer**—a human pilot who controls spaceships through a neural interface and can survive death through clone technology.
+- Your empire and bloodline do not lock your career or prevent you from training another empire's ships.
 
-When your ship is destroyed, your character normally escapes in a capsule. If the capsule is also destroyed, your consciousness awakens in a medical clone. The destroyed ship does not return: some fitted modules and cargo may survive as loot, but the hull and everything else destroyed with it are gone.
+- Your portrait, clothing, hair, and many cosmetic details can be changed later.
 
-EVE has operated since 2003. Its primary international live server, **Tranquility**, is one shared universe rather than a collection of regional realms or ordinary MMO shards. Markets, wars, territorial changes, and player reputations exist in that shared world.
+- Your character name, empire, and bloodline cannot normally be changed after creation.
 
-### What makes EVE different from other MMOs
+- An existing account can still receive the Recruit a Friend skill-point reward if it has never been linked to a recruiter.
 
-EVE is a **sandbox**. It has missions, story arcs, NPC enemies, and developer-created events, but it does not give every player one central campaign to follow from beginning to end. The game supplies systems and tools; players decide what to do with them.
+- Spending early Skill Points inefficiently does not ruin a character. Future training can correct the detour.
 
-That distinction has major consequences:
+Secure the account, review the Alpha and Omega distinction, and continue from your current position:
 
-- Most ships and modules are manufactured and traded by players.
-- Player corporations and alliances claim territory, build infrastructure, and wage wars.
-- Markets respond to player production, destruction, speculation, and logistics.
-- Cooperation, espionage, diplomacy, theft, and betrayal can all affect the game world.
-- A destroyed ship is a real economic loss, whether it is a rookie frigate or a strategic alliance asset.
+- If you are still learning the basic interface or completing the opening tutorial, continue with [Section 1: Your First Session](../section-1/your-first-session).
 
-Your progress is therefore not measured by reaching a maximum character level. Progress means gaining knowledge, relationships, skills, assets, and the confidence to pursue goals you chose for yourself.
+- If you are already working through Exordium, Career Agents, or the AIR Career Program, continue with [Section 2: Graduate from Starter Space](../section-2/graduate-from-starter-space).
 
-### The learning curve
+- If you have already left starter space, use the guide's navigation or search to open the mechanic or activity you need. Earlier sections remain available as references rather than requirements.
 
-EVE has a famously steep learning curve. The modern new-player experience is much better than it once was, especially after the introduction of the protected **Exordium** starter region, but EVE remains a deep game with many connected systems.
+## What Kind of Game Is EVE Online?
 
-You will not master EVE in a week or a month. Even veteran players specialize, consult reference material, and ask each other questions. That is normal.
+EVE Online is a massively multiplayer science-fiction game set in **New Eden**. You play as a **capsuleer**—a human pilot linked to spacecraft through a neural interface and able to survive death through clone technology.
 
-This guide exists to shorten the learning curve. It will not—and should not—eliminate discovery.
+EVE's main international live server, **Tranquility**, is one shared universe rather than a set of ordinary regional realms. Players participate in the same markets, wars, political changes, organizations, and history.
 
----
+EVE is also a **sandbox**. It contains missions, story arcs, NPC enemies, exploration sites, industry, markets, and developer-created events, but it does not provide one central campaign that every player follows to completion. The game provides interconnected systems; players choose how to use them.
 
-## 2. A Word of Warning Before You Begin
+That creates a world in which:
 
-EVE permits forms of competition and deception that many other games do not. Once you leave Exordium, remember the following:
+- Players manufacture and trade much of what other players use.
 
-- **Other players can attack your ship almost anywhere.** In ordinary high-security space, CONCORD punishes illegal aggression; it does not guarantee that your ship will survive the attack.
-- **Other players can steal from you.** Unprotected cargo, wrecks, unsecured containers, and poorly controlled corporation assets may be taken.
-- **Many in-game scams are allowed.** Misleading contracts, impersonated opportunities, and suspiciously generous offers are common. Some forms of fraud, exploits, and out-of-game deception remain prohibited, but you should not assume customer support will reimburse an ordinary in-game scam.
-- **Player corporations can be infiltrated or betrayed.** Spying, theft, and internal conflict are legitimate parts of the sandbox when conducted within the rules.
-- **You will lose ships.** Ship loss is part of EVE's economy and learning process. The foundational rule is: **never fly what you cannot afford to lose.**
+- Corporations and alliances organize fleets, industry, infrastructure, and territorial wars.
 
-### The Exordium exception
+- Production, destruction, speculation, and logistics affect the economy.
 
-All newly created capsuleers now begin in **Exordium**, a special 1.0-security starter region where PvP is disabled and the Safety setting is locked to green. War declarations, Factional Warfare combat, duels, and kill-right activation do not apply there.
+- Cooperation, competition, diplomacy, espionage, theft, and betrayal can have lasting consequences.
 
-Exordium is a classroom, not proof that the rest of EVE is equally safe. Ordinary highsec begins at 0.9 security and still permits player aggression under the wider Crimewatch and CONCORD systems.
+- There is no maximum character level that defines completion.
 
-CCP also maintains a [Rookie Griefing policy](https://support.eveonline.com/hc/en-us/articles/203209712-Rookie-Griefing) covering designated rookie systems, Career Agent locations, and parts of the Sisters of EVE beginner arc. Treat that policy as a protection against targeted abuse—not as insurance against every mistake or loss.
+Progress is better understood as increasing knowledge, capability, relationships, financial resilience, and confidence. Veteran players still specialize, consult references, and ask other players for help.
 
-None of this means the EVE community is uniformly hostile. Many veteran players enjoy helping new capsuleers, and organizations such as [EVE University](https://www.eveuniversity.org/) exist specifically to teach them. You will simply have a better experience if you understand the rules of the sandbox before leaving its protected starting area.
+## EVE's Rules Are Different
 
----
+When a ship is destroyed, the hull does not return. Some fitted modules and cargo may survive in the wreck as loot; the rest is destroyed. Your character normally escapes in a capsule, and if the capsule is destroyed, the character awakens in a medical clone.
 
-## 3. Free to Play: Alpha vs. Omega
+Ship loss is therefore both a gameplay event and an economic loss. A useful early habit is to avoid placing most of your available ISK into one ship. Ships are tools, and a ship you can replace is easier to use confidently than one whose loss would end your plans.
 
-EVE has two account states:
+Outside protected starter space, several other rules matter:
 
-- **Alpha Clone:** The permanent free-access state.
-- **Omega Clone:** The paid state, activated through subscription time or eligible in-game purchases.
+| Reality | What it means for a new player |
 
-Clone state applies to the account. If Omega time expires, the account returns to Alpha; trained Omega-only skills are not deleted, but their effects and restricted equipment become unavailable until Omega is restored.
-
-### What Alpha Can Do
-
-Alpha is a functional way to try EVE, not a short trial. An Alpha account can:
-
-- Play indefinitely without paying a subscription
-- Passively train the permitted Alpha skill set until reaching the 5,000,000-SP training limit
-- Access an Alpha skill set worth roughly 20 million SP overall by applying eligible unallocated SP or injectors after passive training stops
-- Fly permitted Tech I frigates, destroyers, cruisers, battlecruisers, battleships, haulers, and the Venture mining frigate
-- Use ships and skills from all four empires rather than remaining locked to the chosen origin
-- Run missions through Level 3
-- Participate in basic PvE, exploration, manufacturing, gas harvesting, mining, trading, fleets, and PvP
-- Join corporations, create a corporation, and participate in Faction Warfare
-- Complete the new-player experience, Exordium activities, Career Agents, and the AIR Career Program
-
-### Important Alpha Restrictions
-
-The complete restriction list can change, so consult CCP's current [Alpha and Omega Clone comparison](https://support.eveonline.com/hc/en-us/articles/213020969-Alpha-and-Omega-Clone). The restrictions most likely to affect a developing player are:
-
-| Area | Alpha limitation |
 |---|---|
-| Training | Trains at the basic rate; passive training stops at 5 million SP |
-| Skill access | Can train and apply free SP only to skills and levels included in the Alpha skill set |
-| Ships and modules | Cannot use many advanced hulls, most Tech II ships, and Omega-restricted modules |
-| Missions | Cannot accept Level 4 or Level 5 missions |
-| Mining | Can mine ore and perform basic gas harvesting, but cannot mine ice |
-| Planetary Industry | May import materials but cannot export products, making normal PI operation impractical |
-| Contracts | Can maintain only one unfinished contract at a time |
-| Industry | Pays an additional 2% tax on industry and science jobs |
-| Safety | Can use green or yellow Safety, but not red |
-| Multiple clients | While an Alpha account is logged in, no additional EVE client may proceed beyond character selection, even if another account is Omega |
-| Skill-dependent taxes and orders | Has limited access to the skills that reduce market costs or expand market capabilities |
 
-### Upgrading to Omega
+| Other players can attack in most areas | Ordinary high-security space is safer than lowsec or nullsec, but CONCORD punishes qualifying illegal aggression rather than guaranteeing prevention. |
 
-Omega unlocks the full skill catalog, doubles the base training speed, and grants access to features and equipment restricted from Alpha accounts. It does not instantly provide the trained skills, knowledge, money, or support needed to use advanced ships effectively.
+| Many in-game scams are permitted | Read contracts, verify prices and quantities, and treat unexpected offers cautiously. Customer support does not normally reimburse an ordinary legal in-game scam. |
 
-Omega can be obtained through:
+| Assets can be stolen or exposed | Unprotected cargo, wrecks, containers, and poorly controlled corporation assets can be taken. |
 
-- A subscription or game-time purchase from the [official EVE Online Store](https://store.eveonline.com/)
-- Eligible packs that include Omega time
-- PLEX spent through the in-game PLEX Vault or New Eden Store
+| Corporations involve trust | A good corporation can transform the game, but access, roles, and valuable assets should be granted deliberately. |
 
-Prices, bundles, and promotions change. Check the official store rather than relying on a price quoted in a guide or old video.
+| Reputation can matter | Character names, employment history, public losses, contracts, and player interactions may remain visible to others. |
 
-### PLEX: Paying for Omega with In-Game Currency
+These rules do not mean the community is uniformly hostile. Many veteran players, corporations, and teaching organizations actively help new capsuleers. The important mental model is that EVE allows both cooperation and conflict, and the interface will not protect you from every poor decision.
 
-**PLEX** is an in-game item sold by CCP and traded between players for **ISK**, EVE's in-game currency. This creates two legitimate paths:
+CCP maintains a [Rookie Griefing policy](https://support.eveonline.com/hc/en-us/articles/203209712-Rookie-Griefing) for Exordium, designated rookie and Career Agent systems, and parts of the Sisters of EVE beginner arc. Treat it as protection against targeted abuse—not insurance against every mistake, NPC loss, or danger elsewhere.
 
-1. Buy PLEX from CCP and sell it to another player for ISK.
-2. Earn ISK in-game, buy PLEX from another player, and spend that PLEX on Omega or other New Eden Store services.
+## Alpha or Omega: Which Should You Choose?
 
-At the time of this update, **500 PLEX purchases 30 days of Omega**, but both the ISK market price of PLEX and store offerings can change. Always confirm the current requirement in the PLEX Vault or New Eden Store before planning around it.
+EVE accounts have one of two **clone states**:
 
-### Protecting PLEX
+- **Alpha:** The permanent free-access state.
 
-The **PLEX Vault** is an account-wide inventory shared by all characters on the account. PLEX inside the Vault cannot be destroyed with a ship. PLEX moved into a character's cargo hold can be lost or looted if that ship is destroyed.
+- **Omega:** The paid state, activated through game time, eligible packs, or PLEX.
 
-Keep PLEX in the Vault unless you have a specific reason to move it.
+Clone state belongs to the account. When Omega time expires, the account returns to Alpha. Omega-only skills are not deleted, but their restricted effects and equipment become unavailable until Omega is restored.
 
-> **Critical:** Buying ISK, ships, accounts, or other in-game assets from unauthorized third-party sellers is real-money trading and violates EVE's rules. The legitimate route for turning real money into ISK is buying PLEX through an authorized channel and selling it in-game.
+For most new players, the practical answer is simple:
 
-> **Reality check for new players:** Do not make “earning enough ISK to PLEX my account” your first goal. A new character usually has low income, incomplete skills, and many better uses for early ISK. Trying to finance Omega immediately can turn the game into repetitive work before you discover what you enjoy.
+> **Start as Alpha if you are unsure. Upgrade when Omega unlocks a specific activity, ship, skill, or training benefit you actually want.**
 
-### The Bottom Line on Alpha vs. Omega
+| Question | Alpha | Omega |
 
-- **Start as Alpha if you are uncertain.** It provides enough access to complete the opening sections of this guide and sample the four main career paths.
-- **Upgrade when a specific goal requires it.** Examples include an Omega-only ship, advanced module, faster training, ice mining, or functional Planetary Industry.
-- **Do not buy Omega because you believe it makes you automatically competitive.** Player knowledge and coherent ship fitting matter more than subscription status alone.
-- **Understand the long-term tradeoff.** Alpha is suitable for learning and sampling EVE, but Omega—and eventually multiple Omega accounts—opens substantially more career depth, corporation utility, industrial scale, and simultaneous role combinations.
+|---|---|---|
 
-### Looking Ahead: Alts and Multiboxing
+| Can it complete onboarding and sample major careers? | Yes | Yes |
 
-This guide begins with one character because every ship, window, risk, and activity must make sense on its own before several clients can be managed well. It does not treat single-character play as the likely final destination for a reader who wants to maximize industrial income, become broadly useful to a corporation, or operate EVE's interconnected systems at greater capacity.
+| Skill training | Basic rate; passive training pauses at 5 million SP | Twice the base rate with access to the full skill catalog |
 
-Later sections will explain three different tools:
+| Ships and modules | Permitted Alpha ships, skills, and equipment | All ships and equipment the character has trained to use |
 
-- **Additional characters on one account** for roles that do not need to be logged in together, such as Planetary Industry, research, manufacturing, market, and administrative work.
-- **Multiple Character Training (MCT)** for training additional characters on the same account at the same time. MCT adds skill queues, not simultaneous logins.
-- **Additional Omega accounts** for roles that must operate together, such as multiple miners, mining support, hauling, scouting, logistics, and other coordinated fleet roles.
+| Missions | Up to Level 3 | All levels when other requirements are met |
 
-CCP currently permits multiple Omega accounts to be logged in simultaneously, provided no Alpha account is actively in use. Each client must be controlled independently: manual multiboxing is permitted, while input broadcasting or duplicating one action across clients is prohibited.
+| Mining and Planetary Industry | Ore and basic gas harvesting; no ice mining; PI exporting is restricted | Full access when trained |
 
-> **Beginner guidance:** Do not create several accounts before you understand what specific job each account will perform. The guide will build the foundation first, introduce account planning in Section 3, and then show how multiboxing scales appropriate careers and corporation roles.
+| Simultaneous clients | An active Alpha account prevents additional clients from proceeding beyond character selection | Multiple Omega accounts may be active together when no Alpha account is actively in use |
 
----
+| Best fit | Learning and sampling without a subscription | Faster training or a defined Omega-dependent goal |
 
-## 4. The Four Empires: Choosing Your Origin
+Alpha characters can fly Tech I ships across all four empires within the Alpha skill set, join corporations and fleets, participate in PvE and PvP, explore, mine, manufacture, trade, and take part in Faction Warfare under the current rules. Alpha is not a short trial, but its training, ship, industrial, market, and concurrent-client restrictions become increasingly important as a character specializes.
 
-During character creation, you choose one of four human empires: **Amarr, Caldari, Gallente, or Minmatar**. Older players and older documentation may call this choice your “race,” but **empire** or **origin** is clearer.
+Omega expands access; it does not automatically provide the skills, ISK, fitting knowledge, or player judgment needed to use advanced ships well. Buying Omega immediately is reasonable if you value faster training or already know the activity you want. It is not necessary merely to determine whether you enjoy EVE.
 
-Your choice influences:
+### PLEX and Omega
 
-- Character appearance and available bloodlines
-- A small set of starting skills
-- The factional identity, lore, and ship style introduced to you first
+**PLEX** is an in-game item sold through authorized CCP channels and traded between players for **ISK**, EVE's principal in-game currency. A player may buy PLEX with real money and sell it for ISK, or earn ISK and buy PLEX from another player for account services and New Eden Store purchases.
 
-Your choice does **not**:
+PLEX kept in the account-wide **PLEX Vault** cannot be destroyed with a ship. PLEX moved into a ship's cargo can be lost or looted when that ship is destroyed.
 
-- Lock you out of another empire's ships or skills
-- Prevent you from joining another faction's corporation or militia, subject to the normal standings and enlistment rules
-- Determine your permanent career
-- Place you near that empire's traditional trade hub at account creation
+Do not make funding Omega with in-game income your first objective. A new character usually has modest income and many productive uses for early ISK. An immediate PLEX obligation can turn exploration and learning into repetitive work before you know what you enjoy.
 
-Since June 2026, every newly created capsuleer begins in the shared **Exordium** starter region. Choose the empire whose story, visual style, or introductory ships appeal to you. You can train a different empire's ships later.
+Buying ISK, ships, accounts, or other assets through unauthorized sellers is **real-money trading** and violates EVE's rules. The authorized way to convert real money into ISK is to buy PLEX through an approved channel and sell it in-game.
 
-### Amarr Empire
+## Creating—or Reviewing—Your Character
 
-**Identity:** A vast, ancient theocratic empire built around faith, hierarchy, ceremony, and imperial power. Its history includes conquest and slavery. Its ships favor gold surfaces and imposing silhouettes.
+Character creation asks you to choose an empire, bloodline, appearance, portrait, and name. These choices shape identity far more than mechanical capability.
 
-**Common ship tendencies:**
+### Choosing an empire
 
-- Armor tanking
-- Energy turrets—pulse lasers at shorter ranges and beam lasers at longer ranges
-- Drones and capacitor warfare on parts of the ship line
-- Strong defenses but often modest speed
+The four playable human empires are Amarr, Caldari, Gallente, and Minmatar. Older guides and players may refer to this choice as “race,” but **empire** or **origin** is clearer.
 
-Standard Tech I laser crystals are not consumed like ordinary ammunition and can change range quickly, but lasers use capacitor and are largely restricted to electromagnetic and thermal damage.
+| Empire | Identity and visual character | Common early ship tendencies |
 
-**Good first impression for:** Players who like durable armor ships, dramatic visuals, lasers, and direct damage projection.
+|---|---|---|
 
-### Caldari State
+| **Amarr** | Ancient theocratic empire; gold, imposing ships | Armor, lasers, drones, capacitor use |
 
-**Identity:** A corporate state shaped by powerful megacorporations, military discipline, and intense competition. Its ships tend to look angular, industrial, and utilitarian.
+| **Caldari** | Corporate state; angular, utilitarian ships | Shields, missiles, railguns, ranged combat |
 
-**Common ship tendencies:**
+| **Gallente** | Diverse federation; rounded, organic ships | Armor, drones, blasters, close-range damage |
 
-- Shield tanking
-- Missiles and hybrid turrets, especially railguns
-- Long engagement ranges on many hulls
-- Electronic countermeasures on specialist ships
+| **Minmatar** | Tribal republic shaped by rebellion; exposed industrial ships | Speed, projectile weapons, missiles, shield or armor fits |
 
-Missiles do not use turret tracking, optimal range, or falloff. They still have a maximum practical range, take time to reach the target, and may apply reduced damage against targets that are small or moving quickly.
+These are broad introductions, not rules for every hull. Empire choice does not:
 
-**Good first impression for:** Players who like shields, ranged combat, missiles, or methodical PvE.
+- Lock you out of another empire's ships or skills.
 
-### Gallente Federation
+- Determine your permanent career.
 
-**Identity:** A diverse democratic federation that emphasizes individual liberty, culture, and personal expression—while possessing its own political contradictions. Its ships use rounded, organic forms.
+- Require you to join that empire's player organizations or militia.
 
-**Common ship tendencies:**
+- Give you a permanent starting-location advantage.
 
-- Armor tanking
-- Hybrid turrets—close-range blasters and long-range railguns
-- Extensive use of combat drones
-- Strong close-range damage on many hulls
-
-Drones provide flexible damage and range, but they must be launched, commanded, monitored, and recalled. They can be attacked and destroyed.
-
-**Good first impression for:** Players who like drones, aggressive close-range combat, or versatile armor ships.
-
-### Minmatar Republic
-
-**Identity:** A collection of tribes united by survival, rebellion, and independence after overthrowing Amarr rule. Its ships have an exposed, practical, and deliberately improvised industrial style.
-
-**Common ship tendencies:**
-
-- Projectile turrets, with missiles on parts of the ship line
-- Both shield- and armor-tanked hulls
-- High speed and flexible engagement styles
-- Ammunition choices that can vary damage profile and range
-
-Projectile turrets do not consume capacitor to fire, but learning the differences among ammunition, falloff, tracking, shield fits, and armor fits can make the Minmatar line less uniform than it first appears.
-
-**Good first impression for:** Players who like speed, flexible fits, projectile weapons, and hit-and-run combat.
-
-### The Empire Decision in Plain Terms
-
-These are broad tendencies, not rules for every hull:
-
-| Empire | Common weapons | Common defense | General character |
-|---|---|---|---|
-| Amarr | Lasers, drones | Armor | Durable, capacitor-dependent, visually grand |
-| Caldari | Missiles, hybrid turrets | Shield | Ranged, methodical, electronic-warfare capable |
-| Gallente | Hybrid turrets, drones | Armor | High close-range damage, flexible drones |
-| Minmatar | Projectile turrets, missiles | Shield or armor | Fast, adaptable, varied fitting styles |
-
-If you cannot decide, choose by aesthetics and lore. There is no objectively best origin, and switching ship lines later is normal.
-
-> **See also:** [Character Creator — EVE University Wiki](https://wiki.eveuniversity.org/Character_Creator)
-
----
-
-## 5. Where Every New Character Begins: Exordium
-
-As of the June 2026 **Cradle of War** expansion, all newly created capsuleers begin in **Exordium**, a 53-system starter region shared by all four empires.
-
-Exordium contains:
-
-- Introductory missions and Career Agents
-- Mining, exploration, combat, and cooperative activities tuned for rookies
-- Empire embassy areas and faction introductions
-- The **Visions of Greatness** new-player Epic Arc
-- A market and central hub at **Manifest V — AIR Laboratories Trade Center**
-- Routes into the wider universe
-
-### Why Exordium is safer
-
-Exordium has a special 1.0 security class:
-
-- PvP is disabled
-- Safety is locked to green
-- War declarations and Factional Warfare combat are disabled
-- Duels cannot be initiated
-- Kill rights cannot be activated
-- Player structures, deployables, and anchored containers are restricted
-
-You can still lose a ship to NPCs or your own mistakes, but another player cannot simply attack you there.
-
-### Why you should eventually leave
-
-Exordium is deliberately balanced as a low-risk, low-reward training environment. Compared with ordinary highsec, it applies reduced payouts or additional costs to several activities, including missions, bounties, mining resources, exploration loot, market orders, and industry jobs.
-
-After the initial onboarding, you may leave through:
-
-- The stargate between **Manifest** and **Yulai**, or
-- A **one-use, one-way Rookie Shipcaster** that sends you to the chosen empire's high-security space
-
-Do not rush out before you understand the controls—but do not treat Exordium as your permanent home simply because it is safe. Section 2 of this guide will provide a complete graduation checklist.
-
-> **Patch-sensitive:** Exordium was introduced recently and may continue to evolve. Verify its current rules through the [Cradle of War expansion notes](https://www.eveonline.com/news/view/cradle-of-war-expansion-notes) and current patch notes.
-
----
-
-## 6. Character Creation
-
-Character creation establishes your permanent public identity. Most appearance choices can be adjusted later, but some identity choices cannot.
+All newly created capsuleers currently begin in Exordium. Choose the empire whose story, appearance, and introductory ships interest you. You can train other ship lines later.
 
 ### Bloodline and appearance
 
-Each empire offers multiple bloodlines. Bloodline and gender affect character modeling and roleplaying identity but do not lock or improve a gameplay career.
+Bloodline and gender affect appearance and roleplaying identity but do not improve or restrict a gameplay career.
 
-You can change clothing, hair, many cosmetic details, and your portrait later. Changing body shape, facial structure, complexion, or gender requires a **Character Resculpt** purchased through the New Eden Store.
+Clothing, hair, many cosmetic details, and the character portrait can be changed later. Body shape, complexion, facial structure, and gender require a Character Resculpt from the New Eden Store. Empire and bloodline cannot normally be changed.
 
-You cannot change the character's empire, bloodline, or name after creation.
+### Choose the name carefully
 
-### Name
+Your character name is permanent, unique, and public. It may appear in chat, corporation records, contracts, fleet histories, and combat records for years.
 
-Your character name is permanent and unique. Treat it as the name other players will use for years.
+Choose a name you are comfortable using publicly and that other players can pronounce over voice communications. Do not include private information you would not want connected to your gaming identity, and avoid names that impersonate CCP personnel, NPC entities, or other players.
 
-- Choose something you are comfortable seeing in fleet histories, corporation records, contracts, and kill reports.
-- Make it reasonably pronounceable. Fleet commanders and teammates may need to say it quickly over voice communications.
-- Avoid names that imitate CCP employees, NPC entities, or other players, and review EVE's naming rules if uncertain.
-- Do not include private information you would not want publicly connected to your gaming identity.
+## Where New Characters Begin: Exordium
 
-### Portrait
+Since the June 2026 **Cradle of War** expansion, all newly created capsuleers begin in **Exordium**, a 53-system starter region shared by the four empires. Its central hub is **Manifest**, home to the AIR Trade Center.
 
-Your portrait appears in chat, character information, corporation tools, and other interfaces. You can retake it later without changing the underlying character model.
+Exordium contains introductory missions, Career Agents, exploration and mining opportunities, cooperative activities, empire embassy areas, and the **Visions of Greatness** Epic Arc.
 
-Spend as much or as little time on it as you enjoy. Portrait appearance has no ship-combat or career benefit.
+Exordium uses a special 1.0 security class designed to prevent player-versus-player combat:
 
----
+- Safety is locked to green.
 
-## 7. Secure Your Account
+- Players cannot freely attack one another.
 
-EVE characters can accumulate years of training and valuable assets. Secure the account before that value exists.
+- War declarations and Factional Warfare combat are disabled.
 
-### Minimum security setup
+- Duels cannot be initiated and kill rights cannot be activated.
 
-1. Use a unique password that you do not reuse on another website.
-2. Enable an authenticator on the EVE account through Account Management.
-3. Secure the associated email account with its own two-factor authentication.
-4. Store recovery information in a safe place separate from the device running the authenticator.
+- Player structures, deployables, and anchored containers are restricted.
+
+NPCs and poor decisions can still destroy a ship. Exordium is protected from PvP; it is not a place where every activity succeeds automatically.
+
+Its economy is intentionally less rewarding than ordinary highsec. Mission rewards, bounties, ore yield, exploration loot, market activity, industry, and Homefront Operations are adjusted to make the region a learning environment rather than a permanent low-risk income center.
+
+Players can leave through the two-way stargate connecting Manifest and Yulai or use a one-time, one-way Rookie Shipcaster from an empire embassy constellation into that empire's high-security space. Section 2 explains the activities available in Exordium and how to choose when and where to leave.
+
+> **Patch-sensitive:** Exordium is new and may continue to change. Its rules should be rechecked after onboarding or starter-space updates.
+
+## Secure Your Account Early
+
+EVE characters accumulate training history, relationships, and assets over years. Account security becomes more important as that value grows.
+
+1. Use a unique password that is not reused elsewhere.
+
+2. Enable an authenticator through EVE Account Management.
+
+3. Protect the associated email account with its own two-factor authentication.
+
+4. Store recovery information separately from the device running the authenticator.
+
 5. Never share the account, password, authenticator code, or recovery information.
 
-If you created the account through Steam, authentication is managed through **Steam Guard** unless you later configure separate EVE credentials.
+Account sharing violates EVE's rules even when the other person is a friend or family member. CCP employees and game masters will not ask for your password or authenticator code.
 
-### Avoiding account theft
+Use trusted bookmarks or official EVE domains when signing in. Before authorizing a third-party application through EVE's Single Sign-On system, inspect the domain and the permissions it requests. Never give a third-party site your EVE password directly.
 
-- Use official EVE websites or trusted bookmarks rather than links sent in unsolicited messages.
-- Carefully inspect the domain before authorizing any third-party application.
-- CCP employees and game masters will not ask for your password or authenticator code.
-- Account sharing violates the EVE EULA, even if the other person is a friend or family member.
-- Buying characters or ISK outside authorized systems puts both the account and its assets at risk.
+Steam-created accounts use Steam authentication and Steam Guard unless separate EVE credentials are later configured. Players intending to manage several accounts should be aware that each Steam account can be linked to only one EVE account; additional EVE accounts normally use direct credentials in the EVE Launcher.
 
-See CCP's [Authenticator instructions](https://support.eveonline.com/hc/en-us/articles/203465601-Authenticator) and [Account Sharing policy](https://support.eveonline.com/hc/en-us/articles/203269561-Account-Sharing).
+## The Free 1,000,000 Skill Points
 
----
+EVE's **Recruit a Friend** program grants 1,000,000 unallocated Skill Points to an eligible recruited account. That reward can substantially shorten early training.
 
-## 8. Hardware, Graphics, and UI Settings
+### If you have not created the account
 
-Before downloading the client, compare your computer with the current [EVE Online system requirements](https://support.eveonline.com/hc/en-us/articles/5885219196828-System-Requirements). Requirements and supported operating systems change over time.
+Use a recruitment link from a friend, trusted community, corporation, or creator, then create the intended account through the official recruitment page. The recruiter may receive rewards if the recruited account later completes qualifying purchases.
 
-### UI scaling
+### If the account already exists
 
-EVE presents a large amount of information through text, icons, and windows. On a high-resolution display, increase UI scaling until labels and module states are comfortable to read.
+You may still link an existing account through a recruitment link if that account has never been connected to a recruiter. Each account can be linked as a recruit only once. After linking and logging in again, the skill-point token appears in the redeeming system.
 
-After entering the client:
+Use a recruitment relationship you understand. Do not pay for a supposed recruitment service, share credentials with the recruiter, or follow a link that does not lead to an official EVE domain.
 
-1. Press **Escape** to open settings.
-2. Open **Display & Graphics**.
-3. Adjust **UI Scaling**.
-4. Confirm that the Overview, chat, capacitor display, and module rack remain readable without covering too much of the screen.
+Once the points are available to the character, leaving them unallocated preserves flexibility until you have a purposeful skill plan. If you already spent some or all of them, continue playing; inefficient early spending is a detour, not a ruined character.
 
-There is no universally correct percentage. Display resolution, screen size, viewing distance, and eyesight all matter.
+## Preparing the Client
 
-### Graphics and performance
+Compare the computer with the current [EVE Online system requirements](https://support.eveonline.com/hc/en-us/articles/5885219196828-System-Requirements). Requirements and supported operating systems change, so the official page is more reliable than fixed specifications repeated here.
 
-If performance is poor:
+EVE displays a large amount of information through text, icons, windows, and alerts. After entering the client, increase UI scaling if labels or module states are difficult to read. If performance is poor, lower the overall graphics preset before adjusting individual options. Large fleet battles can require reduced settings even on powerful systems.
 
-1. Lower the overall graphics-quality preset.
-2. Reduce shadows and anti-aliasing.
-3. Close unnecessary applications.
-4. Verify the game files through the launcher if you see graphical corruption or repeated crashes.
-5. Keep graphics drivers and the operating system current.
+Do not attempt to perfect the interface before learning what each window does. Begin with the default Overview and layout. Section 1 explains the essential interface and introduces adjustments in the context where they matter.
 
-Large fleet fights are unusually demanding. Even players with powerful computers often reduce graphics settings during major battles.
+## Looking Ahead: Alts and Multiboxing
 
-### Window management
+This guide begins with one character because every interface, ship, activity, and risk should make sense on its own before several clients are managed together.
 
-EVE opens many windows: Overview, cargo, chat, market, fitting, map, probe scanner, and more. Do not try to arrange the perfect interface before playing. Begin with the defaults, close windows you are not using, and adjust the layout as you learn what information matters.
+Later sections distinguish among additional characters on one account, Multiple Character Training, and additional Omega accounts. Section 3 introduces account architecture and first-alt timing; later career and veteran sections apply those decisions to mining, industry, Planetary Industry, hauling, scouting, logistics, combat support, and corporation roles.
 
-### The Overview
+MCT adds another training queue on the same account; it does not allow characters on that account to log in together. Simultaneous roles require separate eligible accounts. Current rules permit a player to operate multiple Omega clients manually and independently, but prohibit input broadcasting, duplicated inputs, gameplay automation, botting, and account sharing.
 
-The **Overview** is one of the game's most important interfaces. It lists ships, stations, stargates, NPCs, and other objects on your current grid according to the selected tab and filter settings.
+There is no useful target number of accounts for every player. Additional characters and accounts should solve a defined role or bottleneck without creating unreasonable cost, attention demands, risk, or burnout.
 
-Keep the default Overview for the opening tutorial unless a current guide instructs you to make a specific change. Section 1 will explain how to read it; later sections will cover safe customization.
+## Where to Go Next
 
-➡ **Related:** [Section 1: Your First Session](../section-1/your-first-session#the-overview)
+The next destination depends on what you have already done:
 
----
+- **Opening the game for the first time:** [Section 1: Your First Session](../section-1/your-first-session) explains the tutorial, basic controls, interface, first skill queue, fitting, and early loss.
 
-## 9. Getting the Free 1,000,000 Skill Points
+- **Already active in Exordium:** [Section 2: Graduate from Starter Space](../section-2/graduate-from-starter-space) explains the starter region's activities and the transition into empire space.
 
-EVE's **Recruit a Friend** program grants a recruited account **1,000,000 unallocated Skill Points**. For an Alpha character, that represents several weeks of normal passive training.
+- **Looking for a specific answer:** Use the site's navigation or heading-level search. The guide is both a progressive path and a reference; earlier pages are not gates.
 
-### New accounts
+## External Resources and Sources
 
-1. Obtain a recruitment link from a friend, trusted community, corporation, or creator.
-2. Understand that the recruiter may receive rewards if the recruited account later completes qualifying purchases.
-3. Open the link and create or authenticate the intended EVE account through the official recruitment page.
-4. Log in and claim the skill-point token from the Redeeming Queue.
+- [EVE Online official site](https://www.eveonline.com/) — Client download, news, patch notes, and account access
 
-### Existing accounts
+- [EVE Academy](https://www.eveonline.com/eve-academy) — CCP's official beginner resource hub
 
-The bonus is not limited to accounts created through the link. An **existing account may be linked** through a recruitment link if it has never previously been attached to a recruiter. Each account can be linked as a recruit only once.
+- [Alpha and Omega Clone — CCP Support](https://support.eveonline.com/hc/en-us/articles/213020969-Alpha-and-Omega-Clone) — Current clone-state capabilities and restrictions
 
-See the current [Recruit a Friend rules](https://support.eveonline.com/hc/en-us/articles/360001291585-Recruit-a-Friend) before proceeding.
+- [Exordium — Starter Space — CCP Support](https://support.eveonline.com/hc/en-us/articles/27939780240924-Exordium-Starter-Space) — Starter-region purpose, access, and layout
 
-### Do not spend the points immediately
+- [Cradle of War Expansion Notes](https://www.eveonline.com/news/view/cradle-of-war-expansion-notes) — Exordium rules, economic balancing, and Rookie Shipcasters
 
-Unallocated SP is most valuable when it solves a specific training obstacle. A new player does not yet know which career, weapons, tank, or ships they will prefer.
+- [Rookie Griefing — CCP Support](https://support.eveonline.com/hc/en-us/articles/203209712-Rookie-Griefing) — Additional policy protection for rookies
 
-Claim the points if necessary, but leave them unallocated until Section 3 explains skill planning. Spending them randomly does not ruin a character, but it can waste the program's most valuable early benefit.
+- [Scams — CCP Support](https://support.eveonline.com/hc/en-us/articles/203218892-Scams) — Permitted in-game scams and important exceptions
 
-> **Warning:** Use a recruitment relationship you understand. Do not buy a supposed “recruitment service,” provide login credentials to a recruiter, or follow a link that does not lead to an official EVE domain.
+- [PLEX Vault — CCP Support](https://support.eveonline.com/hc/en-us/articles/115003168285-PLEX-Vault) — Account-wide PLEX storage and use
 
----
+- [Recruit a Friend — CCP Support](https://support.eveonline.com/hc/en-us/articles/360001291585-Recruit-a-Friend) — Existing-account linking, skill points, and reward rules
 
-## 10. Pre-Launch Checklist
+- [Character Resculpting and Clothing — CCP Support](https://support.eveonline.com/hc/en-us/articles/203267841-Character-Resculpting-and-Clothing) — Permanent and changeable character attributes
 
-Before beginning Section 1, confirm the following:
+- [Authenticator — CCP Support](https://support.eveonline.com/hc/en-us/articles/203465601-Authenticator) — Account two-factor authentication
 
-- [ ] I understand that ships are replaceable tools and will eventually be lost.
-- [ ] I understand that Exordium is protected but the wider game is not.
-- [ ] I have chosen Alpha or Omega deliberately rather than assuming Omega is required immediately.
-- [ ] I understand that this guide begins with one character but will later lead toward role-based alts, multiple Omega accounts, and legal multiboxing.
-- [ ] I chose an empire for identity and style, not because I believe it locks my career or starting trade hub.
-- [ ] I selected a permanent character name I am comfortable using publicly.
-- [ ] My EVE account and associated email are protected by two-factor authentication.
-- [ ] My computer meets the current system requirements.
-- [ ] I used or evaluated a recruitment link and understand how its rewards work.
-- [ ] I will not spend unallocated SP until I have a skill plan.
-- [ ] I am ready to complete the tutorial rather than skip unfamiliar steps.
+- [Account Sharing — CCP Support](https://support.eveonline.com/hc/en-us/articles/203269561-Account-Sharing) — Account-sharing prohibition
+
+- [Managing Multiple EVE Accounts with Steam — CCP Support](https://support.eveonline.com/hc/en-us/articles/22945960913692-Managing-Multiple-EVE-Accounts-with-Steam) — Steam-linked and additional account management
+
+- [System Requirements — CCP Support](https://support.eveonline.com/hc/en-us/articles/5885219196828-System-Requirements) — Current Windows and macOS requirements
+
+- [Community Beat: When Multiboxers Collide — EVE Online](https://www.eveonline.com/news/view/community-beat-for-21-july) — Manual multiboxing and prohibited input broadcasting
 
 ---
 
-## 11. Where to Go Next
-
-You now have enough information to create and secure your character, launch the client, and understand where the game will place you.
-
-The next section covers your first session: completing the AIR New Player Experience, learning the essential interface, maintaining the first skill queue, fitting the first ship, and understanding what the tutorial is trying to teach.
-
-➡ **Next:** [Section 1: Your First Session](../section-1/your-first-session)
-
----
-
-## 12. External Resources Referenced
-
-| Resource | Description |
-|---|---|
-| [EVE Online official site](https://www.eveonline.com/) | Client download, news, patch notes, and account entry point |
-| [EVE Online Store](https://store.eveonline.com/) | Current Omega, PLEX, and pack offerings |
-| [EVE Academy](https://www.eveonline.com/eve-academy) | CCP's official beginner resource hub |
-| [Alpha and Omega Clone — CCP Support](https://support.eveonline.com/hc/en-us/articles/213020969-Alpha-and-Omega-Clone) | Current clone-state comparison and restrictions |
-| [Multiple Character Training — CCP Support](https://support.eveonline.com/hc/en-us/articles/203411052-Multiple-Character-Training) | Additional skill queues and their account limitations |
-| [Community Beat: When Multiboxers Collide — EVE Online](https://www.eveonline.com/news/view/community-beat-for-21-july) | Official distinction between permitted manual multiboxing and prohibited input broadcasting |
-| [Account Sharing — CCP Support](https://support.eveonline.com/hc/en-us/articles/203269561-Account-Sharing) | Account-security and account-sharing prohibition |
-| [PLEX Vault — CCP Support](https://support.eveonline.com/hc/en-us/articles/115003168285-PLEX-Vault) | PLEX storage and account-wide Vault behavior |
-| [Recruit a Friend — CCP Support](https://support.eveonline.com/hc/en-us/articles/360001291585-Recruit-a-Friend) | Recruitment linking, eligibility, and rewards |
-| [Cradle of War Expansion Notes](https://www.eveonline.com/news/view/cradle-of-war-expansion-notes) | Exordium, its economic restrictions, and Rookie Shipcasters |
-| [Rookie Griefing — CCP Support](https://support.eveonline.com/hc/en-us/articles/203209712-Rookie-Griefing) | Additional policy protection in designated rookie areas |
-| [Scams — CCP Support](https://support.eveonline.com/hc/en-us/articles/203218892-Scams) | What in-game scams are generally allowed and important exceptions |
-| [Authenticator — CCP Support](https://support.eveonline.com/hc/en-us/articles/203465601-Authenticator) | EVE account two-factor authentication |
-| [Steam Guard for EVE — CCP Support](https://support.eveonline.com/hc/en-us/articles/23019427899676-Two-Factor-Authentication-with-Steam-Accounts) | Two-factor authentication for Steam-linked accounts |
-| [Character Resculpting and Clothing — CCP Support](https://support.eveonline.com/hc/en-us/articles/203267841-Character-Resculpting-and-Clothing) | Which appearance and identity choices can be changed later |
-| [System Requirements — CCP Support](https://support.eveonline.com/hc/en-us/articles/5885219196828-System-Requirements) | Current Windows and macOS requirements |
-| [Character Creator — EVE University Wiki](https://wiki.eveuniversity.org/Character_Creator) | Additional character-creation guidance |
-| [Getting Started — EVE University Wiki](https://wiki.eveuniversity.org/Getting_Started_in_EVE_Online) | Complementary new-player overview |
-
----
-
-*This page is part of the [Ultimate Beginner's Guide to EVE Online](../index). See the Master Table of Contents there for the complete learning path.*
+**This page is part of the [Ultimate Beginner's Guide to EVE Online](*../index*). Use the guide sequentially or open any section as a reference.**

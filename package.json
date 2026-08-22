@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Site implementation for the Ultimate Beginner's Guide to EVE Online.",
   "scripts": {
-    "generate": "node scripts/generate-glossary.mjs && node scripts/import-content.mjs",
+    "generate": "node scripts/generate-glossary.mjs && node scripts/import-content.mjs && node scripts/generate-search-terms.mjs",
     "dev": "npm run generate && astro dev",
     "start": "npm run dev",
     "build": "npm run generate && astro build",

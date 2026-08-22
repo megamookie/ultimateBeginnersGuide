@@ -1,5 +1,6 @@
 import vocabulary from '../../data/search-vocabulary.json';
 import glossary from '../../data/glossary.generated.json';
+import pageTerms from '../../data/page-search-terms.generated.json';
 
 /**
  * Search vocabulary lookup (site-product-specification.md v1.0, section 6).
@@ -21,6 +22,11 @@ export interface VocabularyDestination {
 }
 
 export interface VocabularyEntry {
+  /**
+   * Where this entry came from. Determines how strongly it matches and whether its
+   * canonical term is worth appending to a Pagefind query.
+   */
+  source?: 'vocabulary' | 'page' | 'glossary';
   canonical: string;
   beginner: string[];
   abbreviations: string[];
@@ -35,7 +41,14 @@ export interface PromotedResult {
   destination: VocabularyDestination;
   /** Which surface form matched, so the UI can explain the promotion honestly. */
   matched: string;
-  matchKind: 'canonical' | 'beginner' | 'abbreviation' | 'alternate' | 'misspelling' | 'glossary';
+  matchKind:
+    | 'canonical'
+    | 'beginner'
+    | 'abbreviation'
+    | 'alternate'
+    | 'misspelling'
+    | 'glossary'
+    | 'page';
   score: number;
 }
 
@@ -65,12 +78,33 @@ function glossaryEntries(): VocabularyEntry[] {
         heading: term.term,
       },
       promote: false,
+      source: 'glossary' as const,
     }))
   );
 }
 
+/**
+ * Approved page-level `search_terms` become vocabulary entries automatically, from data
+ * generated out of each page's own frontmatter. They are never retyped into the hand
+ * maintained file, so an approved term cannot drift from the release that owns it
+ * (site-product-specification.md v1.1, section 6).
+ */
+function approvedPageEntries(): VocabularyEntry[] {
+  return pageTerms.pages.map((page) => ({
+    canonical: page.page,
+    beginner: page.terms,
+    abbreviations: [],
+    alternates: [],
+    misspellings: [],
+    destination: { url: page.url, page: page.page, heading: null },
+    promote: false,
+    source: 'page' as const,
+  }));
+}
+
 export const entries: VocabularyEntry[] = [
   ...(vocabulary.entries as VocabularyEntry[]),
+  ...approvedPageEntries(),
   ...glossaryEntries(),
 ];
 
@@ -92,14 +126,17 @@ const WEIGHTS: Record<PromotedResult['matchKind'], number> = {
   beginner: 70,
   glossary: 60,
   misspelling: 50,
+  // Page-level terms are the weakest signal: they name a whole page, so a heading-level
+  // entry pointing at the exact section always wins.
+  page: 30,
 };
 
 function buildIndex(source: VocabularyEntry[]): IndexedForm[] {
   const index: IndexedForm[] = [];
 
   for (const entry of source) {
-    const isGlossary = !entry.promote && entry.destination.url.startsWith(GLOSSARY_URL);
-    const canonicalKind: PromotedResult['matchKind'] = isGlossary ? 'glossary' : 'canonical';
+    const canonicalKind: PromotedResult['matchKind'] =
+      entry.source === 'glossary' ? 'glossary' : entry.source === 'page' ? 'page' : 'canonical';
 
     const add = (forms: string[], kind: PromotedResult['matchKind']) => {
       for (const form of forms) {
@@ -111,7 +148,8 @@ function buildIndex(source: VocabularyEntry[]): IndexedForm[] {
     add([entry.canonical], canonicalKind);
     add(entry.abbreviations, 'abbreviation');
     add(entry.alternates, 'alternate');
-    add(entry.beginner, 'beginner');
+    // An approved page's own search_terms are page-level, not beginner phrasings.
+    add(entry.beginner, entry.source === 'page' ? 'page' : 'beginner');
     add(entry.misspellings, 'misspelling');
   }
 
@@ -188,6 +226,8 @@ export function expandQuery(query: string, limit = 2): string {
 
   const words = new Set(normalize(query).split(' '));
   const additions = promoted
+    // A page title is not a search term; appending it only dilutes the query.
+    .filter((result) => result.matchKind !== 'page')
     .map((result) => result.canonical)
     .filter((canonical) => !normalize(canonical).split(' ').every((word) => words.has(word)));
 

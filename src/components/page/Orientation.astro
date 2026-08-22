@@ -2,30 +2,29 @@
 /**
  * The visible orientation block, generated entirely from machine-readable page metadata.
  *
- * site-product-specification.md v1.0 section 5: "The visible page orientation block should
+ * site-product-specification.md v1.1 section 5: "The visible page orientation block should
  * be generated from this metadata rather than maintained separately."
- * page-template.md v1.3: "The site renders the page title and compact orientation block
+ * page-template.md v1.4: "The site renders the page title and compact orientation block
  * from this metadata. Do not duplicate them manually in the page body."
  *
- * Every value shown here comes from the page's frontmatter, which in turn carries the
- * values stated in the approved source file. No wording originates in this component
- * except the field labels, which are interface chrome.
+ * Every value shown comes from the page's frontmatter, which carries the values stated in
+ * the approved source. No wording originates here except the field labels, which are
+ * interface chrome.
  */
 
-interface GuideMetadata {
+export interface OrientationMetadata {
   guide_version: string;
   last_updated: string;
   applies_to: 'Alpha' | 'Omega' | 'Both';
   patch_sensitivity: string;
   estimated_reading_time: string;
-  estimated_in_game_time: string;
-  approximate_cost: string;
-  risk: { level: string; reason: string };
-  orientation_note: string | null;
+  estimated_in_game_time?: string;
+  approximate_cost?: string;
+  risk: string;
 }
 
 interface Props {
-  guide: GuideMetadata;
+  guide: OrientationMetadata;
 }
 
 const { guide } = Astro.props;
@@ -48,14 +47,14 @@ const facts: Array<{ label: string; value: string }> = [
   { label: 'Reading time', value: guide.estimated_reading_time },
 ];
 
-if (guide.estimated_in_game_time !== 'Not applicable') {
+if (guide.estimated_in_game_time && guide.estimated_in_game_time !== 'Not applicable') {
   facts.push({ label: 'In-game time', value: guide.estimated_in_game_time });
 }
-if (guide.approximate_cost !== 'None') {
+if (guide.approximate_cost && guide.approximate_cost !== 'None') {
   facts.push({ label: 'Approximate cost', value: guide.approximate_cost });
 }
-if (guide.risk.level !== 'Not applicable') {
-  facts.push({ label: 'Risk', value: `${guide.risk.level} — ${guide.risk.reason}` });
+if (!guide.risk.startsWith('Not applicable')) {
+  facts.push({ label: 'Risk', value: guide.risk });
 }
 facts.push({ label: 'Patch sensitivity', value: guide.patch_sensitivity });
 ---
@@ -63,7 +62,7 @@ facts.push({ label: 'Patch sensitivity', value: guide.patch_sensitivity });
 {/*
   Excluded from the search index. The orientation block is repeated metadata on every page;
   indexed, it produces a result whose excerpt is "Alpha and Omega accounts. Reading time
-  20–25 minutes…" competing with the actual explanation. site-product-specification.md v1.0
+  10–12 minutes…" competing with the actual explanation. site-product-specification.md v1.1
   section 6: "Avoid ranking navigation chrome, repeated metadata, or boilerplate above the
   canonical explanation."
 */}
@@ -78,7 +77,6 @@ facts.push({ label: 'Patch sensitivity', value: guide.patch_sensitivity });
       ))
     }
   </dl>
-  {guide.orientation_note && <p class="orientation__note">{guide.orientation_note}</p>}
 </aside>
 
 <style>
@@ -116,13 +114,5 @@ facts.push({ label: 'Patch sensitivity', value: guide.patch_sensitivity });
   .orientation__fact dd {
     margin: 0;
     color: var(--sl-color-gray-2);
-  }
-
-  .orientation__note {
-    margin: 0.75rem 0 0;
-    padding-block-start: 0.6rem;
-    border-block-start: 1px solid var(--sl-color-gray-5);
-    color: var(--sl-color-gray-3);
-    font-style: italic;
   }
 </style>

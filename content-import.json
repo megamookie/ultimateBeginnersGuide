@@ -1,60 +1,32 @@
 {
-  "$comment": "Declarative record of every approved content release promoted into the publication directory, per project-workflow.md v1.0 steps 3 and 4. scripts/import-content.mjs applies only the mechanical transformations listed in section 8.1 of that workflow; it cannot reword, reorder, or remove prose. `npm run check:generated` re-runs the import and fails if a publication copy has been edited by hand, which is what keeps src/content/docs/ traceable to content-source/.",
+  "$comment": "Declarative record of every approved content release promoted into the publication directory, per project-workflow.md v1.0 steps 3 and 4. scripts/import-content.mjs applies only the mechanical transformations listed in section 8.1 of that workflow and in the release record; it cannot reword, reorder, or remove prose. The approved source now carries its own complete frontmatter matching page-template.md v1.4, so metadata is passed through rather than injected here — `expect` only asserts that the promoted file is the release that was approved. `npm run check:generated` re-runs the import and fails if a publication copy has been edited by hand.",
   "imports": [
     {
       "source": "content-source/before-you-launch.md",
-      "target": "src/content/docs/foundation/before-you-launch.mdx",
-      "sourceVersion": "Guide version 1.4; last updated August 18, 2026",
+      "target": "src/content/docs/before-you-launch.mdx",
+      "sourceVersion": "Guide version 1.5; last updated August 21, 2026",
       "state": "Approved",
 
-      "expectedHeading": "Section 0: Before You Launch",
+      "expect": {
+        "page_id": "section-00-before-you-launch",
+        "title": "Before You Launch",
+        "status": "Approved",
+        "guide_version": "1.5",
+        "last_updated": "2026-08-21",
+        "slug": "/before-you-launch/",
+        "navigation_group": "Foundation"
+      },
 
       "linkRewrites": {
-        "../section-1/your-first-session#the-overview": "/foundation/your-first-session/#the-overview",
         "../section-1/your-first-session": "/foundation/your-first-session/",
+        "../section-2/graduate-from-starter-space": "/foundation/graduate-from-starter-space/",
         "../index": "/"
       },
 
-      "frontmatter": {
-        "title": "Section 0: Before You Launch",
-        "guide": {
-          "page_id": "before-you-launch",
-          "status": "Approved",
-          "section": 0,
-          "navigation_group": "Foundation",
-          "order": 0,
-          "permanent_slug": "/foundation/before-you-launch/",
-          "guide_version": "1.4",
-          "last_updated": "2026-08-18",
-          "applies_to": "Both",
-          "patch_sensitivity": "Recheck after expansions affecting onboarding",
-          "review_trigger": "Every expansion affecting onboarding",
-          "estimated_reading_time": "20–25 minutes",
-          "estimated_in_game_time": "Not applicable",
-          "approximate_cost": "None",
-          "risk": {
-            "level": "Not applicable",
-            "reason": "No in-game action is taken on this page."
-          },
-          "search_terms": [],
-          "tags": ["onboarding", "account", "alpha-omega", "character-creation", "security", "multiboxing"],
-          "language": "en",
-          "translation_of": null,
-          "orientation_note": "A public correction link will be added when the guide's repository is published."
-        }
-      },
-
-      "$fieldNotes": {
-        "title": "Verbatim from the source H1.",
-        "applies_to": "\"Both\" renders as \"Alpha and Omega accounts\", matching the source orientation line exactly.",
-        "guide_version/last_updated": "Copied from the source orientation line. Not advanced for this technical conversion (project-workflow.md v1.0 step 4).",
-        "review_trigger": "Verbatim from ultimate-beginners-guide-master-roadmap.md v1.7 section 9, review cadence: first-session and NPE pages.",
-        "patch_sensitivity": "Derived from the same review-cadence row.",
-        "estimated_reading_time": "Measured, not judged: 4,346 body words at 200 words per minute.",
-        "risk": "\"Not applicable\" because the page prescribes no in-game action. The orientation block omits the row entirely, so no reader-facing risk wording is invented.",
-        "search_terms": "Intentionally empty. Aliases for this page live in the single maintained vocabulary at src/data/search-vocabulary.json; duplicating them here would create a second synonym list (site-product-specification.md v1.0, section 6).",
-        "description": "Absent. A search description is reader-facing editorial text and is returned to ChatGPT as finding EF-01 rather than invented here.",
-        "orientation_note": "Verbatim from the source orientation block. Carried in metadata so the generated orientation block can render it unchanged."
+      "$notes": {
+        "route": "The approved slug moves this page from /foundation/before-you-launch/ to /before-you-launch/. navigation_group stays Foundation, so it still appears as Section 0 in the Foundation group; only the URL is top-level.",
+        "deferredLinks": "Sections 1 and 2 are not approved for publication. Their canonical routes are preserved here and registered as unpublished in src/data/section-registry.json, so scripts/check-links.mjs reports them as deferred rather than broken. No placeholder page is created.",
+        "frontmatter": "Passed through verbatim from the approved source. Only blank lines inserted in transport are removed; no field name or value is altered."
       }
     }
   ]

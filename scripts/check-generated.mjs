@@ -51,7 +51,21 @@ function ok(message) {
   process.stdout.write(result);
 }
 
-// 3. Every approved source in content-source/ is either imported or deliberately excluded.
+// 3. Page-level search terms must match the published pages they were derived from.
+{
+  const output = join(root, 'src/data/page-search-terms.generated.json');
+  const before = existsSync(output) ? readFileSync(output, 'utf8') : null;
+  execFileSync('node', [join(root, 'scripts/generate-search-terms.mjs')], { cwd: root, stdio: 'pipe' });
+  const after = readFileSync(output, 'utf8');
+
+  if (before !== after) {
+    fail('src/data/page-search-terms.generated.json is out of date. Run `npm run generate`.');
+  } else {
+    ok('page-search-terms.generated.json matches the published pages');
+  }
+}
+
+// 4. Every approved source in content-source/ is either imported or deliberately excluded.
 {
   const config = JSON.parse(readFileSync(join(root, 'content-import.json'), 'utf8'));
   const imported = new Set(config.imports.map((entry) => entry.source));

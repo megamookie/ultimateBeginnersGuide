@@ -1,22 +1,22 @@
 {
-  "$comment": "The homepage entry-point model from ultimate-beginners-guide-master-roadmap.md v1.7 section 8 and site-product-specification.md v1.0 section 4. These are curated links into the same canonical content — never duplicate versions of the guide, and never a new page. Labels are taken from the governing wording. An entry whose destination has not been approved for publication carries `published: false` and renders as an inert item stating its status; it is not linked and no placeholder page is created for it.",
+  "$comment": "The homepage entry-point model from ultimate-beginners-guide-master-roadmap.md v1.8 section 8 and site-product-specification.md v1.1 section 4. These are curated links into the same canonical content — never duplicate versions of the guide, and never a new page. Labels are taken from the governing wording. An entry whose destination has not been approved for publication carries `published: false` and renders as an inert item stating its status; it is not linked and no placeholder page is created for it.",
   "primary": {
     "label": "Begin the Complete Guided Path",
-    "href": "/foundation/before-you-launch/",
+    "href": "/before-you-launch/",
     "published": true
   },
   "secondary": [
     {
       "id": "alpha",
       "label": "Alpha readers",
-      "href": "/foundation/before-you-launch/#3-free-to-play-alpha-vs-omega",
-      "context": "Before You Launch › 3. Free to Play: Alpha vs. Omega",
+      "href": "/before-you-launch/#alpha-or-omega-which-should-you-choose",
+      "context": "Before You Launch › Alpha or Omega: Which Should You Choose?",
       "published": true
     },
     {
       "id": "multiboxing",
       "label": "Alts and multiboxing",
-      "href": "/foundation/before-you-launch/#looking-ahead-alts-and-multiboxing",
+      "href": "/before-you-launch/#looking-ahead-alts-and-multiboxing",
       "context": "Before You Launch › Looking Ahead: Alts and Multiboxing",
       "published": true
     },

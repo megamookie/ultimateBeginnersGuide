@@ -27,8 +27,10 @@ function buildSidebar() {
       const section = registry.sections.find((s) => s.number === number);
       if (!section) throw new Error(`Section ${number} missing from registry`);
       const label = `${section.number}. ${section.title}`;
+      // An approved release may specify a permanent slug outside its group's path.
+      const route = section.route ?? `/${group.urlSegment}/${section.slug}/`;
       return section.published
-        ? { label, link: `/${group.urlSegment}/${section.slug}/` }
+        ? { label, link: route }
         : {
             // Not yet approved for publication. The entry stays visible so readers can see
             // the whole path, but it points at the table of contents — which states its

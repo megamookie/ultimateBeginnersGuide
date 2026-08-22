@@ -6,6 +6,12 @@ export interface SectionEntry {
   slug: string;
   group: string;
   published: boolean;
+  /**
+   * Permanent URL when an approved release specifies one that does not follow the
+   * group-derived pattern. Section 0's approved slug is `/before-you-launch/`, top-level,
+   * while its navigation group remains Foundation.
+   */
+  route?: string;
 }
 
 export interface SectionGroup {
@@ -25,9 +31,12 @@ export function groupOf(section: SectionEntry): SectionGroup {
   return group;
 }
 
-/** Canonical, permanent URL for a section. Stable whether or not it is published yet. */
+/**
+ * Canonical, permanent URL for a section. Stable whether or not it is published yet.
+ * An approved release may override the group-derived path via `route`.
+ */
 export function sectionUrl(section: SectionEntry): string {
-  return `/${groupOf(section).urlSegment}/${section.slug}/`;
+  return section.route ?? `/${groupOf(section).urlSegment}/${section.slug}/`;
 }
 
 export function sectionByNumber(number: number): SectionEntry | undefined {

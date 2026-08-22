@@ -3,15 +3,25 @@
  * Starlight `PageTitle` override.
  *
  * Renders the standard page heading, then the metadata-generated orientation block so that
- * no page has to hand-maintain one in its body (page-template.md v1.3).
+ * no page has to hand-maintain one in its body (page-template.md v1.4).
  */
-import Orientation from './Orientation.astro';
+import Orientation, { type OrientationMetadata } from './Orientation.astro';
 
 /** Starlight's page-title anchor id. Not exported from the package, so it is mirrored here. */
 const PAGE_TITLE_ID = '_top';
 
 const { entry } = Astro.locals.starlightRoute;
-const guide = (entry.data as { guide?: Parameters<typeof Orientation>[0]['guide'] }).guide;
+const data = entry.data as Partial<OrientationMetadata>;
+
+/**
+ * Only pages carrying approved guide metadata get an orientation block. Site chrome — the
+ * homepage, the not-found page, the table of contents — has none, and must not be given a
+ * fabricated one.
+ */
+const guide =
+  data.guide_version && data.last_updated && data.applies_to && data.risk
+    ? (data as OrientationMetadata)
+    : null;
 ---
 
 <h1 id={PAGE_TITLE_ID}>{entry.data.title}</h1>

@@ -40,7 +40,7 @@ describe('vocabulary coverage', () => {
 
   it('only points at content that has been published', () => {
     // A vocabulary entry aimed at an unpublished page would send readers to a 404.
-    const published = ['/foundation/before-you-launch/', '/reference/glossary/'];
+    const published = ['/before-you-launch/', '/reference/glossary/'];
     for (const entry of entries) {
       const url = entry.destination.url;
       expect(

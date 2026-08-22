@@ -44,7 +44,7 @@ if (!existsSync(PAGEFIND)) {
 
 // 2. Every published page that should be searchable is in the index.
 {
-  const shouldIndex = ['/foundation/before-you-launch/', '/reference/glossary/', '/table-of-contents/'];
+  const shouldIndex = ['/before-you-launch/', '/reference/glossary/', '/table-of-contents/'];
   const indexDir = join(PAGEFIND, 'index');
   if (!existsSync(indexDir) || readdirSync(indexDir).length === 0) {
     failures.push('the search index has no index shards');
@@ -55,7 +55,7 @@ if (!existsSync(PAGEFIND)) {
 // 3. Heading-level results require ids on the headings Pagefind indexes, inside the
 //    element Pagefind treats as the page body.
 {
-  const page = join(DIST, 'foundation/before-you-launch/index.html');
+  const page = join(DIST, "before-you-launch/index.html");
   const { document } = parseHTML(readFileSync(page, 'utf8'));
 
   const body = document.querySelector('[data-pagefind-body]');

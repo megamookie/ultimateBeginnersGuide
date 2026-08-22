@@ -14,9 +14,20 @@
 import { paginationFor, type NavigationTarget } from '../../lib/navigation/sections';
 
 const { entry } = Astro.locals.starlightRoute;
-const guide = (entry.data as { guide?: { section: number | string } }).guide;
+const { section } = entry.data as { section?: string | number };
 
-const sectionNumber = typeof guide?.section === 'number' ? guide.section : null;
+/**
+ * The approved schema states `section` as a string ("0") or a reference type ("Reference").
+ * Only a numeric section takes part in the guide sequence; a reference page has no
+ * previous/next of its own.
+ */
+const sectionNumber =
+  typeof section === 'number'
+    ? section
+    : typeof section === 'string' && /^\d+$/.test(section.trim())
+      ? Number(section)
+      : null;
+
 const { prev, next } = sectionNumber === null ? { prev: null, next: null } : paginationFor(sectionNumber);
 
 const items: Array<{ rel: 'prev' | 'next'; heading: string; target: NavigationTarget }> = [];

@@ -1,95 +1,115 @@
 {
-  "$comment": "Representative search queries with an expected first result, required by site-product-specification.md v1.0 section 6. Categories mirror the spec's list: beginner questions, exact EVE terminology, abbreviations, alternate names, misspellings, and headings deep inside long section pages. Ship, fit, and skill-plan queries are absent because no such content is approved yet; add them with those sections. Run by tests/search/vocabulary.test.ts and again against the real Pagefind index by scripts/check-search-index.mjs.",
+  "$comment": "Representative search queries with an expected first result, required by site-product-specification.md v1.1 section 6. Categories mirror the spec's list: beginner questions, exact EVE terminology, abbreviations, alternate names, misspellings, and headings deep inside long section pages. Ship, fit, and skill-plan queries are absent because no such content is approved yet; add them with those sections. Run by tests/search/vocabulary.test.ts and again against the real Pagefind index by scripts/check-search-index.mjs. Updated for Section 0 guide version 1.5, which changed the route and every heading anchor.",
   "queries": [
     {
       "kind": "beginner question",
       "query": "is eve free",
-      "expectedUrl": "/foundation/before-you-launch/#3-free-to-play-alpha-vs-omega"
+      "expectedUrl": "/before-you-launch/#alpha-or-omega-which-should-you-choose"
     },
     {
       "kind": "beginner question",
       "query": "which race should i pick",
-      "expectedUrl": "/foundation/before-you-launch/#4-the-four-empires-choosing-your-origin"
+      "expectedUrl": "/before-you-launch/#choosing-an-empire"
     },
     {
       "kind": "beginner question",
       "query": "will i lose my ship",
-      "expectedUrl": "/foundation/before-you-launch/#2-a-word-of-warning-before-you-begin"
+      "expectedUrl": "/before-you-launch/#eves-rules-are-different"
     },
     {
       "kind": "beginner question",
       "query": "where do i start",
-      "expectedUrl": "/foundation/before-you-launch/#5-where-every-new-character-begins-exordium"
+      "expectedUrl": "/before-you-launch/#where-new-characters-begin-exordium"
     },
     {
       "kind": "beginner question",
       "query": "will my pc run eve",
-      "expectedUrl": "/foundation/before-you-launch/#8-hardware-graphics-and-ui-settings"
+      "expectedUrl": "/before-you-launch/#preparing-the-client"
+    },
+    {
+      "kind": "beginner question (already started)",
+      "query": "should i start over",
+      "expectedUrl": "/before-you-launch/#already-created-your-account-or-character"
+    },
+    {
+      "kind": "beginner question (already started)",
+      "query": "i already made a character",
+      "expectedUrl": "/before-you-launch/#already-created-your-account-or-character"
+    },
+    {
+      "kind": "beginner question",
+      "query": "can i change my name",
+      "expectedUrl": "/before-you-launch/#choose-the-name-carefully"
     },
     {
       "kind": "exact EVE terminology",
       "query": "Exordium",
-      "expectedUrl": "/foundation/before-you-launch/#5-where-every-new-character-begins-exordium"
+      "expectedUrl": "/before-you-launch/#where-new-characters-begin-exordium"
     },
     {
       "kind": "exact EVE terminology",
       "query": "PLEX",
-      "expectedUrl": "/foundation/before-you-launch/#plex-paying-for-omega-with-in-game-currency"
+      "expectedUrl": "/before-you-launch/#plex-and-omega"
     },
     {
       "kind": "abbreviation",
       "query": "2fa",
-      "expectedUrl": "/foundation/before-you-launch/#7-secure-your-account"
+      "expectedUrl": "/before-you-launch/#secure-your-account-early"
     },
     {
       "kind": "abbreviation",
       "query": "raf",
-      "expectedUrl": "/foundation/before-you-launch/#9-getting-the-free-1000000-skill-points"
+      "expectedUrl": "/before-you-launch/#the-free-1000000-skill-points"
     },
     {
       "kind": "abbreviation",
       "query": "mct",
-      "expectedUrl": "/foundation/before-you-launch/#looking-ahead-alts-and-multiboxing"
+      "expectedUrl": "/before-you-launch/#looking-ahead-alts-and-multiboxing"
     },
     {
       "kind": "alternate name",
       "query": "recruit a friend",
-      "expectedUrl": "/foundation/before-you-launch/#9-getting-the-free-1000000-skill-points"
+      "expectedUrl": "/before-you-launch/#the-free-1000000-skill-points"
     },
     {
       "kind": "alternate name",
       "query": "clone state",
-      "expectedUrl": "/foundation/before-you-launch/#3-free-to-play-alpha-vs-omega"
+      "expectedUrl": "/before-you-launch/#alpha-or-omega-which-should-you-choose"
+    },
+    {
+      "kind": "alternate name",
+      "query": "rookie shipcaster",
+      "expectedUrl": "/before-you-launch/#where-new-characters-begin-exordium"
     },
     {
       "kind": "misspelling",
       "query": "exordeum",
-      "expectedUrl": "/foundation/before-you-launch/#5-where-every-new-character-begins-exordium"
+      "expectedUrl": "/before-you-launch/#where-new-characters-begin-exordium"
     },
     {
       "kind": "misspelling",
       "query": "plexx",
-      "expectedUrl": "/foundation/before-you-launch/#plex-paying-for-omega-with-in-game-currency"
+      "expectedUrl": "/before-you-launch/#plex-and-omega"
     },
     {
       "kind": "misspelling",
       "query": "multiboxxing",
-      "expectedUrl": "/foundation/before-you-launch/#looking-ahead-alts-and-multiboxing"
+      "expectedUrl": "/before-you-launch/#looking-ahead-alts-and-multiboxing"
     },
     {
       "kind": "misspelling",
       "query": "gallante",
-      "expectedUrl": "/foundation/before-you-launch/#4-the-four-empires-choosing-your-origin"
+      "expectedUrl": "/before-you-launch/#choosing-an-empire"
     },
     {
       "kind": "account and multiboxing terminology",
       "query": "multiple character training",
-      "expectedUrl": "/foundation/before-you-launch/#looking-ahead-alts-and-multiboxing"
+      "expectedUrl": "/before-you-launch/#looking-ahead-alts-and-multiboxing"
     },
     {
       "kind": "deep heading in a long page",
-      "query": "recruit a friend",
-      "expectedUrl": "/foundation/before-you-launch/#9-getting-the-free-1000000-skill-points"
+      "query": "resculpt",
+      "expectedUrl": "/before-you-launch/#bloodline-and-appearance"
     },
     {
       "kind": "glossary term",

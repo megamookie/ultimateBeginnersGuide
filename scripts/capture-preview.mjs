@@ -70,7 +70,7 @@ const VIEWPORTS = [
 
 const ROUTES = [
   { url: '/', name: 'homepage' },
-  { url: '/foundation/before-you-launch/', name: 'section-0' },
+  { url: '/before-you-launch/', name: 'section-0' },
   { url: '/reference/glossary/', name: 'glossary' },
   { url: '/table-of-contents/', name: 'table-of-contents' },
   { url: '/search/', name: 'search' },
@@ -107,7 +107,7 @@ for (const viewport of VIEWPORTS) {
 {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   const page = await context.newPage();
-  await page.goto(`${base}/foundation/before-you-launch/`, { waitUntil: 'networkidle' });
+  await page.goto(`${base}/before-you-launch/`, { waitUntil: 'networkidle' });
 
   const control = page.locator('.glossary-term__control').first();
   const term = await control.textContent();
@@ -137,7 +137,7 @@ for (const viewport of VIEWPORTS) {
 {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   const page = await context.newPage();
-  await page.goto(`${base}/foundation/before-you-launch/`, { waitUntil: 'networkidle' });
+  await page.goto(`${base}/before-you-launch/`, { waitUntil: 'networkidle' });
 
   await page.locator('[data-search-trigger]').click();
   await page.locator('[data-search-input]').fill('is eve free');
@@ -149,7 +149,7 @@ for (const viewport of VIEWPORTS) {
 
   const first = await page.locator('[data-search-results] .search-result__link').first().getAttribute('href');
   check(
-    first === '/foundation/before-you-launch/#3-free-to-play-alpha-vs-omega',
+    first === '/before-you-launch/#alpha-or-omega-which-should-you-choose',
     `beginner query "is eve free" returned ${first} instead of the Alpha/Omega heading`
   );
 
@@ -183,7 +183,7 @@ for (const viewport of VIEWPORTS) {
     .first()
     .getAttribute('href');
   check(
-    first === '/foundation/before-you-launch/#5-where-every-new-character-begins-exordium',
+    first === '/before-you-launch/#where-new-characters-begin-exordium',
     `misspelling "exordeum" returned ${first} instead of the Exordium heading`
   );
 
@@ -208,7 +208,7 @@ for (const viewport of VIEWPORTS) {
 {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   const page = await context.newPage();
-  await page.goto(`${base}/foundation/before-you-launch/`, { waitUntil: 'networkidle' });
+  await page.goto(`${base}/before-you-launch/`, { waitUntil: 'networkidle' });
 
   await page.keyboard.press('Tab');
   const firstFocus = await page.evaluate(() => {

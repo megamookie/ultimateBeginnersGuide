@@ -1,5 +1,5 @@
 {
-  "$comment": "Structured navigation data for the guide's section sequence. Titles, numbers, and group assignments are transcribed from ultimate-beginners-guide-master-roadmap.md v1.7 section 3 (The Complete Content Roadmap) and section 2 (The Core Design). 'published' is true only for sections whose canonical content has been approved and promoted to src/content/docs/. Navigation, indexes, and previous/next links are generated from this file. It contains no guide prose.",
+  "$comment": "Structured navigation data for the guide's section sequence. Titles, numbers, and group assignments are transcribed from ultimate-beginners-guide-master-roadmap.md v1.8 section 3 (The Complete Content Roadmap) and section 2 (The Core Design). 'published' is true only for sections whose canonical content has been approved and promoted to src/content/docs/. 'route' overrides the group-derived URL when an approved release specifies a different permanent slug; navigation grouping is unaffected. Navigation, indexes, and previous/next links are generated from this file. It contains no guide prose.",
   "groups": [
     {
       "id": "foundation",
@@ -21,7 +21,7 @@
     }
   ],
   "sections": [
-    { "number": 0, "title": "Before You Launch", "slug": "before-you-launch", "group": "foundation", "published": true },
+    { "number": 0, "title": "Before You Launch", "slug": "before-you-launch", "group": "foundation", "published": true, "route": "/before-you-launch/" },
     { "number": 1, "title": "Your First Session", "slug": "your-first-session", "group": "foundation", "published": false },
     { "number": 2, "title": "Graduate from Starter Space", "slug": "graduate-from-starter-space", "group": "foundation", "published": false },
     { "number": 3, "title": "Skills and Character Development", "slug": "skills-and-character-development", "group": "foundation", "published": false },
